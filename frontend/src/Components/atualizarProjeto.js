@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export class cadastroProjeto extends Component {
+export class atualizarProjeto extends Component {
   render() {
     return (
       <div className="container">
-            <h1 style={{textAlign: 'center'}}>Cadastro de projeto</h1>
+            <h1 style={{textAlign: 'center'}}>Atualizar projeto</h1>
             <form action="">
                 <div className="form-group">
                     <div className="input-group mb-3">
@@ -125,4 +125,4 @@ export class cadastroProjeto extends Component {
   }
 }
 
-export default cadastroProjeto
+export default atualizarProjeto
