@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './Components/navBar.js'
-import CadastroProjeto from './Components/cadastroProjeto.js'
-import AtualizarProjeto, { atualizarProjeto } from './Components/atualizarProjeto.js'
+import Main from './Components/main.js'
 
 class App extends Component {
+  
+
   render() {
     return (
-      <div className="App">
+      <div>
         <NavBar />
-        <AtualizarProjeto />
+        <Main />
       </div>
     );
   }
