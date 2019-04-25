@@ -8,7 +8,7 @@ export class projetoItem extends Component {
   }
 
   componentWillMount(){
-    Axios.get('http://localhost:3001/api/Projetos/'+ this.props.idProjeto)
+    Axios.get('http://localhost:3001/api'+window.location.pathname)
       .then(res => {
         this.setState(this.state.projeto = res.data)}
     )

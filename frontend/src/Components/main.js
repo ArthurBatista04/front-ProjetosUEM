@@ -15,33 +15,38 @@ export class main extends Component {
   }
 
   componentWillMount(){
-    Axios.get('http://localhost:3001/api/Projetos')
+    Axios.get('http://localhost:3001/api/Projetos/getProjetos')
       .then(res => {
-        this.setState(this.state.projetos = res.data);
+        this.setState(this.state.projetos = res.data.response);
       });
   }
 
   handleClickVisualize = (id) => {
-    let url = '/projeto/' + id
+    let url = '/Projetos/' + id
     this.setState({idVisualizar: id})
     window.location.href = url
   }
 
   handleClickDelete = (id) => {
-    console.log('vai deletar o id' + id);
+    Axios.delete(`http://localhost:3001/api/Projetos/${id}/delete`)
+      .then(res => {
+       console.log(res)
+      }).catch(error => {
+        console.log(error)
+      })
   }
 
 
   handleSubmit = (newProject) => { 
-    newProject.dataInicio = Date(newProject.dataInicio);
-    newProject.dataTermino = Date(newProject.dataTermino);
-    console.log(newProject);
+    if (newProject.dataInicio) newProject.dataInicio = Date(newProject.dataInicio);
+    if (newProject.dataTermino) newProject.dataTermino = Date(newProject.dataTermino); else delete newProject["dataTermino"]
+    
     Axios.post('http://localhost:3001/api/Projetos', newProject)
     .then(function (response) {
       console.log(response);
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error.response);
     });
   };
 
@@ -59,9 +64,9 @@ export class main extends Component {
             (props) => <CadastroProjeto handleSubmit={this.handleSubmit} />
           } />
           <Route exact path='/projeto/edit/:id' component={AtualizarProjeto} />
-          <Route exact path='/projeto/:id' render={
+          <Route exact path='/Projetos/:id' render={
             (props) => <ProjetoItem
-              idProjeto={'1'}
+              idProjeto={this.state.idVisualizar}
               />
             }/>
         </Switch>
