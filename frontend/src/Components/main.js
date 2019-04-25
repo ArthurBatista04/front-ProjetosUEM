@@ -11,7 +11,7 @@ export class main extends Component {
 
   state = {
     projetos: [],
-    visualizarProjeto: []
+    idVisualizar : []
   }
 
   componentWillMount(){
@@ -23,11 +23,8 @@ export class main extends Component {
 
   handleClickVisualize = (id) => {
     let url = '/projeto/' + id
+    this.setState({idVisualizar: id})
     window.location.href = url
-    Axios.get('http://localhost:3001/api/Projetos/'+id)
-      .then(res => {
-        this.setState(this.state.visualizarProjeto = res.data);
-    });
   }
 
   handleClickDelete = (id) => {
@@ -64,7 +61,7 @@ export class main extends Component {
           <Route exact path='/projeto/edit/:id' component={AtualizarProjeto} />
           <Route exact path='/projeto/:id' render={
             (props) => <ProjetoItem
-              projeto={this.state.visualizarProjeto}
+              idProjeto={'1'}
               />
             }/>
         </Switch>
