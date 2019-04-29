@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import MostrarProjeto from './mostrarProjeto.js'
 
 export class projetos extends Component {
@@ -16,7 +17,7 @@ export class projetos extends Component {
                 />
             </div>
         ))}
-        <button style={{float: 'right'}} type="button" class="btn btn-dark btn-lg rounded-circle">+</button>
+        <Link style={{float: 'right'}} type="button" class="btn btn-dark btn-lg rounded-circle" to='/Projetos/add'>+</Link>
       </div>  
     )
   }

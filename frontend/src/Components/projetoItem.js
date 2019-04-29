@@ -55,7 +55,7 @@ export class projetoItem extends Component {
             </div> 
         </div>
         <div style={{paddingTop: '2rem'}}>
-          <button className="btn btn-info" style={{float: 'right'}}> Editar </button>
+          <button onClick={this.props.handleClickEdit.bind(this, this.state.projeto.id)} className="btn btn-info" style={{float: 'right'}}> Editar </button>
         </div>
       </div>
     )

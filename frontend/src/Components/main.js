@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import CadastroProjeto from './cadastroProjeto.js'
 import AtualizarProjeto from './atualizarProjeto.js'
 import Projetos from './projetos.js'
@@ -10,8 +10,7 @@ import Axios from 'axios'
 export class main extends Component {
 
   state = {
-    projetos: [],
-    idVisualizar : []
+    projetos: []
   }
 
   componentWillMount(){
@@ -27,6 +26,12 @@ export class main extends Component {
     window.location.href = url
   }
 
+  handleClickEdit = (id) => {
+    let url = '/Projetos/edit/' + id
+    window.location.href = url
+  }
+
+
   handleClickDelete = (id) => {
     Axios.delete(`http://localhost:3001/api/Projetos/${id}/delete`)
       .then(res => {
@@ -34,8 +39,11 @@ export class main extends Component {
       }).catch(error => {
         console.log(error)
       })
+      window.location.href = '/'  
   }
 
+
+  handleEdit = (editedProject) => {Axios.put('http://localhost:3001/api/Projetos/'+editedProject.id, editedProject)}
 
   handleSubmit = (newProject) => { 
     if (newProject.dataInicio) newProject.dataInicio = Date(newProject.dataInicio);
@@ -48,6 +56,7 @@ export class main extends Component {
     .catch(function (error) {
       console.log(error.response);
     });
+    window.location.href = '/'
   };
 
   render() {
@@ -57,16 +66,18 @@ export class main extends Component {
             (props) => <Projetos 
               projetos={this.state.projetos}
               handleClickVisualize={this.handleClickVisualize}
-              handleClickDelete={this.handleClickDelete}  
-              handleClickEdit={this.handleClickEdit} />
+              handleClickDelete={this.handleClickDelete}/>
             }/>
-          <Route exact path='/projeto/add' render = {
+          <Route exact path='/Projetos/add' render = {
             (props) => <CadastroProjeto handleSubmit={this.handleSubmit} />
           } />
-          <Route exact path='/projeto/edit/:id' component={AtualizarProjeto} />
+          <Route exact path='/Projetos/edit/:id' render={
+            (props) => <AtualizarProjeto
+              handleEdit={this.handleEdit}/>
+          }/>
           <Route exact path='/Projetos/:id' render={
             (props) => <ProjetoItem
-              idProjeto={this.state.idVisualizar}
+              handleClickEdit={this.handleClickEdit}
               />
             }/>
         </Switch>
