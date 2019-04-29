@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Axios from 'axios'
 
 export class atualizarProjeto extends Component {
@@ -13,9 +13,10 @@ export class atualizarProjeto extends Component {
 		var lastSegment = parts.pop() || parts.pop(); 
         Axios.get('http://localhost:3001/api/Projetos/'+ lastSegment)
             .then(res => {
-				this.setState(this.state.projeto = res.data)
-				console.log(this.state.projeto)
-            })
+							res.data.dataInicio = res.data.dataInicio.slice(0,10)
+        			res.data.dataTermino = res.data.dataTermino.slice(0,10)
+							this.setState(this.state.projeto = res.data)
+						})
 	}
 	
 	handleChange = (e) =>  {
@@ -23,7 +24,7 @@ export class atualizarProjeto extends Component {
       }
 
       onEdit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         this.props.handleEdit(this.state);
       }
 
@@ -102,12 +103,12 @@ export class atualizarProjeto extends Component {
 						<div className="input-group-prepend">
 							<span className="input-group-text" id="basic-addon1">Data de início</span>
 						</div>
-						<input name='dataInicio' value={this.state.dataIncio} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="ex: dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" />
+						<input name='dataInicio' value={this.state.dataInicio} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="ex: dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" />
 
 						<div className="input-group-prepend">
 							<span className="input-group-text" id="basic-addon1">Data de término</span>
 						</div>
-						<input name='dataTermino' value={this.state.dataTernimo} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="ex: dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" />
+						<input name='dataTermino' value={this.state.dataTermino} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="ex: dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" />
 
 					</div>
 
@@ -140,9 +141,9 @@ export class atualizarProjeto extends Component {
 						<textarea name='resumo' value={this.state.resumo} onChange={(e) => this.handleChange(e)} className="form-control" aria-label="With textarea"></textarea>
 					</div>
 				</div>
-				<button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}>Salvar</button>
+				<button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}} href="http://localhost:3000/">Salvar</button>
 			</form>
-			<Link type="submit" className="btn btn-danger" to="/" >Cancelar</Link>
+			<NavLink type="submit" className="btn btn-danger" to="/" >Cancelar</NavLink>
         </div>
     )
   }

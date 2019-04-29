@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export class projetoItem extends Component {
 
@@ -8,8 +9,10 @@ export class projetoItem extends Component {
   }
 
   componentWillMount(){
-    Axios.get('http://localhost:3001/api'+window.location.pathname)
+    Axios.get('http://localhost:3001/api' + window.location.pathname)
       .then(res => {
+        res.data.dataInicio = res.data.dataInicio.slice(0,10)
+        res.data.dataTermino = res.data.dataTermino.slice(0,10);
         this.setState(this.state.projeto = res.data)}
     )
   }
@@ -43,6 +46,14 @@ export class projetoItem extends Component {
                 <br/>
                 <hr className="style14" />
                 <br/>
+                <h5>Data de início: {this.state.projeto.dataInicio}</h5>
+                <br/>
+                <hr className="style14" />
+                <br/>
+                <h5>Data de término: {this.state.projeto.dataTermino}</h5>
+                <br/>
+                <hr className="style14" />
+                <br/>
                 <h5>Quantidade de participantes atual: {this.state.projeto.qntdPartAtual}</h5>
                 <br/>
                 <hr className="style14" />
@@ -54,8 +65,9 @@ export class projetoItem extends Component {
                 <h5>Resumo: {this.state.projeto.resumo}</h5> 
             </div> 
         </div>
-        <div style={{paddingTop: '2rem'}}>
+        <div style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
           <button onClick={this.props.handleClickEdit.bind(this, this.state.projeto.id)} className="btn btn-info" style={{float: 'right'}}> Editar </button>
+          <Link className="btn btn-dark" to="/">Voltar</Link>
         </div>
       </div>
     )

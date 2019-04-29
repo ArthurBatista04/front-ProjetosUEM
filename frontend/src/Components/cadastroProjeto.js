@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ControladorProjeto from './crtlProjetos.js'
+import { Link } from 'react-router-dom'
 
 export class cadastroProjeto extends Component {
 
@@ -104,12 +104,12 @@ export class cadastroProjeto extends Component {
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="basic-addon1">Data de início</span>
                         </div>
-                        <input name='dataInicio' value={this.state.dataIncio} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="ex: dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" />
+                        <input name='dataInicio' value={this.state.dataInicio} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="ex: dd/mm/aaaa"/>
 
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="basic-addon1">Data de término</span>
                         </div>
-                        <input name='dataTermino' value={this.state.dataTernimo} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="ex: dd/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" />
+                        <input name='dataTermino' value={this.state.dataTermino} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="ex: dd/mm/aaaa"/>
 
                     </div>
 
@@ -117,7 +117,7 @@ export class cadastroProjeto extends Component {
                         <div className="input-group-prepend">
                             <label className="input-group-text" htmlFor="inputGroupSelect01">Quantidade máxima de participantes</label>
                         </div>
-                        <select value={this.state.qntdPartAtual} onChange={this.handleChange} name="qntdPartAtual" className="custom-select" id="inputGroupSelect01" defaultValue="none">
+                        <select value={this.state.qntdPartMax} onChange={this.handleChange} name="qntdPartMax" className="custom-select" id="inputGroupSelect01" defaultValue="none">
                             <option value="none" disabled>Choose...</option>
                             <option value="1">Um</option>
                             <option value="2">Dois</option>
@@ -127,7 +127,7 @@ export class cadastroProjeto extends Component {
                         <div className="input-group-prepend">
                             <label className="input-group-text" htmlFor="inputGroupSelect01">Quantidade atual de participantes</label>
                         </div>
-                        <select value={this.state.qntdPartMax} onChange={this.handleChange} name="qntdPartMax" className="custom-select" id="inputGroupSelect01" defaultValue="none">
+                        <select value={this.state.qntdPartAtual} onChange={this.handleChange} name="qntdPartAtual" className="custom-select" id="inputGroupSelect01" defaultValue="none">
                             <option value="none" disabled>Choose...</option>
                             <option value="1">Um</option>
                             <option value="2">Dois</option>
@@ -142,9 +142,9 @@ export class cadastroProjeto extends Component {
                         <textarea name='resumo' value={this.state.resumo} onChange={(e) => this.handleChange(e)} className="form-control" aria-label="With textarea"></textarea>
                     </div>
                 </div>
-                <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}>Cadastrar</button>
+                <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Cadastrar </button>
             </form>
-            {/* <button type="submit" className="btn btn-dark">Voltar</button> */}
+            <Link type="submit" className="btn btn-danger" to='/'>Cancelar</Link>
       </div>
     )
   }

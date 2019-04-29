@@ -7,7 +7,7 @@ export class projetos extends Component {
   render() {
     return (
       <div className='container'>
-        {this.props.projetos.map((projeto) => (
+        {this.props.projetos.map( projeto => (
             <div className="container">
                 <MostrarProjeto 
                   projeto={projeto} 
@@ -17,7 +17,7 @@ export class projetos extends Component {
                 />
             </div>
         ))}
-        <Link style={{float: 'right'}} type="button" class="btn btn-dark btn-lg rounded-circle" to='/Projetos/add'>+</Link>
+        <Link style={{float: 'right'}} type="button" className="btn btn-dark btn-lg rounded-circle" to='/Projetos/add'>+</Link>
       </div>  
     )
   }
