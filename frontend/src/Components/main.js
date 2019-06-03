@@ -5,7 +5,7 @@ import AtualizarProjeto from "./atualizarProjeto.js";
 import Projetos from "./projetos.js";
 import ProjetoItem from "./projetoItem.js";
 import LoginScreen from "./loginScreen.js";
-import profile from "./profile.js/index.js.js";
+import profile from "./profile.js";
 import Axios from "axios";
 
 export class main extends Component {
