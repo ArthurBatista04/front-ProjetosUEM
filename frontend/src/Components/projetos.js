@@ -12,6 +12,7 @@ export class projetos extends Component {
                 <MostrarProjeto 
                   projeto={projeto} 
                   handleClickVisualize={this.props.handleClickVisualize}
+                  handlePS={this.props.handlePS}
                   handleClickDelete={this.props.handleClickDelete}  
                   handleClickEdit={this.props.handleClickEdit}
                 />

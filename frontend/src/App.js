@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import NavBar from './Components/navBar.js'
+import NavBar from './Components/navBarDocente.js'
 import Main from './Components/main.js'
 
 class App extends Component {
