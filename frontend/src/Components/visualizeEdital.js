@@ -54,11 +54,16 @@ export class visualizeEdital extends Component {
                             <textarea name='prerequisitos' disabled="true" value={this.state.prerequisitos} onChange={(e) => this.handleChange(e)} className="form-control" aria-label="With textarea"></textarea>
                         </div>
 
-                        <div className="input-group">
+                        <div className="input-group" style={{paddingBottom:"20px"   }}>
                             <div className="input-group-prepend">
                                 <span className="input-group-text">Descrição</span>
                             </div>
                             <textarea name='descricao' disabled="true" value={this.state.descricao} onChange={(e) => this.handleChange(e)} className="form-control" aria-label="With textarea"></textarea>
+                        </div>
+
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled = "true"class="custom-control-input" id="customSwitches"/>
+                            <label class="custom-control-label" for="customSwitches">Status do edital</label>
                         </div>
                     </div>
                 </form>

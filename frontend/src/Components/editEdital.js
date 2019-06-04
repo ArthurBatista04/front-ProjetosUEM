@@ -54,11 +54,16 @@ export class editEdital extends Component {
                             <textarea name='prerequisitos' value={this.state.prerequisitos} onChange={(e) => this.handleChange(e)} className="form-control" aria-label="With textarea"></textarea>
                         </div>
 
-                        <div className="input-group">
+                        <div className="input-group" style={{paddingBottom:"20px"   }}>
                             <div className="input-group-prepend">
                                 <span className="input-group-text">Descrição</span>
                             </div>
                             <textarea name='descricao' value={this.state.descricao} onChange={(e) => this.handleChange(e)} className="form-control" aria-label="With textarea"></textarea>
+                        </div>
+
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitches"/>
+                            <label class="custom-control-label" for="customSwitches">Status do edital</label>
                         </div>
                     </div>
                     <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Editar </button>

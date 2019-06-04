@@ -36,7 +36,7 @@ export class atualizarProjeto extends Component {
       }
 
       onEdit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         this.props.handleEdit(this.state);
       }
 

@@ -10,6 +10,7 @@ import EditEdital from './editEdital.js'
 import VisualizeEdital from './visualizeEdital.js'
 import Axios from 'axios'
 import Swal from 'sweetalert2'
+import VerificarInscritos from './verficarInscritos.js';
 
 
 export class main extends Component {
@@ -47,7 +48,8 @@ export class main extends Component {
         'C':'Criar',
         'D':'Deletar',
         'A':'Atualizar',
-        'V' :'Visualizar'
+        'V' :'Visualizar',
+        'I': 'Verificar Inscrições'
       },
       inputPlaceholder: 'Opção',
       showCancelButton: true,
@@ -112,6 +114,9 @@ export class main extends Component {
                     })
                   }
                 })
+            } else if (value === "I"){
+              let url = '/Projetos/1  /Edital/1/signedUp'
+              window.location.href = url
             }
               
           
@@ -196,6 +201,8 @@ export class main extends Component {
     })
   }
 
+  
+
   render() {
     return (
         <Switch>
@@ -239,6 +246,11 @@ export class main extends Component {
               handleVisualizeEdital={this.handleVisualizeEdita}
               />
             }/>  
+            <Route exact path='/Projetos/:id/Edital/:id/signedUp' render={
+            (props) => <VerificarInscritos
+            handleVerificarInscritos={this.handleVerificarInscritos}
+              />
+            }/> 
         </Switch>
     )
   }
