@@ -14,7 +14,7 @@ export class profile extends Component {
             <div className="panel panel-default">
               <div className="panel-heading">
                 {" "}
-                <h4>Perfil do usuário</h4>
+                <h4>Perfil do professor</h4>
               </div>
               <div className="panel-body">
                 <div className="col-md-4 col-xs-12 col-sm-6 col-lg-4">
@@ -29,7 +29,7 @@ export class profile extends Component {
                   <div className="container">
                     <h2>John Doe</h2>
                     <span>
-                      an <b> Employee</b>
+                      um <b> Professor</b>
                     </span>
                   </div>
                   <hr />
@@ -52,11 +52,17 @@ export class profile extends Component {
                         somerandom@email.com
                       </span>
                     </li>
+                    <li>
+                      <span>
+                        <span
+                          className="glyphicon glyphicon-briefcase"
+                          style={{ width: 50 + "px" }}
+                        />
+                        Professor efetivo
+                      </span>
+                    </li>
                   </ul>
                   <hr />
-                  <div className="col-sm-5 col-xs-6 tital ">
-                    Date Of Joining: 15 Jun 2016
-                  </div>
                 </div>
               </div>
             </div>

@@ -5,7 +5,8 @@ import AtualizarProjeto from "./atualizarProjeto.js";
 import Projetos from "./projetos.js";
 import ProjetoItem from "./projetoItem.js";
 import LoginScreen from "./loginScreen.js";
-import profile from "./profile.js";
+import ProfileDocente from "./profileDocente.js";
+import ProfileDiscente from "./profileDiscente.js";
 import Axios from "axios";
 
 export class main extends Component {
@@ -90,7 +91,8 @@ export class main extends Component {
             <LoginScreen handleSubmitLogin={this.handleSubmitLogin} />
           )}
         />
-        <Route exact path="/profile" component={profile} />
+        <Route exact path="/docente/profile" component={ProfileDocente} />
+        <Route exact path="/discente/profile" component={ProfileDiscente} />
         <Route
           exact
           path="/Projetos/add"
