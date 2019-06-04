@@ -16,9 +16,6 @@ export class navBar extends Component {
                         <li className="nav-item active">
                             <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/Projetos/add">Cadastrar projeto</Link>
-                        </li>
                     </ul>
                 </div>
             </nav>

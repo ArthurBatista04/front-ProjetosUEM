@@ -5,18 +5,30 @@ import Axios from 'axios'
 export class atualizarProjeto extends Component {
 
 	state = {
-		projeto: []
+		projeto: {
+			"titulo":"Técnicas de algoritmos aproximados",
+        "nomeOrientador":"Donald Knuth",
+        "nomeCoorientador":"Thomas H. Cormen",
+        "area":"Ciência Exatas",
+        "subarea":"Ciência da computação",
+        "tipo":"PIBIC",
+        "dataInicio":"17/04/2019",
+        "dataTermino":"17/04/2020",
+        "qntdPartAtual":"0",
+        "qntdPartMax":"3",
+        "resumo":"...."
+		}
 	}
 
     componentWillMount(){
-		var parts = window.location.pathname.split('/');
-		var lastSegment = parts.pop() || parts.pop(); 
-        Axios.get('http://localhost:3001/api/Projetos/'+ lastSegment)
-            .then(res => {
-							res.data.dataInicio = res.data.dataInicio.slice(0,10)
-        			res.data.dataTermino = res.data.dataTermino.slice(0,10)
-							this.setState(this.state.projeto = res.data)
-						})
+		// var parts = window.location.pathname.split('/');
+		// var lastSegment = parts.pop() || parts.pop(); 
+    //     Axios.get('http://localhost:3001/api/Projetos/'+ lastSegment)
+    //         .then(res => {
+		// 					res.data.dataInicio = res.data.dataInicio.slice(0,10)
+    //     			res.data.dataTermino = res.data.dataTermino.slice(0,10)
+		// 					this.setState(this.state.projeto = res.data)
+		// 				})
 	}
 	
 	handleChange = (e) =>  {
