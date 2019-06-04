@@ -27,6 +27,9 @@ export class navBar extends Component {
                 Cadastrar projeto
               </Link>
             </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/Projetos/relatorios">Relatórios</Link>
+            </li>
           </ul>
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">

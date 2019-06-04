@@ -16,7 +16,7 @@ export class projetoItem extends Component {
         "dataTermino":"17/04/2020",
         "qntdPartAtual":"0",
         "qntdPartMax":"3",
-        "resumo":"...." 
+        "resumo":"Este projeto visa estudar técnica de algoritmos." 
       }
   }
 
