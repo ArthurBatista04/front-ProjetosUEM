@@ -225,8 +225,9 @@ export class main extends Component {
           render={props => (
             <Projetos
               projetos={this.state.projetos}
+              handlePS={this.handlePS}
               handleClickVisualize={this.handleClickVisualize}
-              handleClickDelete={this.handleClickDelete}
+              handleClickDelete ={this.handleClickDelete}
             />
           )}
         />
