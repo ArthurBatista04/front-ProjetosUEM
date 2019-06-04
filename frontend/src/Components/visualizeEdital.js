@@ -67,7 +67,7 @@ export class visualizeEdital extends Component {
                         </div>
                     </div>
                 </form>
-                <NavLink type="submit" className="btn btn-danger" to="/" >Voltar</NavLink>
+                <NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Voltar</NavLink>
           </div>
         )
       }

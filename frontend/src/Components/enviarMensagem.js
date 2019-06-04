@@ -38,7 +38,7 @@ export class enviarMensagem extends Component {
                 <button type="submit" value='Submit' className="btn btn-dark" style={{paddingTop:"10px",float: 'left'}} >Enviar Mensagem</button>            
             
             </form>
-            <NavLink type="submit" className="btn btn-danger" to="/" >Cancelar</NavLink>
+            <NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Cancelar</NavLink>
         </div>
     
     )

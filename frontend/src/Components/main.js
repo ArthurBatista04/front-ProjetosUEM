@@ -47,9 +47,9 @@ export class main extends Component {
 	};
 
 	componentWillMount() {
-		Axios.get('http://localhost:3001/api/Projetos/getProjetos').then((res) => {
-			this.setState((this.state.projetos = res.data.response));
-		});
+		// Axios.get('http://localhost:3001/api/Projetos/getProjetos').then((res) => {
+		// 	this.setState((this.state.projetos = res.data.response));
+		// });
 	}
 
 	handlePS = (id) => {
@@ -68,7 +68,7 @@ export class main extends Component {
 			inputValidator: (value) => {
 				return new Promise((resolve) => {
 					if (value === 'C') {
-						let url = '/Projetos/1/Edital/1/create';
+						let url = '/Docente/Projetos/1/Edital/1/create';
 						window.location.href = url;
 					} else if (value === 'D') {
 						const { value: fruit } = Swal.fire({
@@ -103,7 +103,7 @@ export class main extends Component {
 							showCancelButton: true,
 							inputValidator: (value) => {
 								return new Promise((resolve) => {
-									let url = '/Projetos/1/Edital/1/edit';
+									let url = '/Docente/Projetos/1/Edital/1/edit';
 									window.location.href = url;
 								});
 							}
@@ -121,13 +121,13 @@ export class main extends Component {
 							showCancelButton: true,
 							inputValidator: (value) => {
 								return new Promise((resolve) => {
-									let url = '/Projetos/1/Edital/1/visualize';
+									let url = '/Docente/Projetos/1/Edital/1/visualize';
 									window.location.href = url;
 								});
 							}
 						});
 					} else if (value === 'I') {
-						let url = '/Projetos/1  /Edital/1/signedUp';
+						let url = '/Docente/Projetos/1/Edital/1/signedUp';
 						window.location.href = url;
 					}
 				});
@@ -135,20 +135,56 @@ export class main extends Component {
 		});
 	};
 
+	handleGerenciarProjeto = (id) => {
+		const { value: fruit } = Swal.fire({
+			title: 'Selecione uma operação',
+			input: 'select',
+			inputOptions: {
+				D: 'Deletar',
+				A: 'Atualizar',
+				V: 'Visualizar'
+			},
+			inputPlaceholder: 'Opção',
+			showCancelButton: true,
+			inputValidator: (value) => {
+				return new Promise((resolve) => {
+					if (value === 'C') {
+						let url = '/Docente/Projetos/1/Edital/1/create';
+						window.location.href = url;
+					} else if (value === 'D') {
+						Swal.fire({
+							type: 'success',
+							title: 'Projeto deletado com sucesso!'
+						});
+					} else if (value === 'A') {
+						let url = '/Docente/Projetos/edit/1';
+						window.location.href = url;
+					} else if (value === 'V') {
+						let url = '/Docente/Projetos/1';
+						window.location.href = url;
+					} 
+				});
+			}
+		});
+	};
+
+
+
+
 	handleClickVisualize = (id) => {
-		let url = '/Projetos/' + id;
-		this.setState({ idVisualizar: id });
+		let url = window.location.href + '/1';
+		this.setState({ idVisualizar: 1 });
 		window.location.href = url;
 	};
 
 	handleClickVisualize = (id) => {
-		let url = '/Projetos/' + id;
-		this.setState({ idVisualizar: id });
+		let url = window.location.href + '/1';
+		this.setState({ idVisualizar: 1 });
 		window.location.href = url;
 	};
 
 	handleClickEdit = (id) => {
-		let url = '/Projetos/edit/' + id;
+		let url = 'edit/' + '1';
 		window.location.href = url;
 	};
 
@@ -167,7 +203,7 @@ export class main extends Component {
 	};
 
 	handleEdit = (editedProject) => {
-		Axios.put('http://localhost:3001/api/Projetos/' + editedProject.id, editedProject);
+		//Axios.put('http://localhost:3001/api/Projetos/' + editedProject.id, editedProject);
 	};
 
 	handleEdit = (editedProject) => {
@@ -233,31 +269,31 @@ export class main extends Component {
 			<Switch>
 				<Route
 					exact
-					path="/"
+					path="/Docente/Projetos"
 					render={(props) => (
 						<Projetos
 							projetos={this.state.projetos}
 							handlePS={this.handlePS}
-							handleClickVisualize={this.handleClickVisualize}
-							handleClickDelete={this.handleClickDelete}
+							handleGerenciarProjeto={this.handleGerenciarProjeto}
+						
 						/>
 					)}
 				/>
 				<Route
 					exact
-					path="/login"
+					path="/"
 					render={(props) => <LoginScreen handleSubmitLogin={this.handleSubmitLogin} />}
 				/>
-				<Route exact path="/docente/profile" component={ProfileDocente} />
-				<Route exact path="/discente/profile" component={ProfileDiscente} />
+				<Route exact path="/Docente/profile" component={ProfileDocente} />
+				<Route exact path="/Discente/profile" component={ProfileDiscente} />
 				<Route
 					exact
-					path="/Projetos/add"
+					path="/Docente/Projetos/add"
 					render={(props) => <CadastroProjeto handleSubmit={this.handleSubmit} />}
 				/>
 				<Route
 					exact
-					path="/Projetos/relatorios"
+					path="/Docente/Projetos/relatorios"
 					render={(props) => <Relatorios projetos={this.state.projetos} />}
 				/>
 				<Route
@@ -272,12 +308,12 @@ export class main extends Component {
 				/>
 				<Route
 					exact
-					path="/Projetos/edit/:id"
+					path="/Docente/Projetos/edit/:id"
 					render={(props) => <AtualizarProjeto handleEdit={this.handleEdit} />}
 				/>
 				<Route
 					exact
-					path="/Projetos/:id"
+					path="/Docente/Projetos/:id"
 					render={(props) => <ProjetoItem handleClickEdit={this.handleClickEdit} />}
 				/>
 				<Route
@@ -287,22 +323,22 @@ export class main extends Component {
 				/>
 				<Route
 					exact
-					path="/Projetos/:id/Edital/:id/create"
+					path="/Docente/Projetos/:id/Edital/:id/create"
 					render={(props) => <CreateEdital handleCreateEdital={this.handleCreateEdital} />}
 				/>
 				<Route
 					exact
-					path="/Projetos/:id/Edital/:id/edit"
+					path="/Docente/Projetos/:id/Edital/:id/edit"
 					render={(props) => <EditEdital handleEditEdital={this.handleEditEdital} />}
 				/>
 				<Route
 					exact
-					path="/Projetos/:id/Edital/:id/visualize"
+					path="/Docente/Projetos/:id/Edital/:id/visualize"
 					render={(props) => <VisualizeEdital handleVisualizeEdital={this.handleVisualizeEdita} />}
 				/>
 				<Route
 					exact
-					path="/Projetos/:id/Edital/:id/signedUp"
+					path="/Docente/Projetos/:id/Edital/:id/signedUp"
 					render={(props) => <VerificarInscritos handleVerificarInscritos={this.handleVerificarInscritos} />}
 				/>
 			</Switch>

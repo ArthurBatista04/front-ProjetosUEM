@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export class navBar extends Component {
+export class navBarDocente extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link className="navbar-brand" to="/">
+      <div>
+         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <Link className="navbar-brand" to="/Docente/Projetos">
           Projetos UEM
         </Link>
         <button
@@ -21,24 +22,36 @@ export class navBar extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/Projetos/add">
-                Cadastrar projeto
-              </Link>
-            </li>
-          </ul>
+
           <ul className="navbar-nav ml-auto">
+
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
+								<Link className="nav-link" to="/Docente/Projetos/relatorios">
+									Relatórios
+								</Link>
+						</li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="Docente/Projetos/search">
+                Buscar projeto
+              </Link>
+          </li>
+
+          <li className="nav-item">
+              <Link className="nav-link" to="/">
                 Entrar
               </Link>
             </li>
-          </ul>
+        </ul>
+
+
+
         </div>
       </nav>
+      </div>
+     
     );
   }
 }
 
-export default navBar;
+export default navBarDocente;

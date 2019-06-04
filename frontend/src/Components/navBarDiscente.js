@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export class navBar extends Component {
+export class NavBarDiscente extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,19 +21,27 @@ export class navBar extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-          </ul>
+
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/login">
                 Entrar
               </Link>
             </li>
-          </ul>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/Projetos/search">
+                Buscar projeto
+              </Link>
+          </li>
+        </ul>
+
+
+
         </div>
       </nav>
     );
   }
 }
 
-export default navBar;
+export default NavBarDiscente;

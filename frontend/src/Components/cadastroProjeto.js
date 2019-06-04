@@ -144,7 +144,7 @@ export class cadastroProjeto extends Component {
                 </div>
                 <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Cadastrar </button>
             </form>
-            <Link type="submit" className="btn btn-danger" to='/'>Cancelar</Link>
+            <Link type="submit" className="btn btn-danger" to='/Docente/Projetos'>Cancelar</Link>
       </div>
     )
   }

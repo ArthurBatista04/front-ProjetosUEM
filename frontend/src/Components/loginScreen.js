@@ -4,7 +4,8 @@ import "../loginScreen.css";
 export class loginScreen extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    type: ""
   };
 
   handleChange = e => {

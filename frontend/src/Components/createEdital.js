@@ -70,7 +70,7 @@ export class createEdital extends Component {
                     </div>
                     <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Cadastrar </button>
                 </form>
-                <NavLink type="submit" className="btn btn-danger" to="/" >Cancelar</NavLink>
+                <NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Cancelar</NavLink>
           </div>
         )
       }
