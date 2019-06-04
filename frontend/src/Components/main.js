@@ -4,13 +4,23 @@ import CadastroProjeto from './cadastroProjeto.js'
 import AtualizarProjeto from './atualizarProjeto.js'
 import Projetos from './projetos.js'
 import ProjetoItem from './projetoItem.js'
+import Relatorios from './relatorios.js'
 import Axios from 'axios'
 
 
 export class main extends Component {
 
   state = {
-    projetos: []
+    projetos: [
+      {
+        "titulo": "Game Theory",
+        "resumo": "Game theory is the study of mathematical models of strategic interaction between rational decision-makers."
+      },
+      {
+        "titulo": "Graph Theory",
+        "resumo": "In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects."
+      }
+    ]
   }
 
   componentWillMount(){
@@ -71,6 +81,11 @@ export class main extends Component {
           <Route exact path='/Projetos/add' render = {
             (props) => <CadastroProjeto handleSubmit={this.handleSubmit} />
           } />
+          <Route exact path='/Projetos/relatorios' render={
+            (props) => <Relatorios
+            projetos={this.state.projetos}
+              />
+            }/>
           <Route exact path='/Projetos/edit/:id' render={
             (props) => <AtualizarProjeto
               handleEdit={this.handleEdit}/>

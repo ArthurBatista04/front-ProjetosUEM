@@ -19,6 +19,9 @@ export class navBar extends Component {
                         <li className="nav-item">
                             <Link className="nav-link" to="/Projetos/add">Cadastrar projeto</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/Projetos/relatorios">Relatórios</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
