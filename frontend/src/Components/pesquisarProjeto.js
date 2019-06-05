@@ -167,10 +167,7 @@ export class pesquisarProjeto extends Component {
 								>
 									Pesquisar
 								</button>
-							</form>
-							<Link type="submit" className="btn btn-danger" to="/">
-								Voltar
-							</Link>
+							</form>	
 						</div>
 					</div>
 				</div>

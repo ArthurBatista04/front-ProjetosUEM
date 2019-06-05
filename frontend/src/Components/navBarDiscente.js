@@ -5,7 +5,7 @@ export class NavBarDiscente extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/Projetos/search">
           Projetos UEM
         </Link>
         <button
@@ -23,17 +23,29 @@ export class NavBarDiscente extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Entrar
-              </Link>
-            </li>
 
             <li className="nav-item">
               <Link className="nav-link" to="/Projetos/search">
                 Buscar projeto
               </Link>
           </li>
+
+          <li className="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Confirgurações
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <Link className="dropdown-item" to="/Discente/Profile">
+                  Perfil
+                </Link>
+                <Link className="dropdown-item" to="#">
+                  Sair
+                </Link>
+              </div>
+            </div>
+
+          </li>x
         </ul>
 
 

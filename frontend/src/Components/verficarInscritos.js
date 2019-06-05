@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
-import 'react-table/react-table.css'
+import 'react-table/react-table.css'  
+import NavBarDocente from './navBarDocente.js';
 export class verificarInscritos extends Component {
     state = {'data' : [{
         name: 'Tanner Linsley',
@@ -42,10 +43,12 @@ export class verificarInscritos extends Component {
   }
   render() {
     return (
-        <ReactTable
-        data={this.state.data}
-        columns={this.state.columns}
-      />
+        <div>
+          <NavBarDocente></NavBarDocente>
+          <ReactTable
+          data={this.state.data}
+          columns={this.state.columns}
+      /></div>
     )
   }
 }

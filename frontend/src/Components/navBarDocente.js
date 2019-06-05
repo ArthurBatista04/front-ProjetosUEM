@@ -26,22 +26,27 @@ export class navBarDocente extends Component {
           <ul className="navbar-nav ml-auto">
 
             <li className="nav-item">
-								<Link className="nav-link" to="/Docente/Projetos/relatorios">
-									Relatórios
-								</Link>
-						</li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/Docente/Projetos/search">
+              <Link className="nav-link" to="/Projetos/Search">
                 Buscar projeto
               </Link>
           </li>
 
           <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Entrar
-              </Link>
-            </li>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Confirgurações
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <Link className="dropdown-item" to="/Docente/Profile">
+                  Perfil
+                </Link>
+                <Link className="dropdown-item" to="#">
+                  Sair
+                </Link>
+              </div>
+            </div>
+
+          </li>
         </ul>
 
 
