@@ -168,20 +168,17 @@ export class main extends Component {
 		});
 	};
 
-
-
-
 	handleClickVisualize = (id) => {
-		let url = window.location.href + '/1';
+		let url = "/Docente/Projetos" + '/1';
 		this.setState({ idVisualizar: 1 });
 		window.location.href = url;
 	};
 
-	handleClickVisualize = (id) => {
-		let url = window.location.href + '/1';
-		this.setState({ idVisualizar: 1 });
-		window.location.href = url;
-	};
+	// handleClickVisualize = (id) => {
+	// 	let url = window.location.href + '/1';
+	// 	this.setState({ idVisualizar: 1 });
+	// 	window.location.href = url;
+	// };
 
 	handleClickEdit = (id) => {
 		let url = 'edit/' + '1';
@@ -300,6 +297,7 @@ export class main extends Component {
 					exact
 					path="/Projetos/search"
 					render={(props) => (
+						// FIXME Discente visualizar projeto bugado
 						<PesquisarProjeto
 							handleSubmitSearch={this.handleSubmitSearch}
 							handleClickVisualize={this.handleClickVisualize}
