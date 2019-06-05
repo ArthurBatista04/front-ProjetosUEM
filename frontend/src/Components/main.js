@@ -16,6 +16,7 @@ import Relatorios from './relatorios.js';
 import Swal from 'sweetalert2';
 import VerificarInscritos from './verficarInscritos.js';
 import PesquisarProjeto from './pesquisarProjeto.js';
+import RelatorioAtivos from './relatorioAtivos.js';
 
 export class main extends Component {
 	state = {
@@ -264,6 +265,7 @@ export class main extends Component {
 	render() {
 		return (
 			<Switch>
+				<Route exact path="/Admin/Relatorios/Ativos" component={RelatorioAtivos} />
 				<Route
 					exact
 					path="/Docente/Projetos"
