@@ -16,6 +16,8 @@ import Relatorios from './relatorios.js';
 import Swal from 'sweetalert2';
 import VerificarInscritos from './verficarInscritos.js';
 import PesquisarProjeto from './pesquisarProjeto.js';
+import Dashboard from './dashboard.js';
+import GenrenciarDadosAdmin from './gerenciarDadosAdmin.js';
 
 export class main extends Component {
 	state = {
@@ -305,6 +307,8 @@ export class main extends Component {
 					path="/Projetos/:id/Edital/:id/signedUp"
 					render={(props) => <VerificarInscritos handleVerificarInscritos={this.handleVerificarInscritos} />}
 				/>
+				<Route exact path="/admin/dashboard" component={Dashboard} />
+				<Route exact path="/admin/gerenciarDados" component={GenrenciarDadosAdmin} />
 			</Switch>
 		);
 	}
