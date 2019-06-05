@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NavBarDocente from './navBarDocente.js';
 
 export class mostrarProjeto extends Component {
   render() {

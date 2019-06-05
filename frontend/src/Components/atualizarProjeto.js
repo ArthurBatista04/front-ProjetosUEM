@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import Axios from 'axios'
+import NavBarDocente from './navBarDocente';
 
 export class atualizarProjeto extends Component {
 
@@ -45,7 +46,8 @@ export class atualizarProjeto extends Component {
 
     render() {
     return (
-
+			<div>
+				<NavBarDocente></NavBarDocente>
 
         <div className="container">
 			<h1 style={{textAlign: 'center'}}>Editar projeto</h1>
@@ -158,6 +160,7 @@ export class atualizarProjeto extends Component {
 			</form>
 			<NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Cancelar</NavLink>
         </div>
+				</div>
     )
   }
 }

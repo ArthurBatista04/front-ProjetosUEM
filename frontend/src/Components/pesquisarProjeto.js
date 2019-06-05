@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ProjetosDiscentes from './projetoDiscente.js';
+import NavBarDiscente from './navBarDiscente.js';
 
 export class pesquisarProjeto extends Component {
 	state = {
@@ -34,6 +35,8 @@ export class pesquisarProjeto extends Component {
 
 	render() {
 		return (
+			<div>
+				<NavBarDiscente></NavBarDiscente>
 			<div className="container">
 				<div style={{ paddingTop: 2 + 'rem' }}>
 					<div className="row">
@@ -177,6 +180,7 @@ export class pesquisarProjeto extends Component {
 						projetos={this.state.projetosPesquisa}
 					/>
 				</div>
+			</div>
 			</div>
 		);
 	}

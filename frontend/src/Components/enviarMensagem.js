@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { NavLink } from 'react-router-dom'
+import NavBarDiscente from './navBarDiscente.js'
 export class enviarMensagem extends Component {
 
 	state = {
@@ -19,6 +20,9 @@ export class enviarMensagem extends Component {
 
     render() {
     return (
+        <div>
+            <NavBarDiscente></NavBarDiscente>
+
         <div className="container">
             <form onSubmit={(e) => this.onSubmitMensagem(e)}>
                 <div className="input-group mb-3">
@@ -40,7 +44,7 @@ export class enviarMensagem extends Component {
             </form>
             <NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Cancelar</NavLink>
         </div>
-    
+        </div>
     )
   }
 }

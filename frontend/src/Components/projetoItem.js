@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
+import NavBarDocente from './navBarDocente'
 
 export class projetoItem extends Component {
 
@@ -31,6 +32,9 @@ export class projetoItem extends Component {
 
   render() {
     return (
+      <div>
+        <NavBarDocente></NavBarDocente>
+
       <div className="container">
         <div className="card">
             <div className="card-body">
@@ -81,6 +85,7 @@ export class projetoItem extends Component {
           
           <Link className="btn btn-dark" to="/Docente/Projetos">Voltar</Link>
         </div>
+      </div>
       </div>
     )
   }

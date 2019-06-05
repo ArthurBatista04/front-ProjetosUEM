@@ -32,7 +32,7 @@ export class navBarDocente extends Component {
 						</li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="Docente/Projetos/search">
+              <Link className="nav-link" to="/Docente/Projetos/search">
                 Buscar projeto
               </Link>
           </li>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import NavBarDocente from './navBarDocente.js';
 export class visualizeEdital extends Component {
 
 	state = {
@@ -21,6 +22,8 @@ export class visualizeEdital extends Component {
 
     render() {
         return (
+            <div>
+                <NavBarDocente></NavBarDocente>
           <div className="container">
                 <h1 style={{textAlign: 'center'}}>Visualização do edital de Processo seletivo</h1>
                 <form onSubmit={(e) => this.onSubmit(e)}>
@@ -68,6 +71,7 @@ export class visualizeEdital extends Component {
                     </div>
                 </form>
                 <NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Voltar</NavLink>
+          </div>
           </div>
         )
       }
