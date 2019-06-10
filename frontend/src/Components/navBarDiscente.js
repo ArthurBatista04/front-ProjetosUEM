@@ -43,12 +43,12 @@ export class NavBarDiscente extends Component {
 									<Link className="dropdown-item" to="/Discente/Profile">
 										Perfil
 									</Link>
-									<Link className="dropdown-item" to="#">
+									<Link className="dropdown-item" to="/">
 										Sair
 									</Link>
 								</div>
 							</div>
-						</li>x
+						</li>
 					</ul>
 				</div>
 			</nav>
