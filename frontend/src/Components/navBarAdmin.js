@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export class navBarAdmin extends Component {
 	render() {
@@ -22,17 +23,40 @@ export class navBarAdmin extends Component {
 
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
-							<li className="nav-item active">
+							<li className="nav-item ">
 								<Link className="nav-link" to="/admin/dashboard">
-									Dashboard <span className="sr-only">(current)</span>
+									Dashboard
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/Projetos/add">
+								<Link className="nav-link" to="/admin/gerenciarDados">
 									Gerenciar
 								</Link>
 							</li>
 						</ul>
+						<div className="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul className="navbar-nav ml-auto">
+								<li className="nav-item">
+									<div class="dropdown">
+										<button
+											class="btn btn-secondary dropdown-toggle"
+											type="button"
+											id="dropdownMenuButton"
+											data-toggle="dropdown"
+											aria-haspopup="true"
+											aria-expanded="false"
+										>
+											Confirgurações
+										</button>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+											<Link className="dropdown-item" to="/">
+												Sair
+											</Link>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</nav>
 			</div>

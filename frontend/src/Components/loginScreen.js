@@ -24,6 +24,8 @@ export class loginScreen extends Component {
 			window.location.href = '/Docente/Projetos';
 		} else if (this.state.type === 'Discente') {
 			window.location.href = '/Projetos/Search';
+		} else {
+			window.location.href = '/admin/dashboard';
 		}
 	};
 

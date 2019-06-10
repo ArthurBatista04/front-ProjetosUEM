@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
 	LineChart,
 	Line,
@@ -9,13 +9,13 @@ import {
 	Legend,
 	BarChart,
 	Bar,
-	Cell,
 	Radar,
 	RadarChart,
 	PolarGrid,
 	PolarAngleAxis,
 	PolarRadiusAxis
 } from 'recharts';
+import NavBarAdmin from './navBarAdmin.js';
 
 const data = [
 	{
@@ -154,60 +154,63 @@ const data3 = [
 export class relatorioAdmin extends Component {
 	render() {
 		return (
-			<div className="container">
-				<center>
-					<h3>Número de acessos mensais</h3>
-					<LineChart
-						width={600}
-						height={400}
-						data={data}
-						margin={{
-							top: 20,
-							right: 30,
-							left: 20,
-							bottom: 20
-						}}
-					>
-						<CartesianGrid strokeDasharray="3 3" />
-						<XAxis dataKey="name" />
-						<YAxis />
-						<Tooltip />
-						<Legend />
-						<Line type="monotone" dataKey="2018" stroke="#8884d8" activeDot={{ r: 8 }} />
-						<Line type="monotone" dataKey="2019" stroke="#82ca9d" />
-					</LineChart>
+			<Fragment>
+				<NavBarAdmin />;
+				<div className="container">
+					<center>
+						<h3>Número de acessos mensais</h3>
+						<LineChart
+							width={600}
+							height={400}
+							data={data}
+							margin={{
+								top: 20,
+								right: 30,
+								left: 20,
+								bottom: 20
+							}}
+						>
+							<CartesianGrid strokeDasharray="3 3" />
+							<XAxis dataKey="name" />
+							<YAxis />
+							<Tooltip />
+							<Legend />
+							<Line type="monotone" dataKey="2018" stroke="#8884d8" activeDot={{ r: 8 }} />
+							<Line type="monotone" dataKey="2019" stroke="#82ca9d" />
+						</LineChart>
 
-					<h3>Número de projetos cadastrados mensalemnte</h3>
-					<BarChart
-						width={600}
-						height={400}
-						data={data2}
-						margin={{
-							top: 5,
-							right: 30,
-							left: 20,
-							bottom: 20
-						}}
-					>
-						<CartesianGrid strokeDasharray="3 3" />
-						<XAxis dataKey="name" />
-						<YAxis />
-						<Tooltip />
-						<Legend />
-						<Bar dataKey="2018" fill="#8884d8" />
-						<Bar dataKey="2019" fill="#82ca9d" />
-					</BarChart>
-					<h3>Representatividade das áreas dos projetos </h3>
-					<RadarChart cx={300} cy={250} outerRadius={150} width={700} height={500} data={data3}>
-						<PolarGrid />
-						<PolarAngleAxis dataKey="subject" />
-						<PolarRadiusAxis angle={30} domain={[ 0, 150 ]} />
-						<Radar name="2018" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-						<Radar name="2019" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />
-						<Legend />
-					</RadarChart>
-				</center>
-			</div>
+						<h3>Número de projetos cadastrados mensalemnte</h3>
+						<BarChart
+							width={600}
+							height={400}
+							data={data2}
+							margin={{
+								top: 5,
+								right: 30,
+								left: 20,
+								bottom: 20
+							}}
+						>
+							<CartesianGrid strokeDasharray="3 3" />
+							<XAxis dataKey="name" />
+							<YAxis />
+							<Tooltip />
+							<Legend />
+							<Bar dataKey="2018" fill="#8884d8" />
+							<Bar dataKey="2019" fill="#82ca9d" />
+						</BarChart>
+						<h3>Representatividade das áreas dos projetos </h3>
+						<RadarChart cx={300} cy={250} outerRadius={150} width={700} height={500} data={data3}>
+							<PolarGrid />
+							<PolarAngleAxis dataKey="subject" />
+							<PolarRadiusAxis angle={30} domain={[ 0, 150 ]} />
+							<Radar name="2018" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+							<Radar name="2019" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />
+							<Legend />
+						</RadarChart>
+					</center>
+				</div>
+			</Fragment>
 		);
 	}
 }
