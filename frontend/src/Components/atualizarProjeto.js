@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import Axios from 'axios'
+import NavBarDocente from './navBarDocente';
 
 export class atualizarProjeto extends Component {
 
 	state = {
-		projeto: {
 			"titulo":"Técnicas de algoritmos aproximados",
         "nomeOrientador":"Donald Knuth",
         "nomeCoorientador":"Thomas H. Cormen",
@@ -17,7 +17,7 @@ export class atualizarProjeto extends Component {
         "qntdPartAtual":"0",
         "qntdPartMax":"3",
         "resumo":"...."
-		}
+			
 	}
 
     componentWillMount(){
@@ -46,6 +46,9 @@ export class atualizarProjeto extends Component {
 
     render() {
     return (
+			<div>
+				<NavBarDocente></NavBarDocente>
+
         <div className="container">
 			<h1 style={{textAlign: 'center'}}>Editar projeto</h1>
 			<form onSubmit={(e) => this.onEdit(e)}>
@@ -155,8 +158,9 @@ export class atualizarProjeto extends Component {
 				</div>
 				<button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}} href="http://localhost:3000/">Salvar</button>
 			</form>
-			<NavLink type="submit" className="btn btn-danger" to="/" >Cancelar</NavLink>
+			<NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Cancelar</NavLink>
         </div>
+				</div>
     )
   }
 }

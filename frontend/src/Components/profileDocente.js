@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from "react";
+import NavBarDocente from "./navBarDocente.js";
 
 export class profile extends Component {
   render() {
     return (
+      <div>
+        <NavBarDocente></NavBarDocente>
       <Fragment>
         <link
           href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
@@ -69,6 +72,7 @@ export class profile extends Component {
           </div>
         </div>
       </Fragment>
+      </div>
     );
   }
 }

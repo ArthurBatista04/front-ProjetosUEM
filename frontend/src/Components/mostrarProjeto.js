@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NavBarDocente from './navBarDocente.js';
 
 export class mostrarProjeto extends Component {
   render() {
@@ -9,13 +10,14 @@ export class mostrarProjeto extends Component {
               <p className="card-text">{this.props.projeto.resumo}</p>
               <div className='btn-toolbar mr-2' >
                 <div style={{paddingLeft:"20px"   }}>
-                  <button type="button" className="btn btn-info" onClick={this.props.handleClickVisualize.bind(this, this.props.projeto.id)}> Visualizar </button> 
+                  <button type="button" className="btn btn-info" onClick={this.props.handleGerenciarProjeto.bind(this, this.props.projeto.id)}> Gerenciar Projeto </button> 
                 </div>
                 <div style={{paddingLeft:"20px"   }}>
                   <button type="button" className="btn btn-info" onClick={this.props.handlePS.bind(this, this.props.projeto.id)}> Gerenciar Processo Seletivo </button>   
                 </div>
-                <div style={{paddingLeft:"20px"   }}>
-                  <button type="button" className="btn btn-danger btn-md" onClick={this.props.handleClickDelete.bind(this, this.props.projeto.id)}> Excluir </button>
+                
+                <div style={{paddingLeft:"20px"}}>
+                  <button type="button" class="btn btn-dark" > Relatório do Projeto </button>   
                 </div>
                
                 

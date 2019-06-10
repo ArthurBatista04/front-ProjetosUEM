@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import NavBarDocente from './navBarDocente';
 
 export class createEdital extends Component {
 
@@ -22,6 +23,9 @@ export class createEdital extends Component {
 
     render() {
         return (
+          <div>
+              <NavBarDocente></NavBarDocente>
+
           <div className="container">
                 <h1 style={{textAlign: 'center'}}>Cadastrar novo edital de Processo seletivo</h1>
                 <form onSubmit={(e) => this.onSubmit(e)}>
@@ -70,8 +74,9 @@ export class createEdital extends Component {
                     </div>
                     <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Cadastrar </button>
                 </form>
-                <NavLink type="submit" className="btn btn-danger" to="/" >Cancelar</NavLink>
+                <NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Cancelar</NavLink>
           </div>
+          </div>  
         )
       }
 }

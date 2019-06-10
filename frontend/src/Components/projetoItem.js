@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
+import NavBarDocente from './navBarDocente'
 
 export class projetoItem extends Component {
 
@@ -31,6 +32,9 @@ export class projetoItem extends Component {
 
   render() {
     return (
+      <div>
+        <NavBarDocente></NavBarDocente>
+
       <div className="container">
         <div className="card">
             <div className="card-body">
@@ -78,9 +82,10 @@ export class projetoItem extends Component {
             </div> 
         </div>
         <div style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
-          <button onClick={this.props.handleClickEdit.bind(this, this.state.projeto.id)} className="btn btn-info" style={{float: 'right'}}> Editar </button>
-          <Link className="btn btn-dark" to="/">Voltar</Link>
+          
+          <Link className="btn btn-dark" to="/Docente/Projetos">Voltar</Link>
         </div>
+      </div>
       </div>
     )
   }

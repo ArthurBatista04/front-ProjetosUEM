@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import NavBarDocente from './navBarDocente.js';
 export class visualizeEdital extends Component {
 
 	state = {
@@ -7,7 +8,8 @@ export class visualizeEdital extends Component {
         "dataInicio": "17/10/2020",
         "dataTermino": "17/10/2021",
         "prerequisitos":"Estrutura de dados, PAA e MOA",
-        "descricao": "Este projeto engloba..."
+        "descricao": "Este projeto engloba...",
+        "idInscricao":"1"
     }
     handleChange = (e) =>  {
         this.setState({[e.target.name] : e.target.value});
@@ -16,11 +18,13 @@ export class visualizeEdital extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.handleCreateEdital(this.state)
+        this.props.handleGetInscritos(this.state.idInscricao)
     }
 
     render() {
         return (
+            <div>
+                <NavBarDocente></NavBarDocente>
           <div className="container">
                 <h1 style={{textAlign: 'center'}}>Visualização do edital de Processo seletivo</h1>
                 <form onSubmit={(e) => this.onSubmit(e)}>
@@ -66,8 +70,10 @@ export class visualizeEdital extends Component {
                             <label class="custom-control-label" for="customSwitches">Status do edital</label>
                         </div>
                     </div>
+                    <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Verificar Inscritos </button>
                 </form>
-                <NavLink type="submit" className="btn btn-danger" to="/" >Voltar</NavLink>
+                <NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Voltar</NavLink>
+          </div>
           </div>
         )
       }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import NavBarDiscente from './navBarDiscente';
 
 export class mostrarProjetoDiscente extends Component {
 	render() {
 		return (
+			<div>
 			<div className="card">
 				<div className="card-body">
 					<h5 className="card-title">{this.props.projeto.titulo}</h5>
@@ -17,6 +19,7 @@ export class mostrarProjetoDiscente extends Component {
 						</button>
 					</div>
 				</div>
+			</div>
 			</div>
 		);
 	}

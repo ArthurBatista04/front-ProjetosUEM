@@ -2,26 +2,29 @@ import React, { Component } from 'react';
 import '../loginScreen.css';
 
 export class loginScreen extends Component {
-	constructor(props) {
-		super(props);
-		const rememberMe = localStorage.getItem('rememberMe') === 'true';
-		const email = rememberMe ? localStorage.getItem('email') : '';
-		this.state = {
-			error: null,
-			email,
-			password: '',
-			rememberMe
-		};
-	}
+	state = {
+		email: '',
+		password: '',
+		type: ''
+	};
 
 	handleChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
+	handleRadioClick = (e) => {
+		console.log(e.target.value);
+		this.setState({ type: e.target.value });
+	};
+
 	onSubmit = (e) => {
 		e.preventDefault();
 		this.props.handleSubmitLogin(this.state);
-		window.location.href = '/';
+		if (this.state.type === 'Docente') {
+			window.location.href = '/Docente/Projetos';
+		} else if (this.state.type === 'Discente') {
+			window.location.href = '/Projetos/Search';
+		}
 	};
 
 	render() {
@@ -37,7 +40,7 @@ export class loginScreen extends Component {
 										<input
 											type="email"
 											id="inputEmail"
-											className="form-control"
+											className="form-control "
 											placeholder="Email address"
 											name="email"
 											required
@@ -65,11 +68,56 @@ export class loginScreen extends Component {
 										<label className="custom-control-label" htmlFor="customCheck1">
 											Lembrar minha senha
 										</label>
+										<div
+											style={{ paddingBottom: '20px', paddingTop: '20px' }}
+											onClick={(e) => this.handleRadioClick(e)}
+										>
+											<div class="form-check form-check-inline">
+												<input
+													class="form-check-input"
+													type="radio"
+													id="inlineCheckbox1"
+													value="Docente"
+													name="inlineRadioOptions"
+												/>
+												<label class="form-check-label" for="inlineCheckbox1">
+													Docente
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input
+													class="form-check-input"
+													type="radio"
+													id="inlineCheckbox2"
+													value="Discente"
+													name="inlineRadioOptions"
+												/>
+												<label class="form-check-label" for="inlineCheckbox2">
+													Discente
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input
+													class="form-check-input"
+													type="radio"
+													id="inlineCheckbox3"
+													value="Admin"
+													name="inlineRadioOptions"
+												/>
+												<label class="form-check-label" for="inlineCheckbox3">
+													Admin
+												</label>
+											</div>
+											<div class="form-check form-check-inline" />
+										</div>
+										<button
+											className="btn btn-lg btn-primary btn-block text-uppercase"
+											type="submit"
+										>
+											Entrar
+										</button>
+										<hr className="my-4" />
 									</div>
-									<button className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">
-										Entrar
-									</button>
-									<hr className="my-4" />
 								</form>
 							</div>
 						</div>

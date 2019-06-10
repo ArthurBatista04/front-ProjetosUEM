@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export class navBar extends Component {
+export class navBarDocente extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link className="navbar-brand" to="/">
+      <div>
+         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <Link className="navbar-brand" to="/Docente/Projetos">
           Projetos UEM
         </Link>
         <button
@@ -21,24 +22,41 @@ export class navBar extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/Projetos/add">
-                Cadastrar projeto
-              </Link>
-            </li>
-          </ul>
+
           <ul className="navbar-nav ml-auto">
+
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Entrar
+              <Link className="nav-link" to="/Projetos/Search">
+                Buscar projeto
               </Link>
-            </li>
-          </ul>
+          </li>
+
+          <li className="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Confirgurações
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <Link className="dropdown-item" to="/Docente/Profile">
+                  Perfil
+                </Link>
+                <Link className="dropdown-item" to="#">
+                  Sair
+                </Link>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+
+
+
         </div>
       </nav>
+      </div>
+     
     );
   }
 }
 
-export default navBar;
+export default navBarDocente;

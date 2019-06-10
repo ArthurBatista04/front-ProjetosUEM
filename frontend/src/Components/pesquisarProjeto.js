@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ProjetosDiscentes from './projetoDiscente.js';
+import NavBarDiscente from './navBarDiscente.js';
 
 export class pesquisarProjeto extends Component {
 	state = {
@@ -34,8 +35,10 @@ export class pesquisarProjeto extends Component {
 
 	render() {
 		return (
+			<div>
+				<NavBarDiscente></NavBarDiscente>
 			<div className="container">
-				<div style={{ paddingTop: 2 + 'rem' }}>
+				<div style={{ paddingTop: 2 + 'rem'}}>
 					<div className="row">
 						<div className="col-12">
 							<form onSubmit={(e) => this.onSubmit(e)}>
@@ -164,10 +167,7 @@ export class pesquisarProjeto extends Component {
 								>
 									Pesquisar
 								</button>
-							</form>
-							<Link type="submit" className="btn btn-danger" to="/">
-								Voltar
-							</Link>
+							</form>	
 						</div>
 					</div>
 				</div>
@@ -177,6 +177,7 @@ export class pesquisarProjeto extends Component {
 						projetos={this.state.projetosPesquisa}
 					/>
 				</div>
+			</div>
 			</div>
 		);
 	}
