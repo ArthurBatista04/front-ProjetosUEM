@@ -15,6 +15,7 @@ export class projetos extends Component {
                     projeto={projeto} 
                     handleGerenciarProjeto={this.props.handleGerenciarProjeto}
                     handlePS={this.props.handlePS}
+                    handleRelatorio={this.props.handleRelatorio}
                   />
               </div>
           ))}

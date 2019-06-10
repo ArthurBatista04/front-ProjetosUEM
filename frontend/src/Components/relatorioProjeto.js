@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NavBar from './navBarDocente.js'
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
@@ -60,76 +61,79 @@ export class relatorios extends Component {
 
   render() {
     return (
-      <div className="conatiner" align="center">
-        <div className="card">
-            <div className="card-text">
-              <h1 align="center">Relatório Geral de Projetos</h1>
-            </div>
-            <div className="card-body">
-                <div>
-                  <h4>Porcentagem de relevência do projeto</h4>
-                    <LineChart
-                      width={700}
-                      height={300}
-                      data={grafico2}
-                      margin={{
-                        top: 5, right: 30, left: 20, bottom: 10,
-                      }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Line type="monotone" dataKey="Relevancia" stroke="#8884d8" activeDot={{ r: 8 }} />
-                    </LineChart>
-                </div>
-                <div>
-                 <h4>Número de acessos mensais do projeto</h4>
-                    <LineChart
-                      width={700}
-                      height={300}
-                      data={grafico1}
-                      margin={{
-                        top: 5, right: 30, left: 20, bottom: 10,
-                      }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Line type="monotone" dataKey="Acessos" stroke="#8884d8" activeDot={{ r: 8 }} />
-                    </LineChart>
-                </div><div className="card-body">
-                 <h4>Dados estatísticos</h4>
-                  <div className="card-text">
-                    <h5>Média de acessos nos últimos 6 meses: 75</h5>
+      <div>
+        <NavBar/>
+        <div className="conatiner" align="center">
+          <div className="card">
+              <div className="card-text">
+                <h1 align="center">Relatório Geral de Projetos</h1>
+              </div>
+              <div className="card-body">
+                  <div>
+                    <h4>Porcentagem de relevência do projeto</h4>
+                      <LineChart
+                        width={700}
+                        height={300}
+                        data={grafico2}
+                        margin={{
+                          top: 5, right: 30, left: 20, bottom: 10,
+                        }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey="Relevancia" stroke="#8884d8" activeDot={{ r: 8 }} />
+                      </LineChart>
                   </div>
-                  <div className="card-text">
-                    <h5>Média de relevência nos últimos 6 meses: 8%</h5>
-                  </div>
-                  <div className="card-text">
-                    <h5>Número de busca pelo nome do projeto: 84</h5>
-                  </div>
-                  <div className="card-text">
-                    <h5>Número de busca pelo nome do orientador: 33</h5>
-                  </div>
-            </div>
-            </div>
-            <div className="card-body">
-                 <h4>Dados estatísticos</h4>
-                  <div className="card-text">
-                    <h5>Média de acessos nos últimos 6 meses: 75</h5>
-                  </div>
-                  <div className="card-text">
-                    <h5>Média de relevência nos últimos 6 meses: 8%</h5>
-                  </div>
-                  <div className="card-text">
-                    <h5>Número de busca pelo nome do projeto: 84</h5>
-                  </div>
-                  <div className="card-text">
-                    <h5>Número de busca pelo nome do orientador: 33</h5>
-                  </div>
-            </div>
+                  <div>
+                  <h4>Número de acessos mensais do projeto</h4>
+                      <LineChart
+                        width={700}
+                        height={300}
+                        data={grafico1}
+                        margin={{
+                          top: 5, right: 30, left: 20, bottom: 10,
+                        }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey="Acessos" stroke="#8884d8" activeDot={{ r: 8 }} />
+                      </LineChart>
+                  </div><div className="card-body">
+                  <h4>Dados estatísticos</h4>
+                    <div className="card-text">
+                      <h5>Média de acessos nos últimos 6 meses: 75</h5>
+                    </div>
+                    <div className="card-text">
+                      <h5>Média de relevência nos últimos 6 meses: 8%</h5>
+                    </div>
+                    <div className="card-text">
+                      <h5>Número de busca pelo nome do projeto: 84</h5>
+                    </div>
+                    <div className="card-text">
+                      <h5>Número de busca pelo nome do orientador: 33</h5>
+                    </div>
+              </div>
+              </div>
+              <div className="card-body">
+                  <h4>Dados estatísticos</h4>
+                    <div className="card-text">
+                      <h5>Média de acessos nos últimos 6 meses: 75</h5>
+                    </div>
+                    <div className="card-text">
+                      <h5>Média de relevência nos últimos 6 meses: 8%</h5>
+                    </div>
+                    <div className="card-text">
+                      <h5>Número de busca pelo nome do projeto: 84</h5>
+                    </div>
+                    <div className="card-text">
+                      <h5>Número de busca pelo nome do orientador: 33</h5>
+                    </div>
+              </div>
+          </div>
         </div>
       </div>
       

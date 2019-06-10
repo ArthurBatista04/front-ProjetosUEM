@@ -12,7 +12,6 @@ import EnviarMensagem from './enviarMensagem.js';
 import CreateEdital from './createEdital.js';
 import EditEdital from './editEdital.js';
 import VisualizeEdital from './visualizeEdital.js';
-import Relatorios from './relatorios.js';
 import Swal from 'sweetalert2';
 import VerificarInscritos from './verficarInscritos.js';
 import PesquisarProjeto from './pesquisarProjeto.js';
@@ -20,8 +19,8 @@ import Dashboard from './dashboard.js';
 import GenrenciarDadosAdmin from './gerenciarDadosAdmin.js';
 import RelatorioAtivos from './relatorioAtivos.js';
 import Signup from './signup.js';
-import RelatorioProjetos from 'relatorioProjeto.js';
-import RelatorioGeral from 'relatorioGeral.js';
+import RelatorioProjetos from './relatorioProjeto.js';
+import RelatorioGeral from './relatorioGeral.js';
 
 export class main extends Component {
 	state = {
@@ -29,12 +28,14 @@ export class main extends Component {
 			{
 				titulo: 'Game Theory',
 				resumo:
-					'Game theory is the study of mathematical models of strategic interaction between rational decision-makers.'
+					'Game theory is the study of mathematical models of strategic interaction between rational decision-makers.',
+				id: '1'
 			},
 			{
 				titulo: 'Graph Theory',
 				resumo:
-					'In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects.'
+					'In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects.',
+				id: '2'
 			},
 			{
 				titulo: 'Técnicas de algoritmos aproximados',
@@ -47,7 +48,8 @@ export class main extends Component {
 				dataTermino: '17/04/2020',
 				qntdPartAtual: '0',
 				qntdPartMax: '3',
-				resumo: '....'
+				resumo: '....',
+				id: '3'
 			}
 		]
 	};
@@ -56,6 +58,11 @@ export class main extends Component {
 		// Axios.get('http://localhost:3001/api/Projetos/getProjetos').then((res) => {
 		// 	this.setState((this.state.projetos = res.data.response));
 		// });
+	}
+
+	handleRelatorioProjeto = (id)=>{
+		let url = '/Docente/Projetos/relatorios/' + id;
+		window.location.href = url;
 	}
 
 	handlePS = (id) => {
@@ -488,6 +495,7 @@ export class main extends Component {
 							projetos={this.state.projetos}
 							handlePS={this.handlePS}
 							handleGerenciarProjeto={this.handleGerenciarProjeto}
+							handleRelatorio={this.handleRelatorioProjeto}
 						/>
 					)}
 				/>
@@ -501,8 +509,8 @@ export class main extends Component {
 				/>
 				<Route
 					exact
-					path="/Docente/Projetos/relatorios"
-					render={(props) => <Relatorios projetos={this.state.projetos} />}
+					path="/Docente/Projetos/relatorios/:id"
+					render={(props) => <RelatorioProjetos projetos={this.state.projetos}/>}
 				/>
 				<Route
 					exact

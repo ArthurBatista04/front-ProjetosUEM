@@ -30,7 +30,7 @@ export class mostrarProjeto extends Component {
 						</div>
 
 						<div style={{ paddingLeft: '20px' }}>
-							<button type="button" class="btn btn-dark">
+							<button type="button" class="btn btn-dark" onClick={this.props.handleRelatorio.bind(this, this.props.projeto.id)}>
 								{' '}
 								Relatório do Projeto{' '}
 							</button>
