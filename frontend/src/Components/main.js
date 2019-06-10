@@ -20,6 +20,8 @@ import Dashboard from './dashboard.js';
 import GenrenciarDadosAdmin from './gerenciarDadosAdmin.js';
 import RelatorioAtivos from './relatorioAtivos.js';
 import Signup from './signup.js';
+import RelatorioProjetos from 'relatorioProjeto.js';
+import RelatorioGeral from 'relatorioGeral.js';
 
 export class main extends Component {
 	state = {
