@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import CadastroProjeto from './cadastroProjeto.js';
 import AtualizarProjeto from './atualizarProjeto.js';
 import Projetos from './projetos.js';
+import ProjetoItemDocente from './projetoItemDocente.js';
 import ProjetoItem from './projetoItem.js';
 import LoginScreen from './loginScreen.js';
 import ProfileDocente from './profileDocente.js';
@@ -178,7 +179,7 @@ export class main extends Component {
 	};
 
 	handleClickVisualize = (id) => {
-		let url = '/Docente/Projetos' + '/1';
+		let url = '/Discente/Projetos' + '/1';
 		this.setState({ idVisualizar: 1 });
 		window.location.href = url;
 	};
@@ -528,6 +529,7 @@ export class main extends Component {
 						/>
 					)}
 				/>
+				<Route exact path="/Discente/Projetos/:id" render={(props) => <ProjetoItem />} />
 				<Route
 					exact
 					path="/Docente/Projetos/edit/:id"
@@ -536,7 +538,7 @@ export class main extends Component {
 				<Route
 					exact
 					path="/Docente/Projetos/:id"
-					render={(props) => <ProjetoItem handleClickEdit={this.handleClickEdit} />}
+					render={(props) => <ProjetoItemDocente handleClickEdit={this.handleClickEdit} />}
 				/>
 				<Route
 					exact
