@@ -12,7 +12,8 @@ import EnviarMensagem from "./enviarMensagem.js";
 import CreateEdital from "./createEdital.js";
 import EditEdital from "./editEdital.js";
 import VisualizeEdital from "./visualizeEdital.js";
-import Relatorios from './relatorios.js'
+import Relatorios from './relatorioProjeto.js';
+import RelatorioGeral from './relatorioGeral.js'
 import Swal from "sweetalert2";
 import VerificarInscritos from "./verficarInscritos.js";
 
@@ -253,7 +254,7 @@ export class main extends Component {
           render={props => <CadastroProjeto handleSubmit={this.handleSubmit} />}
         />
         <Route exact path='/Projetos/relatorios' render={
-            (props) => <Relatorios
+            (props) => <RelatorioGeral
             projetos={this.state.projetos}
               />
             }/>
