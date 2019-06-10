@@ -24,36 +24,36 @@ import RelatorioProjetos from './relatorioProjeto.js';
 import RelatorioGeral from './relatorioGeral.js';
 
 export class main extends Component {
-	state = {
-		projetos: [
-			{
-				titulo: 'Game Theory',
-				resumo:
-					'Game theory is the study of mathematical models of strategic interaction between rational decision-makers.',
-				id: '1'
-			},
-			{
-				titulo: 'Graph Theory',
-				resumo:
-					'In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects.',
-				id: '2'
-			},
-			{
-				titulo: 'Técnicas de algoritmos aproximados',
-				nomeOrientador: 'Donald Knuth',
-				nomeCoorientador: 'Thomas H. Cormen',
-				area: 'Ciência Exatas',
-				subarea: 'Ciência da computação',
-				tipo: 'PIBIC',
-				dataInicio: '17/04/2019',
-				dataTermino: '17/04/2020',
-				qntdPartAtual: '0',
-				qntdPartMax: '3',
-				resumo: '....',
-				id: '3'
-			}
-		]
-	};
+	// state = {
+	// 	projetos: [
+	// 		{
+	// 			titulo: 'Game Theory',
+	// 			resumo:
+	// 				'Game theory is the study of mathematical models of strategic interaction between rational decision-makers.',
+	// 			id: '1'
+	// 		},
+	// 		{
+	// 			titulo: 'Graph Theory',
+	// 			resumo:
+	// 				'In mathematics, graph theory is the study of graphs, which are mathematical structures used to model pairwise relations between objects.',
+	// 			id: '2'
+	// 		},
+	// 		{
+	// 			titulo: 'Técnicas de algoritmos aproximados',
+	// 			nomeOrientador: 'Donald Knuth',
+	// 			nomeCoorientador: 'Thomas H. Cormen',
+	// 			area: 'Ciência Exatas',
+	// 			subarea: 'Ciência da computação',
+	// 			tipo: 'PIBIC',
+	// 			dataInicio: '17/04/2019',
+	// 			dataTermino: '17/04/2020',
+	// 			qntdPartAtual: '0',
+	// 			qntdPartMax: '3',
+	// 			resumo: '....',
+	// 			id: '3'
+	// 		}
+	// 	]
+	// };
 
 	componentWillMount() {
 		// Axios.get('http://localhost:3001/api/Projetos/getProjetos').then((res) => {
@@ -61,128 +61,128 @@ export class main extends Component {
 		// });
 	}
 
-	handleRelatorioProjeto = (id)=>{
-		let url = '/Docente/Projetos/relatorios/' + id;
-		window.location.href = url;
-	}
+	// handleRelatorioProjeto = (id) => {
+	// 	let url = '/Docente/Projetos/relatorios/' + id;
+	// 	window.location.href = url;
+	// };
 
-	handlePS = (id) => {
-		const { value: fruit } = Swal.fire({
-			title: 'Selecione uma operação',
-			input: 'select',
-			inputOptions: {
-				C: 'Criar',
-				D: 'Deletar',
-				A: 'Atualizar',
-				V: 'Visualizar'
-			},
-			inputPlaceholder: 'Opção',
-			showCancelButton: true,
-			inputValidator: (value) => {
-				return new Promise((resolve) => {
-					if (value === 'C') {
-						let url = '/Docente/Projetos/1/Edital/1/create';
-						window.location.href = url;
-					} else if (value === 'D') {
-						const { value: fruit } = Swal.fire({
-							title: 'Seleciona um edital para excluir',
-							input: 'select',
-							inputOptions: {
-								C: '17/10/2019',
-								D: '30/04/2020',
-								A: '10/06/2020'
-							},
-							inputPlaceholder: 'Data de início',
-							showCancelButton: true,
-							inputValidator: (value) => {
-								return new Promise((resolve) => {
-									Swal.fire({
-										type: 'success',
-										title: 'Edital deletado com sucesso!'
-									});
-								});
-							}
-						});
-					} else if (value === 'A') {
-						const { value: fruit } = Swal.fire({
-							title: 'Seleciona um edital para atualizar',
-							input: 'select',
-							inputOptions: {
-								C: '17/10/2019',
-								D: '30/04/2020',
-								A: '10/06/2020'
-							},
-							inputPlaceholder: 'Data de início',
-							showCancelButton: true,
-							inputValidator: (value) => {
-								return new Promise((resolve) => {
-									let url = '/Docente/Projetos/1/Edital/1/edit';
-									window.location.href = url;
-								});
-							}
-						});
-					} else if (value === 'V') {
-						const { value: fruit } = Swal.fire({
-							title: 'Seleciona um edital para visualizar',
-							input: 'select',
-							inputOptions: {
-								C: '17/10/2019',
-								D: '30/04/2020',
-								A: '10/06/2020'
-							},
-							inputPlaceholder: 'Data de início',
-							showCancelButton: true,
-							inputValidator: (value) => {
-								return new Promise((resolve) => {
-									let url = '/Docente/Projetos/1/Edital/1/visualize';
-									window.location.href = url;
-								});
-							}
-						});
-					}
-				});
-			}
-		});
-	};
+	// handlePS = (id) => {
+	// 	const { value: fruit } = Swal.fire({
+	// 		title: 'Selecione uma operação',
+	// 		input: 'select',
+	// 		inputOptions: {
+	// 			C: 'Criar',
+	// 			D: 'Deletar',
+	// 			A: 'Atualizar',
+	// 			V: 'Visualizar'
+	// 		},
+	// 		inputPlaceholder: 'Opção',
+	// 		showCancelButton: true,
+	// 		inputValidator: (value) => {
+	// 			return new Promise((resolve) => {
+	// 				if (value === 'C') {
+	// 					let url = '/Docente/Projetos/1/Edital/1/create';
+	// 					window.location.href = url;
+	// 				} else if (value === 'D') {
+	// 					const { value: fruit } = Swal.fire({
+	// 						title: 'Seleciona um edital para excluir',
+	// 						input: 'select',
+	// 						inputOptions: {
+	// 							C: '17/10/2019',
+	// 							D: '30/04/2020',
+	// 							A: '10/06/2020'
+	// 						},
+	// 						inputPlaceholder: 'Data de início',
+	// 						showCancelButton: true,
+	// 						inputValidator: (value) => {
+	// 							return new Promise((resolve) => {
+	// 								Swal.fire({
+	// 									type: 'success',
+	// 									title: 'Edital deletado com sucesso!'
+	// 								});
+	// 							});
+	// 						}
+	// 					});
+	// 				} else if (value === 'A') {
+	// 					const { value: fruit } = Swal.fire({
+	// 						title: 'Seleciona um edital para atualizar',
+	// 						input: 'select',
+	// 						inputOptions: {
+	// 							C: '17/10/2019',
+	// 							D: '30/04/2020',
+	// 							A: '10/06/2020'
+	// 						},
+	// 						inputPlaceholder: 'Data de início',
+	// 						showCancelButton: true,
+	// 						inputValidator: (value) => {
+	// 							return new Promise((resolve) => {
+	// 								let url = '/Docente/Projetos/1/Edital/1/edit';
+	// 								window.location.href = url;
+	// 							});
+	// 						}
+	// 					});
+	// 				} else if (value === 'V') {
+	// 					const { value: fruit } = Swal.fire({
+	// 						title: 'Seleciona um edital para visualizar',
+	// 						input: 'select',
+	// 						inputOptions: {
+	// 							C: '17/10/2019',
+	// 							D: '30/04/2020',
+	// 							A: '10/06/2020'
+	// 						},
+	// 						inputPlaceholder: 'Data de início',
+	// 						showCancelButton: true,
+	// 						inputValidator: (value) => {
+	// 							return new Promise((resolve) => {
+	// 								let url = '/Docente/Projetos/1/Edital/1/visualize';
+	// 								window.location.href = url;
+	// 							});
+	// 						}
+	// 					});
+	// 				}
+	// 			});
+	// 		}
+	// 	});
+	// };
 
-	handleGerenciarProjeto = (id) => {
-		const { value: fruit } = Swal.fire({
-			title: 'Selecione uma operação',
-			input: 'select',
-			inputOptions: {
-				D: 'Deletar',
-				A: 'Atualizar',
-				V: 'Visualizar'
-			},
-			inputPlaceholder: 'Opção',
-			showCancelButton: true,
-			inputValidator: (value) => {
-				return new Promise((resolve) => {
-					if (value === 'C') {
-						let url = '/Docente/Projetos/1/Edital/1/create';
-						window.location.href = url;
-					} else if (value === 'D') {
-						Swal.fire({
-							type: 'success',
-							title: 'Projeto deletado com sucesso!'
-						});
-					} else if (value === 'A') {
-						let url = '/Docente/Projetos/edit/1';
-						window.location.href = url;
-					} else if (value === 'V') {
-						let url = '/Docente/Projetos/1';
-						window.location.href = url;
-					}
-				});
-			}
-		});
-	};
+	// handleGerenciarProjeto = (id) => {
+	// 	const { value: fruit } = Swal.fire({
+	// 		title: 'Selecione uma operação',
+	// 		input: 'select',
+	// 		inputOptions: {
+	// 			D: 'Deletar',
+	// 			A: 'Atualizar',
+	// 			V: 'Visualizar'
+	// 		},
+	// 		inputPlaceholder: 'Opção',
+	// 		showCancelButton: true,
+	// 		inputValidator: (value) => {
+	// 			return new Promise((resolve) => {
+	// 				if (value === 'C') {
+	// 					let url = '/Docente/Projetos/1/Edital/1/create';
+	// 					window.location.href = url;
+	// 				} else if (value === 'D') {
+	// 					Swal.fire({
+	// 						type: 'success',
+	// 						title: 'Projeto deletado com sucesso!'
+	// 					});
+	// 				} else if (value === 'A') {
+	// 					let url = '/Docente/Projetos/edit/1';
+	// 					window.location.href = url;
+	// 				} else if (value === 'V') {
+	// 					let url = '/Docente/Projetos/1';
+	// 					window.location.href = url;
+	// 				}
+	// 			});
+	// 		}
+	// 	});
+	// };
 
-	handleClickVisualize = (id) => {
-		let url = '/Discente/Projetos' + '/1';
-		this.setState({ idVisualizar: 1 });
-		window.location.href = url;
-	};
+	// handleClickVisualize = (id) => {
+	// 	let url = '/Discente/Projetos' + '/1';
+	// 	this.setState({ idVisualizar: 1 });
+	// 	window.location.href = url;
+	// };
 
 	// handleClickVisualize = (id) => {
 	// 	let url = window.location.href + '/1';
@@ -190,305 +190,132 @@ export class main extends Component {
 	// 	window.location.href = url;
 	// };
 
-	handleClickEdit = (id) => {
-		let url = 'edit/' + '1';
-		window.location.href = url;
-	};
+	// handleClickEdit = (id) => {
+	// 	let url = 'edit/' + '1';
+	// 	window.location.href = url;
+	// };
 
-	handleClickDelete = (id) => {
-		// Axios.delete(`http://localhost:3001/api/Projetos/${id}/delete`)
-		//   .then(res => {
-		//    console.log(res)
-		//   }).catch(error => {
-		//     console.log(error)
-		//   })
-		//   window.location.href = '/'
-		Swal.fire({
-			type: 'success',
-			title: 'Projeto deletado com sucesso!'
-		});
-	};
+	// handleClickDelete = (id) => {
+	// 	// Axios.delete(`http://localhost:3001/api/Projetos/${id}/delete`)
+	// 	//   .then(res => {
+	// 	//    console.log(res)
+	// 	//   }).catch(error => {
+	// 	//     console.log(error)
+	// 	//   })
+	// 	//   window.location.href = '/'
+	// 	Swal.fire({
+	// 		type: 'success',
+	// 		title: 'Projeto deletado com sucesso!'
+	// 	});
+	// };
 
-	handleEdit = (editedProject) => {
-		//Axios.put('http://localhost:3001/api/Projetos/' + editedProject.id, editedProject);
-	};
+	// handleEdit = (editedProject) => {
+	// 	// Axios.put('http://localhost:3001/api/Projetos/'+editedProject.id, editedProject)
+	// 	Swal.fire({
+	// 		type: 'success',
+	// 		title: 'Atualização feita com sucesso!'
+	// 	});
+	// };
 
-	handleEdit = (editedProject) => {
-		// Axios.put('http://localhost:3001/api/Projetos/'+editedProject.id, editedProject)
-		Swal.fire({
-			type: 'success',
-			title: 'Atualização feita com sucesso!'
-		});
-	};
+	// handleSubmit = (newProject) => {
+	// 	// if (newProject.dataInicio) newProject.dataInicio = Date(newProject.dataInicio);
+	// 	// if (newProject.dataTermino) newProject.dataTermino = Date(newProject.dataTermino); else delete newProject["dataTermino"]
 
-	handleSubmit = (newProject) => {
-		// if (newProject.dataInicio) newProject.dataInicio = Date(newProject.dataInicio);
-		// if (newProject.dataTermino) newProject.dataTermino = Date(newProject.dataTermino); else delete newProject["dataTermino"]
+	// 	// Axios.post('http://localhost:3001/api/Projetos', newProject)
+	// 	// .then(function (response) {
+	// 	//   console.log(response);
+	// 	// })
+	// 	// .catch(function (error) {
+	// 	//   console.log(error.response);
+	// 	// });
+	// 	// window.location.href = '/'
+	// 	Swal.fire({
+	// 		type: 'success',
+	// 		title: 'Projeto novo criado com sucesso!'
+	// 	});
+	// };
 
-		// Axios.post('http://localhost:3001/api/Projetos', newProject)
-		// .then(function (response) {
-		//   console.log(response);
-		// })
-		// .catch(function (error) {
-		//   console.log(error.response);
-		// });
-		// window.location.href = '/'
-		Swal.fire({
-			type: 'success',
-			title: 'Projeto novo criado com sucesso!'
-		});
-	};
+	// handleEnviarMensagem = (Mensagem) => {
+	// 	//Neste caso seria pego
+	// 	if (Mensagem.mensagem != '') {
+	// 		Swal.fire({
+	// 			type: 'success',
+	// 			title: 'Mensagem enviada com sucesso!'
+	// 		});
+	// 	} else {
+	// 		Swal.fire({
+	// 			type: 'warning',
+	// 			title: 'O campo mensagem não pode estar vazio!'
+	// 		});
+	// 	}
+	// };
 
-	handleEnviarMensagem = (Mensagem) => {
-		//Neste caso seria pego
-		if (Mensagem.mensagem != '') {
-			Swal.fire({
-				type: 'success',
-				title: 'Mensagem enviada com sucesso!'
-			});
-		} else {
-			Swal.fire({
-				type: 'warning',
-				title: 'O campo mensagem não pode estar vazio!'
-			});
-		}
-	};
+	// handleCreateEdital = (newPS) => {
+	// 	// Axios.post(`http://localhost:3001/api/Projetos`, newPS)
+	// 	//   .then(res => {
+	// 	//    console.log(res)
+	// 	//   }).catch(error => {
+	// 	//     console.log(error)
+	// 	//   })
+	// 	//   window.location.href = '/'
 
-	handleCreateEdital = (newPS) => {
-		// Axios.post(`http://localhost:3001/api/Projetos`, newPS)
-		//   .then(res => {
-		//    console.log(res)
-		//   }).catch(error => {
-		//     console.log(error)
-		//   })
-		//   window.location.href = '/'
+	// 	Swal.fire({
+	// 		type: 'success',
+	// 		title: 'Edital deletado com sucesso!'
+	// 	});
+	// };
 
-		Swal.fire({
-			type: 'success',
-			title: 'Edital deletado com sucesso!'
-		});
-	};
+	// handleGetInscritos = (idEdital) => {
+	// 	// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
+	// 	//   .then(res => {
+	// 	//    console.log(res)
+	// 	//   }).catch(error => {
+	// 	//     console.log(error)
+	// 	//   })
+	// 	window.location.href = 'signedUp';
+	// };
 
-	handleGetInscritos = (idEdital) => {
-		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
-		//   .then(res => {
-		//    console.log(res)
-		//   }).catch(error => {
-		//     console.log(error)
-		//   })
-		window.location.href = 'signedUp'
-	}
+	// handleLancarEdital = (edital) => {
+	// 	// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
+	// 	//   .then(res => {
+	// 	//    console.log(res)
+	// 	//   }).catch(error => {
+	// 	//     console.log(error)
+	// 	//   })
+	// 	Swal.fire({
+	// 		type: 'success',
+	// 		title: 'Edital lançado com sucesso!'
+	// 	});
+	// };
 
-	handleLancarEdital = (edital) => {
-		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
-		//   .then(res => {
-		//    console.log(res)
-		//   }).catch(error => {
-		//     console.log(error)
-		//   })
-		Swal.fire({
-			type: 'success',
-			title: 'Edital lançado com sucesso!'
-		});
-	}
-
-
-	handleInscricao = (edital) => {
-		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
-		//   .then(res => {
-		//    console.log(res)
-		//   }).catch(error => {
-		//     console.log(error)
-		//   })
-		Swal.fire({
-			type: 'success',
-			title: 'Inscrição feita com sucesso!'
-		});
-	};
+	// handleInscricao = (edital) => {
+	// 	// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
+	// 	//   .then(res => {
+	// 	//    console.log(res)
+	// 	//   }).catch(error => {
+	// 	//     console.log(error)
+	// 	//   })
+	// 	Swal.fire({
+	// 		type: 'success',
+	// 		title: 'Inscrição feita com sucesso!'
+	// 	});
+	// };
 
 	handleSubmitLogin = (login) => {
 		//Axios.post("", login);
 	};
 
-	handleSubmitSearch = (listSearch) => {
-		console.log(listSearch.titulo);
-		// Axios.get('')
-	};
+	// handleSubmitSearch = (listSearch) => {
+	// 	console.log(listSearch.titulo);
+	// 	// Axios.get('')
+	// };
 
-	handleClickAreas = () => {
-		Swal.fire({
-			title: 'Selecione uma operação',
-			input: 'select',
-			inputOptions: {
-				A: 'Adicionar área',
-				D: 'Deletar área'
-			},
-			inputPlaceholder: 'Opção',
-			showCancelButton: true,
-			inputValidator: (value) => {
-				return new Promise((resolve) => {
-					if (value === 'A') {
-						Swal.fire({
-							title: 'Digite o nome da nova área',
-							input: 'text',
-							// inputValue: inputValue,
-							showCancelButton: true,
-							inputValidator: (value) => {
-								if (!value) {
-									return 'Você precisa escrever algo!';
-								} else {
-									return new Promise(() => {
-										Swal.fire({
-											type: 'success',
-											title: 'Área adicionada com sucesso!'
-										});
-									});
-								}
-							}
-						});
-					} else if (value === 'D') {
-						Swal.fire({
-							title: 'Seleciona uma área para excluir',
-							input: 'select',
-							inputOptions: {
-								C: 'Ciências biológicas',
-								D: 'Ciências exatas',
-								A: 'Ciências humanas'
-							},
-							inputPlaceholder: 'Selecione',
-							showCancelButton: true,
-							inputValidator: () => {
-								return new Promise(() => {
-									Swal.fire({
-										type: 'success',
-										title: 'Área deletada com sucesso!'
-									});
-								});
-							}
-						});
-					}
-				});
-			}
-		});
-	};
-
-	handleClickSubAreas = () => {
-		Swal.fire({
-			title: 'Selecione uma operação',
-			input: 'select',
-			inputOptions: {
-				A: 'Adicionar Sub-área',
-				D: 'Deletar Sub-área'
-			},
-			inputPlaceholder: 'Opção',
-			showCancelButton: true,
-			inputValidator: (value) => {
-				return new Promise((resolve) => {
-					if (value === 'A') {
-						Swal.fire({
-							title: 'Digite o nome da nova sub-área',
-							input: 'text',
-							// inputValue: inputValue,
-							showCancelButton: true,
-							inputValidator: (value) => {
-								if (!value) {
-									return 'Você precisa escrever algo!';
-								} else {
-									return new Promise(() => {
-										Swal.fire({
-											type: 'success',
-											title: 'Sub-área adicionada com sucesso!'
-										});
-									});
-								}
-							}
-						});
-					} else if (value === 'D') {
-						Swal.fire({
-							title: 'Seleciona uma sub-área para excluir',
-							input: 'select',
-							inputOptions: {
-								C: 'Teoria dos Números',
-								D: 'Banco de Dados',
-								A: 'Astronomia Dinâmica'
-							},
-							inputPlaceholder: 'Selecione',
-							showCancelButton: true,
-							inputValidator: () => {
-								return new Promise(() => {
-									Swal.fire({
-										type: 'success',
-										title: 'Sub-área deletada com sucesso!'
-									});
-								});
-							}
-						});
-					}
-				});
-			}
-		});
-	};
-	handleClickTipos = () => {
-		Swal.fire({
-			title: 'Selecione uma operação',
-			input: 'select',
-			inputOptions: {
-				A: 'Adicionar tipo de projeto',
-				D: 'Deletar tipo de projeto'
-			},
-			inputPlaceholder: 'Opção',
-			showCancelButton: true,
-			inputValidator: (value) => {
-				return new Promise((resolve) => {
-					if (value === 'A') {
-						Swal.fire({
-							title: 'Digite um novo tipo',
-							input: 'text',
-							// inputValue: 'Ex: PIBIC',
-							showCancelButton: true,
-							inputValidator: (value) => {
-								if (!value) {
-									return 'Você precisa escrever algo!';
-								} else {
-									return new Promise(() => {
-										Swal.fire({
-											type: 'success',
-											title: 'Tipo adicionado com sucesso!'
-										});
-									});
-								}
-							}
-						});
-					} else if (value === 'D') {
-						Swal.fire({
-							title: 'Seleciona um tipo para excluir',
-							input: 'select',
-							inputOptions: {
-								C: 'PIC',
-								D: 'PIBIC',
-								A: 'PIBITI'
-							},
-							inputPlaceholder: 'Selecione',
-							showCancelButton: true,
-							inputValidator: () => {
-								return new Promise(() => {
-									Swal.fire({
-										type: 'success',
-										title: 'Tipo deletado com sucesso!'
-									});
-								});
-							}
-						});
-					}
-				});
-			}
-		});
-	};
 	render() {
 		return (
 			<Switch>
-				<Route exact path="/Admin/Relatorios/Ativos" component={RelatorioAtivos} />
-				<Route
+				<Route exact path="/" render={(props) => <LoginScreen handleSubmitLogin={this.handleSubmitLogin} />} />
+				{/* <Route exact path="/Admin/Relatorios/Ativos" component={RelatorioAtivos} /> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos"
 					render={(props) => (
@@ -499,26 +326,21 @@ export class main extends Component {
 							handleRelatorio={this.handleRelatorioProjeto}
 						/>
 					)}
-				/>
-				<Route exact path="/" render={(props) => <LoginScreen handleSubmitLogin={this.handleSubmitLogin} />} />
-				<Route exact path="/Docente/profile" component={ProfileDocente} />
-				<Route exact path="/Discente/profile" component={ProfileDiscente} />
-				<Route
+				/> */}
+				{/* <Route exact path="/Docente/profile" component={ProfileDocente} /> */}
+				{/* <Route exact path="/Discente/profile" component={ProfileDiscente} /> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos/add"
 					render={(props) => <CadastroProjeto handleSubmit={this.handleSubmit} />}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos/relatorios/:id"
-					render={(props) => <RelatorioProjetos projetos={this.state.projetos}/>}
-				/>
-				<Route
-					exact
-					path="/Docente/Projetos/relatorioGeral"
-					render={(props) => <RelatorioGeral />}
-				/>
-				<Route
+					render={(props) => <RelatorioProjetos projetos={this.state.projetos} />}
+				/> */}
+				{/* <Route exact path="/Docente/Projetos/relatorioGeral" render={(props) => <RelatorioGeral />} /> */}
+				{/* <Route
 					exact
 					path="/Projetos/search"
 					render={(props) => (
@@ -528,34 +350,34 @@ export class main extends Component {
 							handleClickVisualize={this.handleClickVisualize}
 						/>
 					)}
-				/>
-				<Route exact path="/Discente/Projetos/:id" render={(props) => <ProjetoItem />} />
-				<Route
+				/> */}
+				{/* <Route exact path="/Discente/Projetos/:id" render={(props) => <ProjetoItem />} /> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos/edit/:id"
 					render={(props) => <AtualizarProjeto handleEdit={this.handleEdit} />}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos/:id"
 					render={(props) => <ProjetoItemDocente handleClickEdit={this.handleClickEdit} />}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					exact
 					path="/Projetos/:id/enviarMensagem"
 					render={(props) => <EnviarMensagem handleEnviarMensagem={this.handleEnviarMensagem} />}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/create"
 					render={(props) => <CreateEdital handleCreateEdital={this.handleCreateEdital} />}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/edit"
 					render={(props) => <EditEdital handleEditEdital={this.handleEditEdital} />}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/visualize"
 					render={(props) => (
@@ -564,33 +386,17 @@ export class main extends Component {
 							handleGetInscritos={this.handleGetInscritos}
 						/>
 					)}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/signedUp"
-					render={(props) => <
-					VerificarInscritos 
-					handleLancarEdital={this.handleLancarEdital}
-					
-					/>}
-				/>
-				<Route
+					render={(props) => <VerificarInscritos handleLancarEdital={this.handleLancarEdital} />}
+				/> */}
+				{/* <Route
 					exact
 					path="/Projetos/:id/Edital/:id/signUp"
 					render={(props) => <Signup handleInscricao={this.handleInscricao} />}
-				/>
-				<Route exact path="/admin/dashboard" component={Dashboard} />
-				<Route
-					exact
-					path="/admin/gerenciarDados"
-					render={(props) => (
-						<GenrenciarDadosAdmin
-							handleClickAreas={this.handleClickAreas}
-							handleClickSubAreas={this.handleClickSubAreas}
-							handleClickTipos={this.handleClickTipos}
-						/>
-					)}
-				/>
+				/> */}
 			</Switch>
 		);
 	}
