@@ -81,7 +81,7 @@ export class projetoItem extends Component {
 						</div>
 					</div>
 					<div style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-						<Link className="btn btn-secondary" to="/Projetos/search">
+						<Link className="btn btn-secondary" to="/Docente/Projetos">
 							Voltar
 						</Link>
 					</div>

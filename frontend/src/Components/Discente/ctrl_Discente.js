@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import PesquisarProjeto from './pesquisarProjeto.js';
 import ProjetoItem from './projetoItem.js';
+import ProfileDiscente from './profileDiscente.js';
+import Signup from './signup.js';
+import EnviarMensagem from './enviarMensagem.js';
+import Swal from 'sweetalert2';
 
 export class ctrl_Discente extends Component {
 	state = {
@@ -31,7 +36,8 @@ export class ctrl_Discente extends Component {
 				resumo: '....',
 				id: '3'
 			}
-		]
+		],
+		redirectProject: false
 	};
 
 	handleSubmitSearch = (listSearch) => {
@@ -68,9 +74,10 @@ export class ctrl_Discente extends Component {
 
 	handleClickVisualize = (id) => {
 		let url = '/Discente/Projetos' + '/1';
-		this.setState({ idVisualizar: 1 });
+		this.setState({ idVisualizar: 1, redirectProject: true });
 		window.location.href = url;
 	};
+
 	render() {
 		return (
 			<Switch>
@@ -79,7 +86,6 @@ export class ctrl_Discente extends Component {
 					exact
 					path="/Projetos/search"
 					render={(props) => (
-						// FIXME Discente visualizar projeto bugado
 						<PesquisarProjeto
 							handleSubmitSearch={this.handleSubmitSearch}
 							handleClickVisualize={this.handleClickVisualize}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import CadastroProjeto from './cadastroProjeto.js';
 import AtualizarProjeto from './atualizarProjeto.js';
 import Projetos from './projetos.js';
@@ -7,6 +8,9 @@ import RelatorioProjetos from './relatorioProjeto.js';
 import CreateEdital from './createEdital.js';
 import EditEdital from './editEdital.js';
 import VisualizeEdital from './visualizeEdital.js';
+import VerificarInscritos from './verficarInscritos.js';
+import ProfileDocente from './profileDocente.js';
+import RelatorioGeral from './relatorioGeral.js';
 import Swal from 'sweetalert2';
 
 export class ctrl_Docente extends Component {
@@ -183,21 +187,6 @@ export class ctrl_Docente extends Component {
 		});
 	};
 
-	handleCreateEdital = (newPS) => {
-		// Axios.post(`http://localhost:3001/api/Projetos`, newPS)
-		//   .then(res => {
-		//    console.log(res)
-		//   }).catch(error => {
-		//     console.log(error)
-		//   })
-		//   window.location.href = '/'
-
-		Swal.fire({
-			type: 'success',
-			title: 'Edital deletado com sucesso!'
-		});
-	};
-
 	handleGetInscritos = (idEdital) => {
 		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
 		//   .then(res => {
@@ -273,6 +262,21 @@ export class ctrl_Docente extends Component {
 		});
 	};
 
+	handleEditEdital = (edital) => {
+		// Axios.post(`http://localhost:3001/api/Projetos`, newPS)
+		//   .then(res => {
+		//    console.log(res)
+		//   }).catch(error => {
+		//     console.log(error)
+		//   })
+		//   window.location.href = '/'
+
+		Swal.fire({
+			type: 'success',
+			title: 'Edital atualizado com sucesso!'
+		});
+	};
+
 	handleGetInscritos = (idEdital) => {
 		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
 		//   .then(res => {
@@ -325,6 +329,7 @@ export class ctrl_Docente extends Component {
 					path="/Docente/Projetos/edit/:id"
 					render={(props) => <AtualizarProjeto handleEdit={this.handleEdit} />}
 				/>
+				<Route exact path="/Docente/Projetos/relatorioGeral" render={(props) => <RelatorioGeral />} />
 				<Route
 					exact
 					path="/Docente/Projetos/:id"
@@ -356,7 +361,6 @@ export class ctrl_Docente extends Component {
 					render={(props) => <VerificarInscritos handleLancarEdital={this.handleLancarEdital} />}
 				/>
 				<Route exact path="/Docente/profile" component={ProfileDocente} />
-				<Route exact path="/Docente/Projetos/relatorioGeral" render={(props) => <RelatorioGeral />} />
 			</Switch>
 		);
 	}

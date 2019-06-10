@@ -28,9 +28,9 @@ export class NavBarDiscente extends Component {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<div class="dropdown">
+							<div className="dropdown">
 								<button
-									class="btn btn-secondary dropdown-toggle"
+									className="btn btn-secondary dropdown-toggle"
 									type="button"
 									id="dropdownMenuButton"
 									data-toggle="dropdown"
@@ -39,7 +39,7 @@ export class NavBarDiscente extends Component {
 								>
 									Confirgurações
 								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<Link className="dropdown-item" to="/Discente/Profile">
 										Perfil
 									</Link>

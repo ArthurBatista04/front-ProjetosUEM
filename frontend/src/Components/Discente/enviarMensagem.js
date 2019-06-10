@@ -56,7 +56,7 @@ export class enviarMensagem extends Component {
 							Enviar mensagem
 						</button>
 					</form>
-					<Link className="btn btn-secondary" to="/Docente/Projetos/1">
+					<Link className="btn btn-secondary" to="/Discente/Projetos/1">
 						Voltar
 					</Link>
 				</div>

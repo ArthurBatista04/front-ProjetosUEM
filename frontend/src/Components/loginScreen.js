@@ -19,14 +19,7 @@ export class loginScreen extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		this.props.handleSubmitLogin(this.state);
-		if (this.state.type === 'Docente') {
-			window.location.href = '/Docente/Projetos';
-		} else if (this.state.type === 'Discente') {
-			window.location.href = '/Projetos/Search';
-		} else {
-			window.location.href = '/admin/dashboard';
-		}
+		this.props.handleSubmitLogin(this.state.type);
 	};
 
 	render() {

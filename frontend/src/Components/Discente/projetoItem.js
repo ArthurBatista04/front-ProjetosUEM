@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
-import NavBarDocente from './navBarDocente';
+import NavBarDiscente from './navBarDiscente';
 
 export class projetoItem extends Component {
 	state = {
@@ -33,8 +33,7 @@ export class projetoItem extends Component {
 	render() {
 		return (
 			<div>
-				<NavBarDocente />
-
+				<NavBarDiscente />
 				<div className="container">
 					<div className="card">
 						<div className="card-body">
@@ -95,8 +94,6 @@ export class projetoItem extends Component {
 						>
 							Enviar mensagem
 						</Link>
-						
-
 					</div>
 				</div>
 			</div>

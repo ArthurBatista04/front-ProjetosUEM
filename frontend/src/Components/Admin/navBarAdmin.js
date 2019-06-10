@@ -6,7 +6,7 @@ export class navBarAdmin extends Component {
 		return (
 			<div>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-					<Link className="navbar-brand" to="/">
+					<Link className="navbar-brand" to="/admin/dashboard">
 						Projetos UEM
 					</Link>
 					<button
