@@ -21,6 +21,8 @@ import Dashboard from './dashboard.js';
 import GenrenciarDadosAdmin from './gerenciarDadosAdmin.js';
 import RelatorioAtivos from './relatorioAtivos.js';
 import Signup from './signup.js';
+import RelatorioProjetos from 'relatorioProjeto.js';
+import RelatorioGeral from 'relatorioGeral.js';
 
 export class main extends Component {
 	state = {
@@ -267,8 +269,22 @@ export class main extends Component {
 		//   }).catch(error => {
 		//     console.log(error)
 		//   })
-		window.location.href = 'signedUp';
-	};
+		window.location.href = 'signedUp'
+	}
+
+	handleLancarEdital = (edital) => {
+		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
+		//   .then(res => {
+		//    console.log(res)
+		//   }).catch(error => {
+		//     console.log(error)
+		//   })
+		Swal.fire({
+			type: 'success',
+			title: 'Edital lançado com sucesso!'
+		});
+	}
+
 
 	handleInscricao = (edital) => {
 		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
@@ -539,7 +555,11 @@ export class main extends Component {
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/signedUp"
-					render={(props) => <VerificarInscritos handleVerificarInscritos={this.handleVerificarInscritos} />}
+					render={(props) => <
+					VerificarInscritos 
+					handleLancarEdital={this.handleLancarEdital}
+					
+					/>}
 				/>
 				<Route
 					exact
