@@ -260,7 +260,18 @@ export class main extends Component {
 		window.location.href = 'signedUp'
 	}
 
-
+	handleLancarEdital = (edital) => {
+		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
+		//   .then(res => {
+		//    console.log(res)
+		//   }).catch(error => {
+		//     console.log(error)
+		//   })
+		Swal.fire({
+			type: 'success',
+			title: 'Edital lançado com sucesso!'
+		});
+	}
 
 
 	handleInscricao = (edital) => {
@@ -367,7 +378,7 @@ export class main extends Component {
 					path="/Docente/Projetos/:id/Edital/:id/signedUp"
 					render={(props) => <
 					VerificarInscritos 
-					handleVerificarInscritos={this.handleVerificarInscritos}
+					handleLancarEdital={this.handleLancarEdital}
 					
 					/>}
 				/>

@@ -62,7 +62,7 @@ export class signup extends Component {
                         </div>
                           
                     </div>
-                    <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Enviar inscrição </button>
+                    <button type="submit" value='Submit'  className="btn btn-dark" style={{float: 'right'}}> Enviar inscrição </button>
                 </form>
                 <Link type="submit" className="btn btn-danger" to='/Projetos/search'>Cancelar</Link>
             </div>
