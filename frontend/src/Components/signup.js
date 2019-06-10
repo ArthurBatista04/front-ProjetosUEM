@@ -40,18 +40,25 @@ export class signup extends Component {
                             <input name='Nome' value={this.state.nome} onChange={(e) => this.handleChange(e)} type="text" className="form-control" disabled="true" aria-label="Username" aria-describedby="basic-addon1" />
                         </div>
 
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">Historico escolar</span>
-                            </div>
-                            <input name='historico' type="file" value={this.state.historico} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="historico" aria-label="Username" aria-describedby="basic-addon1" />
+
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Histórico escolar</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" onChange={(e) => this.handleChange(e)} />
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
                         </div>
 
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">Curiculo</span>
-                            </div>
-                            <input name='curiculo' type="file" value={this.state.curiculo} onChange={(e) => this.handleChange(e)} type="text" className="form-control" placeholder="curiculo" aria-label="Username" aria-describedby="basic-addon1" />
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Curículo</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" onChange={(e) => this.handleChange(e)} />
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
                         </div>
                         
                         <div className="input-group" style={{paddingBottom:"20px"   }}>

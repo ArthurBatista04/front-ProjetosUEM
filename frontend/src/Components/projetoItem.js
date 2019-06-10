@@ -84,7 +84,7 @@ export class projetoItem extends Component {
 						<Link className="btn btn-secondary" to="/Projetos/search">
 							Voltar
 						</Link>
-						<Link style={{ float: 'right' }} className="btn btn-info" to="#">
+						<Link style={{ float: 'right' }} className="btn btn-info" to="/Projetos/1/Edital/1/signup">
 							Increver-se
 						</Link>
 						<Link
@@ -94,6 +94,8 @@ export class projetoItem extends Component {
 						>
 							Enviar mensagem
 						</Link>
+						
+
 					</div>
 				</div>
 			</div>
