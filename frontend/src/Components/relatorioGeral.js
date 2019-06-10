@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NavBar from './navBarDocente'
 import { PieChart, Pie, Sector } from 'recharts';
 import {
     BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
@@ -107,63 +108,68 @@ export class relatorioGeral extends Component {
 
   render() {
     return (
-        <div className="conatiner" align="center">
-			<div className="card-text">
-              <h1 align="center">Relatório de Projeto</h1>
-            </div>
-			<div className="card-body">
-				<h4>Porcentagem de projetos por área</h4>
-				<PieChart width={450} height={400}>
-					<Pie
-					activeIndex={this.state.activeIndex}
-					activeShape={renderActiveShape}
-					data={data}
-					cx={200}
-					cy={200}
-					innerRadius={60}
-					outerRadius={80}
-					fill="#8884d8"
-					dataKey="value"
-					onMouseEnter={this.onPieEnter}
-					/>
-				</PieChart>
+		<div>
+			<div>
+				<NavBar/>
 			</div>
+			<div className="conatiner" align="center">
+				<div className="card-text">
+				<h1 align="center">Relatório Geral de Projetos</h1>
+				</div>
+				<div className="card-body">
+					<h4>Porcentagem de projetos por área</h4>
+					<PieChart width={450} height={400}>
+						<Pie
+						activeIndex={this.state.activeIndex}
+						activeShape={renderActiveShape}
+						data={data}
+						cx={200}
+						cy={200}
+						innerRadius={60}
+						outerRadius={80}
+						fill="#8884d8"
+						dataKey="value"
+						onMouseEnter={this.onPieEnter}
+						/>
+					</PieChart>
+				</div>
 
-			<div className="card-body">
-			<h4>Número de acessos mensais por projeto</h4>
-				<BarChart
-					width={750}
-					height={300}
-					data={data2}
-					margin={{
-					top: 5, right: 30, left: 20, bottom: 5,
-					}}
-					>
-					<CartesianGrid strokeDasharray="3 3" />
-					<XAxis dataKey="name" />
-					<YAxis />
-					<Tooltip />
-					<Legend />
-					<Bar dataKey="Acessos" fill="#82ca9d" />
-				</BarChart>
+				<div className="card-body">
+				<h4>Número de acessos mensais por projeto</h4>
+					<BarChart
+						width={750}
+						height={300}
+						data={data2}
+						margin={{
+						top: 5, right: 30, left: 20, bottom: 5,
+						}}
+						>
+						<CartesianGrid strokeDasharray="3 3" />
+						<XAxis dataKey="name" />
+						<YAxis />
+						<Tooltip />
+						<Legend />
+						<Bar dataKey="Acessos" fill="#82ca9d" />
+					</BarChart>
+				</div>
+
+				<div className="card-body">
+					<h4>Dados estatísticos</h4>
+					<div className="card-text">
+						<h5>Média de acessos nos últimos 6 meses: 185</h5>
+					</div>
+					<div className="card-text">
+						<h5>Média de relevência nos últimos 6 meses: 12%</h5>
+					</div>
+					<div className="card-text">
+						<h5>Número de busca pelos nomes dos projetos: 146</h5>
+					</div>
+					<div className="card-text">
+						<h5>Número de busca pelo nome do orientador: 57</h5>
+					</div>
+				</div>
 			</div>
-
-			<div className="card-body">
-                 <h4>Dados estatísticos</h4>
-                  <div className="card-text">
-                    <h5>Média de acessos nos últimos 6 meses: 185</h5>
-                  </div>
-                  <div className="card-text">
-                    <h5>Média de relevência nos últimos 6 meses: 12%</h5>
-                  </div>
-                  <div className="card-text">
-                    <h5>Número de busca pelos nomes dos projetos: 146</h5>
-                  </div>
-                  <div className="card-text">
-                    <h5>Número de busca pelo nome do orientador: 57</h5>
-                  </div>
-            </div>
-        </div>
+		</div>
      
     );
   }

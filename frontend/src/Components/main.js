@@ -514,6 +514,11 @@ export class main extends Component {
 				/>
 				<Route
 					exact
+					path="/Docente/Projetos/relatorioGeral"
+					render={(props) => <RelatorioGeral />}
+				/>
+				<Route
+					exact
 					path="/Projetos/search"
 					render={(props) => (
 						// FIXME Discente visualizar projeto bugado

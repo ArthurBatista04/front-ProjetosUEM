@@ -25,7 +25,7 @@ export class projetos extends Component {
                   <Link type="button" class="btn btn-dark" to= "/Docente/Projetos/add" > Novo Projeto </Link> 
                 </div>
                 <div style={{paddingLeft:"20px"}}>
-                  <Link type="button" class="btn btn-dark" > Relatório geral </Link>   
+                  <Link type="button" class="btn btn-dark" to="/Docente/Projetos/relatorioGeral"> Relatório geral </Link>   
                 </div>
 
                 
