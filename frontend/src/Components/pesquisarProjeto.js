@@ -38,7 +38,7 @@ export class pesquisarProjeto extends Component {
 			<div>
 				<NavBarDiscente></NavBarDiscente>
 			<div className="container">
-				<div style={{ paddingTop: 2 + 'rem' }}>
+				<div style={{ paddingTop: 2 + 'rem'}}>
 					<div className="row">
 						<div className="col-12">
 							<form onSubmit={(e) => this.onSubmit(e)}>

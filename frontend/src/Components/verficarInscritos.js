@@ -18,9 +18,10 @@ export class verificarInscritos extends Component {
         curiculo:"link",
         email: "ra98133@uem.br"
       }],
-      'columns': [{
+      'columns': [
+        {
         Header: 'Nome',
-        accessor: 'name' 
+        accessor: 'name',
       }, {
         Header: 'Ano da grauduação',
         accessor: 'age',
@@ -45,10 +46,20 @@ export class verificarInscritos extends Component {
     return (
         <div>
           <NavBarDocente></NavBarDocente>
-          <ReactTable
+          <div>
+            <div style={{paddingTop: '30px'}}>
+              <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Ranquear Inscritos </button>
+            </div>
+            
+            <ReactTable
           data={this.state.data}
           columns={this.state.columns}
-      /></div>
+          defaultSortDesc={true}
+      />
+          </div>
+          
+      
+      </div>
     )
   }
 }

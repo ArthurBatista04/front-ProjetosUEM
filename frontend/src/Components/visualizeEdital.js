@@ -8,7 +8,8 @@ export class visualizeEdital extends Component {
         "dataInicio": "17/10/2020",
         "dataTermino": "17/10/2021",
         "prerequisitos":"Estrutura de dados, PAA e MOA",
-        "descricao": "Este projeto engloba..."
+        "descricao": "Este projeto engloba...",
+        "idInscricao":"1"
     }
     handleChange = (e) =>  {
         this.setState({[e.target.name] : e.target.value});
@@ -17,7 +18,7 @@ export class visualizeEdital extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.handleCreateEdital(this.state)
+        this.props.handleGetInscritos(this.state.idInscricao)
     }
 
     render() {
@@ -69,6 +70,7 @@ export class visualizeEdital extends Component {
                             <label class="custom-control-label" for="customSwitches">Status do edital</label>
                         </div>
                     </div>
+                    <button type="submit" value='Submit' className="btn btn-dark" style={{float: 'right'}}> Verificar Inscritos </button>
                 </form>
                 <NavLink type="submit" className="btn btn-danger" to="/Docente/Projetos" >Voltar</NavLink>
           </div>

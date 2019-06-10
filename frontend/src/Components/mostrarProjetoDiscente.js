@@ -5,7 +5,6 @@ export class mostrarProjetoDiscente extends Component {
 	render() {
 		return (
 			<div>
-				<NavBarDiscente></NavBarDiscente>
 			<div className="card">
 				<div className="card-body">
 					<h5 className="card-title">{this.props.projeto.titulo}</h5>

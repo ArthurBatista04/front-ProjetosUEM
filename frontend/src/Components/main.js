@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 import VerificarInscritos from './verficarInscritos.js';
 import PesquisarProjeto from './pesquisarProjeto.js';
 import RelatorioAtivos from './relatorioAtivos.js';
+import Signup from './signup.js';
 
 export class main extends Component {
 	state = {
@@ -61,8 +62,7 @@ export class main extends Component {
 				C: 'Criar',
 				D: 'Deletar',
 				A: 'Atualizar',
-				V: 'Visualizar',
-				I: 'Verificar Inscrições'
+				V: 'Visualizar'
 			},
 			inputPlaceholder: 'Opção',
 			showCancelButton: true,
@@ -127,10 +127,7 @@ export class main extends Component {
 								});
 							}
 						});
-					} else if (value === 'I') {
-						let url = '/Docente/Projetos/1/Edital/1/signedUp';
-						window.location.href = url;
-					}
+					} 
 				});
 			}
 		});
@@ -253,6 +250,32 @@ export class main extends Component {
 		});
 	};
 
+	handleGetInscritos = (idEdital) => {
+		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
+		//   .then(res => {
+		//    console.log(res)
+		//   }).catch(error => {
+		//     console.log(error)
+		//   })
+		window.location.href = 'signedUp'
+	}
+
+
+
+
+	handleInscricao = (edital) => {
+		// Axios.get(`http://localhost:3001/api/Projetos/edital/+` idEdital)
+		//   .then(res => {
+		//    console.log(res)
+		//   }).catch(error => {
+		//     console.log(error)
+		//   })
+		Swal.fire({
+			type: 'success',
+			title: 'Inscrição feita com sucesso!'
+		});
+	}
+
 	handleSubmitLogin = (login) => {
 		//Axios.post("", login);
 	};
@@ -334,13 +357,30 @@ export class main extends Component {
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/visualize"
-					render={(props) => <VisualizeEdital handleVisualizeEdital={this.handleVisualizeEdita} />}
+					render={(props) => 
+					<VisualizeEdital 
+					handleVisualizeEdital={this.handleVisualizeEdita}
+					handleGetInscritos={this.handleGetInscritos} />}
 				/>
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/signedUp"
-					render={(props) => <VerificarInscritos handleVerificarInscritos={this.handleVerificarInscritos} />}
+					render={(props) => <
+					VerificarInscritos 
+					handleVerificarInscritos={this.handleVerificarInscritos}
+					
+					/>}
 				/>
+				<Route
+					exact
+					path="/Projetos/:id/Edital/:id/signUp"
+					render={(props) => <
+					Signup
+					handleInscricao={this.handleInscricao}
+				/>}
+				/>
+
+				
 			</Switch>
 		);
 	}
