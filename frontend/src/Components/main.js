@@ -231,10 +231,17 @@ export class main extends Component {
 
 	handleEnviarMensagem = (Mensagem) => {
 		//Neste caso seria pego
-		Swal.fire({
-			type: 'success',
-			title: 'Mensagem enviada com sucesso!'
-		});
+		if (Mensagem.mensagem != '') {
+			Swal.fire({
+				type: 'success',
+				title: 'Mensagem enviada com sucesso!'
+			});
+		} else {
+			Swal.fire({
+				type: 'warning',
+				title: 'O campo mensagem não pode estar vazio!'
+			});
+		}
 	};
 
 	handleCreateEdital = (newPS) => {
