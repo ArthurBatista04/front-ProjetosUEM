@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import CadastroProjeto from './cadastroProjeto.js';
 import AtualizarProjeto from './atualizarProjeto.js';
 import Projetos from './projetos.js';
@@ -16,6 +16,8 @@ import Relatorios from './relatorios.js';
 import Swal from 'sweetalert2';
 import VerificarInscritos from './verficarInscritos.js';
 import PesquisarProjeto from './pesquisarProjeto.js';
+import Dashboard from './dashboard.js';
+import GenrenciarDadosAdmin from './gerenciarDadosAdmin.js';
 import RelatorioAtivos from './relatorioAtivos.js';
 import Signup from './signup.js';
 
@@ -127,7 +129,7 @@ export class main extends Component {
 								});
 							}
 						});
-					} 
+					}
 				});
 			}
 		});
@@ -160,14 +162,14 @@ export class main extends Component {
 					} else if (value === 'V') {
 						let url = '/Docente/Projetos/1';
 						window.location.href = url;
-					} 
+					}
 				});
 			}
 		});
 	};
 
 	handleClickVisualize = (id) => {
-		let url = "/Docente/Projetos" + '/1';
+		let url = '/Docente/Projetos' + '/1';
 		this.setState({ idVisualizar: 1 });
 		window.location.href = url;
 	};
@@ -229,10 +231,17 @@ export class main extends Component {
 
 	handleEnviarMensagem = (Mensagem) => {
 		//Neste caso seria pego
-		Swal.fire({
-			type: 'success',
-			title: 'Mensagem enviada com sucesso!'
-		});
+		if (Mensagem.mensagem != '') {
+			Swal.fire({
+				type: 'success',
+				title: 'Mensagem enviada com sucesso!'
+			});
+		} else {
+			Swal.fire({
+				type: 'warning',
+				title: 'O campo mensagem não pode estar vazio!'
+			});
+		}
 	};
 
 	handleCreateEdital = (newPS) => {
@@ -285,7 +294,7 @@ export class main extends Component {
 			type: 'success',
 			title: 'Inscrição feita com sucesso!'
 		});
-	}
+	};
 
 	handleSubmitLogin = (login) => {
 		//Axios.post("", login);
@@ -296,6 +305,175 @@ export class main extends Component {
 		// Axios.get('')
 	};
 
+	handleClickAreas = () => {
+		Swal.fire({
+			title: 'Selecione uma operação',
+			input: 'select',
+			inputOptions: {
+				A: 'Adicionar área',
+				D: 'Deletar área'
+			},
+			inputPlaceholder: 'Opção',
+			showCancelButton: true,
+			inputValidator: (value) => {
+				return new Promise((resolve) => {
+					if (value === 'A') {
+						Swal.fire({
+							title: 'Digite o nome da nova área',
+							input: 'text',
+							// inputValue: inputValue,
+							showCancelButton: true,
+							inputValidator: (value) => {
+								if (!value) {
+									return 'Você precisa escrever algo!';
+								} else {
+									return new Promise(() => {
+										Swal.fire({
+											type: 'success',
+											title: 'Área adicionada com sucesso!'
+										});
+									});
+								}
+							}
+						});
+					} else if (value === 'D') {
+						Swal.fire({
+							title: 'Seleciona uma área para excluir',
+							input: 'select',
+							inputOptions: {
+								C: 'Ciências biológicas',
+								D: 'Ciências exatas',
+								A: 'Ciências humanas'
+							},
+							inputPlaceholder: 'Selecione',
+							showCancelButton: true,
+							inputValidator: () => {
+								return new Promise(() => {
+									Swal.fire({
+										type: 'success',
+										title: 'Área deletada com sucesso!'
+									});
+								});
+							}
+						});
+					}
+				});
+			}
+		});
+	};
+
+	handleClickSubAreas = () => {
+		Swal.fire({
+			title: 'Selecione uma operação',
+			input: 'select',
+			inputOptions: {
+				A: 'Adicionar Sub-área',
+				D: 'Deletar Sub-área'
+			},
+			inputPlaceholder: 'Opção',
+			showCancelButton: true,
+			inputValidator: (value) => {
+				return new Promise((resolve) => {
+					if (value === 'A') {
+						Swal.fire({
+							title: 'Digite o nome da nova sub-área',
+							input: 'text',
+							// inputValue: inputValue,
+							showCancelButton: true,
+							inputValidator: (value) => {
+								if (!value) {
+									return 'Você precisa escrever algo!';
+								} else {
+									return new Promise(() => {
+										Swal.fire({
+											type: 'success',
+											title: 'Sub-área adicionada com sucesso!'
+										});
+									});
+								}
+							}
+						});
+					} else if (value === 'D') {
+						Swal.fire({
+							title: 'Seleciona uma sub-área para excluir',
+							input: 'select',
+							inputOptions: {
+								C: 'Teoria dos Números',
+								D: 'Banco de Dados',
+								A: 'Astronomia Dinâmica'
+							},
+							inputPlaceholder: 'Selecione',
+							showCancelButton: true,
+							inputValidator: () => {
+								return new Promise(() => {
+									Swal.fire({
+										type: 'success',
+										title: 'Sub-área deletada com sucesso!'
+									});
+								});
+							}
+						});
+					}
+				});
+			}
+		});
+	};
+	handleClickTipos = () => {
+		Swal.fire({
+			title: 'Selecione uma operação',
+			input: 'select',
+			inputOptions: {
+				A: 'Adicionar tipo de projeto',
+				D: 'Deletar tipo de projeto'
+			},
+			inputPlaceholder: 'Opção',
+			showCancelButton: true,
+			inputValidator: (value) => {
+				return new Promise((resolve) => {
+					if (value === 'A') {
+						Swal.fire({
+							title: 'Digite um novo tipo',
+							input: 'text',
+							// inputValue: 'Ex: PIBIC',
+							showCancelButton: true,
+							inputValidator: (value) => {
+								if (!value) {
+									return 'Você precisa escrever algo!';
+								} else {
+									return new Promise(() => {
+										Swal.fire({
+											type: 'success',
+											title: 'Tipo adicionado com sucesso!'
+										});
+									});
+								}
+							}
+						});
+					} else if (value === 'D') {
+						Swal.fire({
+							title: 'Seleciona um tipo para excluir',
+							input: 'select',
+							inputOptions: {
+								C: 'PIC',
+								D: 'PIBIC',
+								A: 'PIBITI'
+							},
+							inputPlaceholder: 'Selecione',
+							showCancelButton: true,
+							inputValidator: () => {
+								return new Promise(() => {
+									Swal.fire({
+										type: 'success',
+										title: 'Tipo deletado com sucesso!'
+									});
+								});
+							}
+						});
+					}
+				});
+			}
+		});
+	};
 	render() {
 		return (
 			<Switch>
@@ -308,15 +486,10 @@ export class main extends Component {
 							projetos={this.state.projetos}
 							handlePS={this.handlePS}
 							handleGerenciarProjeto={this.handleGerenciarProjeto}
-						
 						/>
 					)}
 				/>
-				<Route
-					exact
-					path="/"
-					render={(props) => <LoginScreen handleSubmitLogin={this.handleSubmitLogin} />}
-				/>
+				<Route exact path="/" render={(props) => <LoginScreen handleSubmitLogin={this.handleSubmitLogin} />} />
 				<Route exact path="/Docente/profile" component={ProfileDocente} />
 				<Route exact path="/Discente/profile" component={ProfileDiscente} />
 				<Route
@@ -368,30 +541,43 @@ export class main extends Component {
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/visualize"
-					render={(props) => 
-					<VisualizeEdital 
-					handleVisualizeEdital={this.handleVisualizeEdita}
-					handleGetInscritos={this.handleGetInscritos} />}
+					render={(props) => (
+						<VisualizeEdital
+							handleVisualizeEdital={this.handleVisualizeEdita}
+							handleGetInscritos={this.handleGetInscritos}
+						/>
+					)}
 				/>
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/signedUp"
+<<<<<<< HEAD
 					render={(props) => <
 					VerificarInscritos 
 					handleLancarEdital={this.handleLancarEdital}
 					
 					/>}
+=======
+					render={(props) => <VerificarInscritos handleVerificarInscritos={this.handleVerificarInscritos} />}
+>>>>>>> aa5819378ca51fbc866752c82e2c50b68a3ed154
 				/>
 				<Route
 					exact
 					path="/Projetos/:id/Edital/:id/signUp"
-					render={(props) => <
-					Signup
-					handleInscricao={this.handleInscricao}
-				/>}
+					render={(props) => <Signup handleInscricao={this.handleInscricao} />}
 				/>
-
-				
+				<Route exact path="/admin/dashboard" component={Dashboard} />
+				<Route
+					exact
+					path="/admin/gerenciarDados"
+					render={(props) => (
+						<GenrenciarDadosAdmin
+							handleClickAreas={this.handleClickAreas}
+							handleClickSubAreas={this.handleClickSubAreas}
+							handleClickTipos={this.handleClickTipos}
+						/>
+					)}
+				/>
 			</Switch>
 		);
 	}
