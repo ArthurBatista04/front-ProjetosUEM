@@ -551,15 +551,11 @@ export class main extends Component {
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/signedUp"
-<<<<<<< HEAD
 					render={(props) => <
 					VerificarInscritos 
 					handleLancarEdital={this.handleLancarEdital}
 					
 					/>}
-=======
-					render={(props) => <VerificarInscritos handleVerificarInscritos={this.handleVerificarInscritos} />}
->>>>>>> aa5819378ca51fbc866752c82e2c50b68a3ed154
 				/>
 				<Route
 					exact
