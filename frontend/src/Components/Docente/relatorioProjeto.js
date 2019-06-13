@@ -85,7 +85,7 @@ export class relatorios extends Component {
 			<div className="conatiner" align="center">
 				<div className="card">
 					<div className="card-text">
-						<h1 align="center">Relatório Geral de Projetos</h1>
+						<h1 align="center">Relatório de Projeto</h1>
 					</div>
 					<div className="card-body">
 						<div>
@@ -144,21 +144,6 @@ export class relatorios extends Component {
 							<div className="card-text">
 								<h5>Número de busca pelo nome do orientador: 33</h5>
 							</div>
-						</div>
-					</div>
-					<div className="card-body">
-						<h4>Dados estatísticos</h4>
-						<div className="card-text">
-							<h5>Média de acessos nos últimos 6 meses: 75</h5>
-						</div>
-						<div className="card-text">
-							<h5>Média de relevência nos últimos 6 meses: 8%</h5>
-						</div>
-						<div className="card-text">
-							<h5>Número de busca pelo nome do projeto: 84</h5>
-						</div>
-						<div className="card-text">
-							<h5>Número de busca pelo nome do orientador: 33</h5>
 						</div>
 					</div>
 				</div>
