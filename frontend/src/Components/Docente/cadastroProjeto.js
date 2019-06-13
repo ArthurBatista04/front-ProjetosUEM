@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NavBarDocente from './navBarDocente';
 
 export class cadastroProjeto extends Component {
 	state = {

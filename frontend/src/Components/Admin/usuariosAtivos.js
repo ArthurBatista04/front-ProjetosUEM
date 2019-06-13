@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import {
   LineChart,
   Line,
@@ -16,10 +16,11 @@ const data = [
   { name: "Maio", uv: 200, pv: 2400, amt: 2400 }
 ];
 
-export class RelatorioAtivos extends Component {
+export class UsuariosAtivos extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
+        <h3>Número de usuários ativos por mês</h3>
         <div
           style={{
             display: "flex",
@@ -47,9 +48,9 @@ export class RelatorioAtivos extends Component {
             alignItems: "center"
           }}
         />
-      </div>
+      </Fragment>
     );
   }
 }
 
-export default RelatorioAtivos;
+export default UsuariosAtivos;
