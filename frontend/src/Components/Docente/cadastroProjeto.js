@@ -52,6 +52,7 @@ export class cadastroProjeto extends Component {
 								placeholder="Nome do projeto"
 								aria-label="Username"
 								aria-describedby="basic-addon1"
+								required="required"
 							/>
 						</div>
 
@@ -70,6 +71,7 @@ export class cadastroProjeto extends Component {
 								placeholder="Nome do orientador"
 								aria-label="Username"
 								aria-describedby="basic-addon1"
+								required="required"
 							/>
 						</div>
 
@@ -88,6 +90,7 @@ export class cadastroProjeto extends Component {
 								placeholder="Nome do coorientador"
 								aria-label="Username"
 								aria-describedby="basic-addon1"
+								required="required"
 							/>
 						</div>
 
@@ -222,6 +225,7 @@ export class cadastroProjeto extends Component {
 								type="text"
 								className="form-control"
 								placeholder="ex: dd/mm/aaaa"
+								required="required"
 							/>
 
 							<div className="input-group-prepend">
@@ -236,6 +240,7 @@ export class cadastroProjeto extends Component {
 								type="text"
 								className="form-control"
 								placeholder="ex: dd/mm/aaaa"
+								required="required"
 							/>
 						</div>
 
@@ -293,6 +298,7 @@ export class cadastroProjeto extends Component {
 								onChange={(e) => this.handleChange(e)}
 								className="form-control"
 								aria-label="With textarea"
+								required="required"
 							/>
 						</div>
 					</div>
