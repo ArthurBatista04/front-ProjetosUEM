@@ -7,6 +7,7 @@ import Signup from './signup.js';
 import EnviarMensagem from './enviarMensagem.js';
 import Swal from 'sweetalert2';
 import NavBarDiscente from './navBarDiscente.js';
+import VisualizarEdital from './visualizarEdital.js'
 
 export class ctrl_Discente extends Component {
 	state = {
@@ -79,6 +80,12 @@ export class ctrl_Discente extends Component {
 		window.location.href = url;
 	};
 
+	handleClickEdital = (id) => {
+		let url = '/Discente/Projetos/Edital' + '/1';
+		this.setState({ idVisualizar: 1, redirectProject: true });
+		window.location.href = url;
+	};
+
 	navbar = (component) => (props) => (
 		<React.Fragment>
 			<NavBarDiscente logout={this.props.logout} />
@@ -97,9 +104,11 @@ export class ctrl_Discente extends Component {
 						<PesquisarProjeto
 							handleSubmitSearch={this.handleSubmitSearch}
 							handleClickVisualize={this.handleClickVisualize}
+							handleClickEdital={this.handleClickEdital}
 						/>
 					)}
 				/>
+				<Route exact path="/Discente/Projetos/Edital/:id" render={this.navbar(<VisualizarEdital />)} />
 				<Route exact path="/Discente/Projetos/:id" render={this.navbar(<ProjetoItem />)} />
 				<Route
 					exact

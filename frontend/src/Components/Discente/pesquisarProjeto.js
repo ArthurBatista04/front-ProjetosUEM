@@ -175,6 +175,7 @@ export class pesquisarProjeto extends Component {
 					<div style={{ paddingTop: 2 + 'rem' }}>
 						<ProjetosDiscentes
 							handleClickVisualize={this.props.handleClickVisualize}
+							handleClickEdital={this.props.handleClickEdital}
 							projetos={this.state.projetosPesquisa}
 						/>
 					</div>

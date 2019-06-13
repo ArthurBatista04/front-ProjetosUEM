@@ -10,6 +10,7 @@ export class projetosDiscente extends Component {
 						key={projeto.id}
 						projeto={projeto}
 						handleClickVisualize={this.props.handleClickVisualize}
+						handleClickEdital={this.props.handleClickEdital}
 					/>
 				))}
 			</Fragment>
