@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Axios from 'axios';
-import NavBarDocente from './navBarDocente';
 
 export class atualizarProjeto extends Component {
 	state = {

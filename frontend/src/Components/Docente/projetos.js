@@ -1,39 +1,42 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import MostrarProjeto from './mostrarProjeto.js';
-import NavBarDocente from './navBarDocente.js';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import MostrarProjeto from "./mostrarProjeto.js";
 export class projetos extends Component {
-	render() {
-		return (
-			<div className="container">
-				{this.props.projetos.map((projeto) => (
-					<div className="container">
-						<MostrarProjeto
-							projeto={projeto}
-							handleGerenciarProjeto={this.props.handleGerenciarProjeto}
-							handlePS={this.props.handlePS}
-							handleRelatorio={this.props.handleRelatorio}
-						/>
-					</div>
-				))}
-				<div style={{ paddingBottom: '20px' }} />
-				<div className="btn-toolbar mr-2">
-					<div style={{ paddingLeft: '20px' }}>
-						<Link type="button" class="btn btn-dark" to="/Docente/Projetos/add">
-							{' '}
-							Novo Projeto{' '}
-						</Link>
-					</div>
-					<div style={{ paddingLeft: '20px' }}>
-						<Link type="button" class="btn btn-dark" to="/Docente/Projetos/relatorioGeral">
-							{' '}
-							Relatório geral{' '}
-						</Link>
-					</div>
-				</div>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className="container">
+        {this.props.projetos.map(projeto => (
+          <div className="container">
+            <MostrarProjeto
+              projeto={projeto}
+              handleGerenciarProjeto={this.props.handleGerenciarProjeto}
+              handlePS={this.props.handlePS}
+              handleRelatorio={this.props.handleRelatorio}
+            />
+          </div>
+        ))}
+        <div style={{ paddingBottom: "20px" }} />
+        <div className="btn-toolbar mr-2">
+          <div style={{ paddingLeft: "20px" }}>
+            <Link type="button" class="btn btn-dark" to="/Docente/Projetos/add">
+              {" "}
+              Novo Projeto{" "}
+            </Link>
+          </div>
+          <div style={{ paddingLeft: "20px" }}>
+            <Link
+              type="button"
+              class="btn btn-dark"
+              to="/Docente/Projetos/relatorioGeral"
+            >
+              {" "}
+              Relatório geral{" "}
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default projetos;
