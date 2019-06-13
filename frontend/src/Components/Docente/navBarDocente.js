@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export class navBarDocente extends Component {
+export default class navBarDocente extends Component {
 	render() {
 		return (
 			<div>
@@ -24,12 +24,6 @@ export class navBarDocente extends Component {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav ml-auto">
 							<li className="nav-item">
-								<Link className="nav-link" to="/Projetos/Search">
-									Buscar projeto
-								</Link>
-							</li>
-
-							<li className="nav-item">
 								<div class="dropdown">
 									<button
 										class="btn btn-secondary dropdown-toggle"
@@ -45,7 +39,7 @@ export class navBarDocente extends Component {
 										<Link className="dropdown-item" to="/Docente/Profile">
 											Perfil
 										</Link>
-										<Link className="dropdown-item" to="/">
+										<Link className="dropdown-item" onClick={this.props.logout}>
 											Sair
 										</Link>
 									</div>
@@ -58,5 +52,3 @@ export class navBarDocente extends Component {
 		);
 	}
 }
-
-export default navBarDocente;

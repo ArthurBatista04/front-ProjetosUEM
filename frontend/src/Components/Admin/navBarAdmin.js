@@ -49,7 +49,7 @@ export class navBarAdmin extends Component {
 											Confirgurações
 										</button>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-											<Link className="dropdown-item" to="/">
+											<Link className="dropdown-item" onClick={this.props.logout}>
 												Sair
 											</Link>
 										</div>

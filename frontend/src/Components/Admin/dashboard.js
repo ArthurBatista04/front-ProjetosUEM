@@ -157,7 +157,6 @@ export class relatorioAdmin extends Component {
 	render() {
 		return (
 			<Fragment>
-				<NavBarAdmin />;
 				<div className="container">
 					<center>
 						<h3>Número de acessos mensais</h3>

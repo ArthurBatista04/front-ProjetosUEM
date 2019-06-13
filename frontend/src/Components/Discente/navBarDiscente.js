@@ -23,11 +23,6 @@ export class NavBarDiscente extends Component {
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav ml-auto">
 						<li className="nav-item">
-							<Link className="nav-link" to="/Projetos/search">
-								Buscar projeto
-							</Link>
-						</li>
-						<li className="nav-item">
 							<div className="dropdown">
 								<button
 									className="btn btn-secondary dropdown-toggle"
@@ -43,7 +38,7 @@ export class NavBarDiscente extends Component {
 									<Link className="dropdown-item" to="/Discente/Profile">
 										Perfil
 									</Link>
-									<Link className="dropdown-item" to="/">
+									<Link className="dropdown-item" onClick={this.props.logout}>
 										Sair
 									</Link>
 								</div>

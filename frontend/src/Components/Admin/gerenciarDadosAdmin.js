@@ -5,7 +5,6 @@ export class gerenciarDadosAdmin extends Component {
 	render() {
 		return (
 			<Fragment>
-				<NavBarAdmin />
 				<div className="container" style={{ paddingTop: 3 + 'rem' }}>
 					<ul className="list-group">
 						<li className="list-group-item">

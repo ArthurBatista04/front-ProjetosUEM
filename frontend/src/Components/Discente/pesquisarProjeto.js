@@ -35,7 +35,6 @@ export class pesquisarProjeto extends Component {
 	render() {
 		return (
 			<div>
-				<NavBarDiscente />
 				<div className="container">
 					<div className="card" style={{ marginTop: 2 + 'rem', padding: 2 + 'rem' }}>
 						<div style={{ paddingTop: 2 + 'rem' }}>

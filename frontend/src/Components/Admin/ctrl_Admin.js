@@ -4,6 +4,7 @@ import Dashboard from './dashboard.js';
 import GenrenciarDadosAdmin from './gerenciarDadosAdmin.js';
 import RelatorioAtivos from './relatorioAtivos.js';
 import Swal from 'sweetalert2';
+import NavBarAdmin from './navBarAdmin.js';
 
 export class ctrl_Admin extends Component {
 	handleClickAreas = () => {
@@ -176,15 +177,22 @@ export class ctrl_Admin extends Component {
 		});
 	};
 
+	navbar = (component) => (props) => (
+		<React.Fragment>
+			<NavBarAdmin logout={this.props.logout} />
+			{component}
+		</React.Fragment>
+	);
+
 	render() {
 		return (
 			<Switch>
-				<Route exact path="/Admin/Relatorios/Ativos" component={RelatorioAtivos} />
-				<Route exact path="/admin/dashboard" component={Dashboard} />
+				<Route exact path="/Admin/Relatorios/Ativos" render={this.navbar(<RelatorioAtivos />)} />
+				<Route exact path="/admin/dashboard" render={this.navbar(<Dashboard />)} />
 				<Route
 					exact
 					path="/admin/gerenciarDados"
-					render={(props) => (
+					render={this.navbar(
 						<GenrenciarDadosAdmin
 							handleClickAreas={this.handleClickAreas}
 							handleClickSubAreas={this.handleClickSubAreas}
@@ -192,6 +200,7 @@ export class ctrl_Admin extends Component {
 						/>
 					)}
 				/>
+				<Redirect to="/admin/dashboard" />
 			</Switch>
 		);
 	}

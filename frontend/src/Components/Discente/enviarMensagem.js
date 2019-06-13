@@ -20,8 +20,6 @@ export class enviarMensagem extends Component {
 	render() {
 		return (
 			<Fragment>
-				<NavBarDiscente />
-
 				<div className="container">
 					<form className="text-center border border-light p-5" onSubmit={this.onSubmitMensagem}>
 						<span className="h4 mb-4">Enviar mensagem</span>

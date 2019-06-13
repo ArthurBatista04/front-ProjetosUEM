@@ -6,6 +6,7 @@ import ProfileDiscente from './profileDiscente.js';
 import Signup from './signup.js';
 import EnviarMensagem from './enviarMensagem.js';
 import Swal from 'sweetalert2';
+import NavBarDiscente from './navBarDiscente.js';
 
 export class ctrl_Discente extends Component {
 	state = {
@@ -78,31 +79,39 @@ export class ctrl_Discente extends Component {
 		window.location.href = url;
 	};
 
+	navbar = (component) => (props) => (
+		<React.Fragment>
+			<NavBarDiscente logout={this.props.logout} />
+			{component}
+		</React.Fragment>
+	);
+
 	render() {
 		return (
 			<Switch>
-				<Route exact path="/Discente/profile" component={ProfileDiscente} />
+				<Route exact path="/Discente/profile" render={this.navbar(<ProfileDiscente />)} />
 				<Route
 					exact
 					path="/Projetos/search"
-					render={(props) => (
+					render={this.navbar(
 						<PesquisarProjeto
 							handleSubmitSearch={this.handleSubmitSearch}
 							handleClickVisualize={this.handleClickVisualize}
 						/>
 					)}
 				/>
-				<Route exact path="/Discente/Projetos/:id" render={(props) => <ProjetoItem />} />
+				<Route exact path="/Discente/Projetos/:id" render={this.navbar(<ProjetoItem />)} />
 				<Route
 					exact
 					path="/Projetos/:id/enviarMensagem"
-					render={(props) => <EnviarMensagem handleEnviarMensagem={this.handleEnviarMensagem} />}
+					render={this.navbar(<EnviarMensagem handleEnviarMensagem={this.handleEnviarMensagem} />)}
 				/>
 				<Route
 					exact
 					path="/Projetos/:id/Edital/:id/signUp"
-					render={(props) => <Signup handleInscricao={this.handleInscricao} />}
+					render={this.navbar(<Signup handleInscricao={this.handleInscricao} />)}
 				/>
+				<Redirect to="/Projetos/search" />
 			</Switch>
 		);
 	}

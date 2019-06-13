@@ -13,7 +13,6 @@ export class loginScreen extends Component {
 	};
 
 	handleRadioClick = (e) => {
-		console.log(e.target.value);
 		this.setState({ type: e.target.value });
 	};
 

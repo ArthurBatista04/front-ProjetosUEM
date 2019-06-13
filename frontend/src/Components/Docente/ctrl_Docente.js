@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import CadastroProjeto from './cadastroProjeto.js';
 import AtualizarProjeto from './atualizarProjeto.js';
@@ -12,6 +12,7 @@ import VerificarInscritos from './verficarInscritos.js';
 import ProfileDocente from './profileDocente.js';
 import RelatorioGeral from './relatorioGeral.js';
 import Swal from 'sweetalert2';
+import NavBarDocente from './navBarDocente.js';
 
 export class ctrl_Docente extends Component {
 	state = {
@@ -44,6 +45,7 @@ export class ctrl_Docente extends Component {
 			}
 		]
 	};
+
 	handlePS = (id) => {
 		const { value: fruit } = Swal.fire({
 			title: 'Selecione uma operação',
@@ -62,7 +64,7 @@ export class ctrl_Docente extends Component {
 						let url = '/Docente/Projetos/1/Edital/1/create';
 						window.location.href = url;
 					} else if (value === 'D') {
-						const { value: fruit } = Swal.fire({
+						Swal.fire({
 							title: 'Seleciona um edital para excluir',
 							input: 'select',
 							inputOptions: {
@@ -82,7 +84,7 @@ export class ctrl_Docente extends Component {
 							}
 						});
 					} else if (value === 'A') {
-						const { value: fruit } = Swal.fire({
+						Swal.fire({
 							title: 'Seleciona um edital para atualizar',
 							input: 'select',
 							inputOptions: {
@@ -100,7 +102,7 @@ export class ctrl_Docente extends Component {
 							}
 						});
 					} else if (value === 'V') {
-						const { value: fruit } = Swal.fire({
+						Swal.fire({
 							title: 'Seleciona um edital para visualizar',
 							input: 'select',
 							inputOptions: {
@@ -124,7 +126,7 @@ export class ctrl_Docente extends Component {
 	};
 
 	handleGerenciarProjeto = (id) => {
-		const { value: fruit } = Swal.fire({
+		Swal.fire({
 			title: 'Selecione uma operação',
 			input: 'select',
 			inputOptions: {
@@ -136,10 +138,7 @@ export class ctrl_Docente extends Component {
 			showCancelButton: true,
 			inputValidator: (value) => {
 				return new Promise((resolve) => {
-					if (value === 'C') {
-						let url = '/Docente/Projetos/1/Edital/1/create';
-						window.location.href = url;
-					} else if (value === 'D') {
+					if (value === 'D') {
 						Swal.fire({
 							type: 'success',
 							title: 'Projeto deletado com sucesso!'
@@ -299,13 +298,23 @@ export class ctrl_Docente extends Component {
 			title: 'Edital lançado com sucesso!'
 		});
 	};
+
+	navbar = (component) => () => {
+		return (
+			<React.Fragment>
+				<NavBarDocente logout={this.props.logout} />
+				{component}
+			</React.Fragment>
+		);
+	};
+
 	render() {
 		return (
 			<Switch>
 				<Route
 					exact
 					path="/Docente/Projetos"
-					render={(props) => (
+					render={this.navbar(
 						<Projetos
 							projetos={this.state.projetos}
 							handlePS={this.handlePS}
@@ -317,38 +326,36 @@ export class ctrl_Docente extends Component {
 				<Route
 					exact
 					path="/Docente/Projetos/add"
-					render={(props) => <CadastroProjeto handleSubmit={this.handleSubmit} />}
+					render={this.navbar(<CadastroProjeto handleSubmit={this.handleSubmit} />)}
 				/>
 				<Route
-					exact
 					path="/Docente/Projetos/relatorios/:id"
-					render={(props) => <RelatorioProjetos projetos={this.state.projetos} />}
+					render={this.navbar(<RelatorioProjetos projetos={this.state.projetos} />)}
 				/>
 				<Route
-					exact
 					path="/Docente/Projetos/edit/:id"
-					render={(props) => <AtualizarProjeto handleEdit={this.handleEdit} />}
+					render={this.navbar(<AtualizarProjeto handleEdit={this.handleEdit} />)}
 				/>
-				<Route exact path="/Docente/Projetos/relatorioGeral" render={(props) => <RelatorioGeral />} />
+				<Route exact path="/Docente/Projetos/relatorioGeral" render={this.navbar(<RelatorioGeral />)} />
 				<Route
 					exact
 					path="/Docente/Projetos/:id"
-					render={(props) => <ProjetoItemDocente handleClickEdit={this.handleClickEdit} />}
+					render={this.navbar(<ProjetoItemDocente handleClickEdit={this.handleClickEdit} />)}
 				/>
 				<Route
 					exact
-					path="/Docente/Projetos/:id/Edital/:id/create"
-					render={(props) => <CreateEdital handleCreateEdital={this.handleCreateEdital} />}
+					path="/Docente/Projetos/:Pid/Edital/:Eid/create"
+					render={this.navbar(<CreateEdital handleCreateEdital={this.handleCreateEdital} />)}
 				/>
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/edit"
-					render={(props) => <EditEdital handleEditEdital={this.handleEditEdital} />}
+					render={this.navbar(<EditEdital handleEditEdital={this.handleEditEdital} />)}
 				/>
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/visualize"
-					render={(props) => (
+					render={this.navbar(
 						<VisualizeEdital
 							handleVisualizeEdital={this.handleVisualizeEdita}
 							handleGetInscritos={this.handleGetInscritos}
@@ -358,9 +365,11 @@ export class ctrl_Docente extends Component {
 				<Route
 					exact
 					path="/Docente/Projetos/:id/Edital/:id/signedUp"
-					render={(props) => <VerificarInscritos handleLancarEdital={this.handleLancarEdital} />}
+					render={this.navbar(<VerificarInscritos handleLancarEdital={this.handleLancarEdital} />)}
 				/>
-				<Route exact path="/Docente/profile" component={ProfileDocente} />
+				<Route exact path="/Docente/profile" render={this.navbar(<ProfileDocente />)} />
+
+				<Redirect to="/Docente/Projetos" />
 			</Switch>
 		);
 	}
