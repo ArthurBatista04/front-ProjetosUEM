@@ -9,19 +9,19 @@ export class verificarInscritos extends Component {
 		data: [
 			{
 				name: 'Tanner Linsley',
-				age: 26,
 				curso: 'Ciência da computação',
 				requisitos: 'Tenho todos os pré-requisitos',
 				curiculo: 'link',
-				email: 'ra105422@uem.br'
+				email: 'ra105422@uem.br',
+				anoGraduacao: '3º'
 			},
 			{
 				name: 'Sandro Henrique',
-				age: 20,
 				curso: 'Ciência da computação',
 				requisitos: 'Tenho todos os pré-requisitos',
 				curiculo: 'link',
-				email: 'ra98133@uem.br'
+				email: 'ra98133@uem.br',
+				anoGraduacao: '4º'
 			}
 		],
 		columns: [
@@ -31,7 +31,7 @@ export class verificarInscritos extends Component {
 			},
 			{
 				Header: 'Ano da grauduação',
-				accessor: 'age'
+				accessor: 'anoGraduacao'
 			},
 			{
 				Header: 'Curso',
