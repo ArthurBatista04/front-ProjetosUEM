@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import NavBarAdmin from './navBarAdmin.js';
 import RelatoriosAdminUsuarios from './relatoriosAdminUsuarios.js';
 import RelatoriosAdminProjetos from './relatoriosAdminProjetos.js';
+import Axios from 'axios';
 
 export class ctrl_Admin extends Component {
 	handleClickAreas = () => {
@@ -177,6 +178,11 @@ export class ctrl_Admin extends Component {
 		});
 	};
 
+	handleObserver = () => {
+		// Axios.get()
+		// this.setState({})
+	};
+
 	navbar = (component) => (props) => (
 		<React.Fragment>
 			<NavBarAdmin logout={this.props.logout} />
@@ -190,12 +196,12 @@ export class ctrl_Admin extends Component {
 				<Route
 					exact
 					path="/admin/dashboard/relatorios/usuarios"
-					render={this.navbar(<RelatoriosAdminUsuarios />)}
+					render={this.navbar(<RelatoriosAdminUsuarios handleObserver={this.handleObserver} />)}
 				/>
 				<Route
 					exact
 					path="/admin/dashboard/relatorios/projetos"
-					render={this.navbar(<RelatoriosAdminProjetos />)}
+					render={this.navbar(<RelatoriosAdminProjetos handleObserver={this.handleObserver} />)}
 				/>
 				<Route
 					exact
