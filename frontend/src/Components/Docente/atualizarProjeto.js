@@ -232,7 +232,8 @@ export class atualizarProjeto extends Component {
 								name="dataInicio"
 								value={this.state.dataInicio}
 								onChange={(e) => this.handleChange(e)}
-								type="text"
+								type="date"
+								value="2018-07-22"
 								className="form-control"
 								placeholder="ex: dd/mm/aaaa"
 								aria-label="Username"
@@ -249,7 +250,8 @@ export class atualizarProjeto extends Component {
 								name="dataTermino"
 								value={this.state.dataTermino}
 								onChange={(e) => this.handleChange(e)}
-								type="text"
+								type="date"
+								value="2019-07-22"
 								className="form-control"
 								placeholder="ex: dd/mm/aaaa"
 								aria-label="Username"

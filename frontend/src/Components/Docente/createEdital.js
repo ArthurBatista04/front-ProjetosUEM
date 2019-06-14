@@ -53,7 +53,7 @@ export class createEdital extends Component {
 								name="dataInicio"
 								value={this.state.dataInicio}
 								onChange={(e) => this.handleChange(e)}
-								type="text"
+								type="date"
 								className="form-control"
 								placeholder="ex: dd/mm/aaaa"
 								required="required"
@@ -68,7 +68,7 @@ export class createEdital extends Component {
 								name="dataTermino"
 								value={this.state.dataTermino}
 								onChange={(e) => this.handleChange(e)}
-								type="text"
+								type="date"
 								className="form-control"
 								placeholder="ex: dd/mm/aaaa"
 								required="required"
