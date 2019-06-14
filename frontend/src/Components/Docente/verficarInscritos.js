@@ -56,6 +56,7 @@ export class verificarInscritos extends Component {
           return (
             <div>
               <select
+                required
                 name="rank"
                 className="custom-select"
                 id="inputGroupSelect01"
@@ -86,7 +87,9 @@ export class verificarInscritos extends Component {
           data={this.state.data}
           columns={this.state.columns}
           defaultSortDesc={true}
-          minRows={12}
+          defaultSortDesc={true} 
+          minRows={12}  
+          showPaginationBottom={false}
         />
         <div>
           <button
