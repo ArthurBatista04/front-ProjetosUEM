@@ -44,6 +44,7 @@ export class signup extends Component {
 								disabled="true"
 								aria-label="Username"
 								aria-describedby="basic-addon1"
+								required='required'
 							/>
 						</div>
 
