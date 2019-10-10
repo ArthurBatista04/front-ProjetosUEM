@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  List,
-  Datagrid,
-  TextField,
-  EmailField,
-  NumberField
-} from "react-admin";
+import { Edit, Datagrid, TextField, EmailField } from "react-admin";
 
 export const AdminEdit = props => (
   <Edit {...props}>
