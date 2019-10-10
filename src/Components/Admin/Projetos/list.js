@@ -6,7 +6,7 @@ export const ProjetosList = props => (
     <Datagrid >
       <TextField source="titulo" />
       <ReferenceField source="DocenteId" reference="docentes">
-                <TextField source="nome" />
+                <TextField label = "Orientador" source="nome" />
       </ReferenceField>
       <TextField source="area" />
       <TextField source="status" />
