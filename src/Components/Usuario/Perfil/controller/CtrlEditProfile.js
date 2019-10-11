@@ -36,9 +36,18 @@ export const handleSubmit = (self, e) => {
   const userUpdated = {
     nome: self.state.nome.toUpperCase(),
     username: self.state.username.toLowerCase(),
-    github: self.state.github,
-    linkedin: self.state.linkedin,
-    lattes: self.state.lattes
+    email: self.props.email,
+    matricula: self.props.matricula,
+    cargo: self.props.cargo,
+    lotacao: self.props.lotacao,
+    situacao: self.props.situacao,
+    vencimentoContrato: self.props.vencimentoContrato,
+    ra: self.props.ra,
+    curso: self.props.curso,
+    turno: self.props.turno,
+    campus: self.props.campus,
+    serie: self.props.serie,
+    situacaoAcademica: self.props.situacaoAcademica
   };
 
   Axios.patch(`${PathName}/api/Usuarios/${userId}`, userUpdated, Token)

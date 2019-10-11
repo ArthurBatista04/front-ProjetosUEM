@@ -16,20 +16,20 @@ import {
 
 class editProfile extends Component {
   state = {
-    nome: "this.props.nome",
-    email: "this.props.email",
-    username: "this.props.username",
-    matricula: "this.props.matricula",
-    cargo: "this.props.cargo",
-    lotacao: "this.props.lotacao",
-    situacao: "this.props.situacao",
+    nome: this.props.nome,
+    email: this.props.email,
+    username: this.props.username,
+    matricula: this.props.matricula,
+    cargo: this.props.cargo,
+    lotacao: this.props.lotacao,
+    situacao: this.props.situacao,
     vencimentoContrato: this.props.vencimentoContrato,
-    ra: "this.props.ra",
-    curso: "this.props.curso",
-    turno: "this.props.turno",
-    campus: "this.props.campus",
-    serie: "this.props.serie",
-    situacaoAcademica: "this.props.situacaoAcademica",
+    ra: this.props.ra,
+    curso: this.props.curso,
+    turno: this.props.turno,
+    campus: this.props.campus,
+    serie: this.props.serie,
+    situacaoAcademica: this.props.situacaoAcademica,
     redirect: false
   };
 
