@@ -4,9 +4,9 @@ import { Admin, Resource } from 'react-admin';
 import Dashboard from '../View/dashboard';
 
 import UsuarioList from '../Usuarios/View/list';
-import ProjetosCreate from '../Projetos/create';
-import ProjetosEdit from '../Projetos/edit';
-import ProjetosList from '../Projetos/list';
+import ProjetosCreate from '../Projetos/View/create';
+import ProjetosEdit from '../Projetos/View/edit';
+import ProjetosList from '../Projetos/View/list';
 import ProcessoSeletivoCreate from '../ProcessoSeletivo/View/create';
 import ProcessoSeletivoEdit from '../ProcessoSeletivo/View/edit';
 import ProcessoSeletivoList from '../ProcessoSeletivo/View/list';

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   List,
   Datagrid,
@@ -6,9 +6,9 @@ import {
   NumberField,
   ReferenceField,
   EditButton
-} from "react-admin";
+} from 'react-admin';
 
-export const ProjetosList = props => (
+export default props => (
   <List {...props}>
     <Datagrid>
       <TextField source="titulo" />

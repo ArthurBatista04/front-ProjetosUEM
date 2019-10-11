@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   number,
   required,
@@ -12,13 +12,13 @@ import {
   ReferenceInput,
   SelectInput,
   DisabledInput
-} from "react-admin";
+} from 'react-admin';
 
 const validateTitulo = [required(), minLength(3)];
 const validateOrientadores = [required(), minLength(3)];
 const validateLimites = [required(), number()];
 
-export const ProjetosEdit = props => (
+export default props => (
   <Edit {...props}>
     <SimpleForm>
       <DisabledInput source="id" />

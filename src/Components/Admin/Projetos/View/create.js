@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   number,
   required,
@@ -11,13 +11,13 @@ import {
   LongTextInput,
   ReferenceInput,
   SelectInput
-} from "react-admin";
+} from 'react-admin';
 
 const validateTitulo = [required(), minLength(3)];
 const validateOrientadores = [required(), minLength(3)];
 const validateLimites = [required(), number()];
 
-export const ProjetosCreate = props => (
+export default props => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="titulo" validate={validateTitulo} />
