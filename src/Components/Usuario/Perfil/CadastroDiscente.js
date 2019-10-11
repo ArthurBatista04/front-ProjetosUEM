@@ -2,9 +2,7 @@ import React, { Component, Fragment } from "react";
 import Header from "../../Header/Header";
 import { Redirect } from "react-router-dom";
 import { TextInput } from "react-materialize";
-import axios from "axios";
-import Swal from "sweetalert2";
-import PathName from "../../pathConst.js";
+
 import {
   handleChange,
   handleClick,
