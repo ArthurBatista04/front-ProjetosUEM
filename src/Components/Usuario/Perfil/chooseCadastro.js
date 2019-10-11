@@ -2,21 +2,12 @@ import React, { Component, Fragment } from "react";
 import Header from "../../Header/Header";
 import { Select } from "react-materialize";
 import { Redirect } from "react-router-dom";
+import { handleChange, handleSubmit } from "./controller/CtrlChooseCadastro";
 
 class chooseCadastro extends Component {
   state = {
     type: 0,
-    name: "",
     redirect: false
-  };
-
-  handleChange = e => {
-    this.setState({ type: parseInt(e.target.value) });
-    this.setState({ name: e.target.name });
-  };
-
-  handleSubmit = e => {
-    this.setState({ redirect: true });
   };
 
   render() {
@@ -41,22 +32,31 @@ class chooseCadastro extends Component {
               }}
             >
               <center>
-                <form className="col s12" onSubmit={this.handleSubmit}>
+                <form className="col s12" onSubmit={() => handleSubmit(this)}>
                   <div className="col s12">
-                    <Select
-                      value={this.state.name}
-                      onChange={this.handleChange}
-                    >
-                      <option name="dummy" value="" disabled defaultValue>
-                        Selecione o tipo de cadastro
-                      </option>
-                      <option name="Docente" value="1">
-                        Docente
-                      </option>
-                      <option name="Discente" value="2">
-                        Discente
-                      </option>
-                    </Select>
+                    <div className="container">
+                      <div className="row">
+                        <Select
+                          s={12}
+                          value={this.state.value}
+                          onChange={e => handleChange(this, e)}
+                        >
+                          <option
+                            name="Selecione o tipo de cadastro"
+                            value="0"
+                            defaultValue
+                          >
+                            Selecione o tipo de cadastro
+                          </option>
+                          <option name="Docente" value="1">
+                            Docente
+                          </option>
+                          <option name="Discente" value="2">
+                            Discente
+                          </option>
+                        </Select>
+                      </div>
+                    </div>
                   </div>
                   <br />
                   <div className="row">

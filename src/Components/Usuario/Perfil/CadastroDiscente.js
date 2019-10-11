@@ -5,6 +5,11 @@ import { TextInput } from "react-materialize";
 import axios from "axios";
 import Swal from "sweetalert2";
 import PathName from "../../pathConst.js";
+import {
+  handleChange,
+  handleClick,
+  handleSignUp
+} from "./controller/CtrlCadastroDiscente";
 
 class Cadastro extends Component {
   state = {
@@ -24,83 +29,6 @@ class Cadastro extends Component {
     to: ""
   };
 
-  handleClick = () => {
-    this.setState({ redirect: true, to: "Cadastro" });
-  };
-
-  handleChange = (e, mask) => {
-    if (typeof mask === "function")
-      this.setState({ [e.target.name]: mask(e.target.value) });
-    else this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleSignUp = e => {
-    e.preventDefault();
-    if (this.state.password !== this.state.confirmPassword) {
-      this.setState({ confirmPassword: "" });
-      return Swal.fire({
-        type: "error",
-        title: "Senha confirmada incorretamente",
-        text: "Tente novamente"
-      });
-    } else if (this.state.password.length < 4) {
-      this.setState({ confirmPassword: "" });
-      return Swal.fire({
-        type: "error",
-        title: "Senha deve ter pelo menos 4 caracteres",
-        text: "Tente novamente"
-      });
-    }
-
-    const {
-      nome,
-      email,
-      ra,
-      curso,
-      turno,
-      campus,
-      serie,
-      situacaoAcademica,
-      username,
-      password
-    } = this.state;
-
-    const newUser = {
-      nome: nome.toUpperCase(),
-      email,
-      ra,
-      curso,
-      turno,
-      campus,
-      serie,
-      situacaoAcademica,
-      password,
-      username: username.toLowerCase(),
-      realm: "Discente"
-    };
-
-    axios
-      .post(`${PathName}/api/Discentes`, newUser)
-      .then(res => {
-        if (res.status >= 200 && res.status < 300) {
-          Swal.fire({
-            type: "success",
-            title: "Cadastro realizado com sucesso",
-            text: "Veja seu email para confirmar sua conta",
-            showConfirmButton: true
-          }).then(() => {
-            this.setState({ redirect: true });
-          });
-        }
-      })
-      .catch(err => {
-        return Swal.fire({
-          type: "error",
-          title: "Ops! algo deu errado",
-          text: err.response.data.error.message
-        });
-      });
-  };
   render() {
     if (this.state.redirect) {
       if (this.state.to === "Cadastro") return <Redirect to="/cadastro" />;
@@ -120,7 +48,7 @@ class Cadastro extends Component {
                 border: 1 + "px solid  #EEE"
               }}
             >
-              <form className="col s12" onSubmit={e => this.handleSignUp(e)}>
+              <form className="col s12" onSubmit={e => handleSignUp(this, e)}>
                 <div className="container">
                   <div className="row">
                     <TextInput
@@ -131,7 +59,7 @@ class Cadastro extends Component {
                       value={this.state.nome}
                       required
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
 
@@ -142,7 +70,7 @@ class Cadastro extends Component {
                       value={this.state.ra}
                       required
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
 
@@ -153,7 +81,7 @@ class Cadastro extends Component {
                       value={this.state.curso}
                       required
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
 
@@ -163,7 +91,7 @@ class Cadastro extends Component {
                       name="serie"
                       value={this.state.serie}
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
                     <TextInput
@@ -173,7 +101,7 @@ class Cadastro extends Component {
                       value={this.state.turno}
                       required
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
 
@@ -184,7 +112,7 @@ class Cadastro extends Component {
                       value={this.state.campus}
                       required
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
 
@@ -194,7 +122,7 @@ class Cadastro extends Component {
                       name="situacaoAcademica"
                       value={this.state.situacaoAcademica}
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
 
@@ -207,7 +135,7 @@ class Cadastro extends Component {
                       required
                       value={this.state.email}
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
 
@@ -219,7 +147,7 @@ class Cadastro extends Component {
                       required
                       value={this.state.username}
                       onChange={e => {
-                        this.handleChange(e);
+                        handleChange(this, e);
                       }}
                     />
 
@@ -230,7 +158,9 @@ class Cadastro extends Component {
                       name="password"
                       required
                       label="Senha"
-                      onChange={this.handleChange}
+                      onChange={e => {
+                        handleChange(this, e);
+                      }}
                     />
                     <TextInput
                       s={12}
@@ -239,7 +169,9 @@ class Cadastro extends Component {
                       name="confirmPassword"
                       required
                       label="Confirme senha"
-                      onChange={this.handleChange}
+                      onChange={e => {
+                        handleChange(this, e);
+                      }}
                     />
                   </div>
                 </div>
@@ -251,7 +183,7 @@ class Cadastro extends Component {
                       name="btn_voltar"
                       className="col s4 btn btn-large waves-effect black"
                       style={{ float: "none", marginLeft: "auto" }}
-                      onClick={this.handleClick}
+                      onClick={e => handleClick(this, e)}
                     >
                       Voltar
                     </button>
