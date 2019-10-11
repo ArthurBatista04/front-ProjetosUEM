@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "../userProfile.css";
 import { Row, Col } from "react-materialize";
-import "../../Eventos/centerIfSmall.css";
 
 class showProfile extends Component {
   componentWillMount() {
@@ -15,24 +14,41 @@ class showProfile extends Component {
     logged: false
   };
 
-  getExtrasPetiano = () => {
+  getExtras = () => {
     const { usuario } = this.props;
-    return localStorage.getItem("Petiano") ? (
+    return localStorage.getItem("Docente") ? (
       <Fragment>
-        {usuario.github
-          ? this.buildRow("GitHub:", usuario.github)
-          : this.buildRow("GitHub:", "Não cadastrado")}
         <hr className="style-six" />
-        {usuario.linkedin
-          ? this.buildRow("LinkedIn:", usuario.linkedin)
-          : this.buildRow("LinkedIn:", "Não cadastrado")}
+        {this.buildRow("Matrícula:", usuario.matricula)}
         <hr className="style-six" />
-        {usuario.lattes
-          ? this.buildRow("Lattes:", usuario.lattes)
-          : this.buildRow("Lattes:", "Não cadastrado")}
+        {this.buildRow("Cargo:", usuario.cargo)}
+        <hr className="style-six" />
+        {this.buildRow("Lotação:", usuario.lotacao)}
+        <hr className="style-six" />
+        {this.buildRow("Situação:", usuario.situacao)}
+        <hr className="style-six" />
+        {this.buildRow("Vencimento do Contrato:", usuario.vencimentoContrato)}
+        <hr className="style-six" />
+        {this.buildRow("E-mail:", usuario.email)}
+        <hr className="style-six" />
+        {this.buildRow("Nome de Usuário:", usuario.username)}
         <hr className="style-six" />
       </Fragment>
-    ) : null;
+    ) : (
+      <Fragment>
+        <hr className="style-six" />
+        {this.buildRow("RA:", usuario.ra)}
+        <hr className="style-six" />
+        {this.buildRow("Curso:", usuario.curso)}
+        <hr className="style-six" />
+        {this.buildRow("Turno:", usuario.turno)}
+        <hr className="style-six" />
+        {this.buildRow("Campus:", usuario.campus)}
+        <hr className="style-six" />
+        {this.buildRow("Situação Acadêmica:", usuario.situacaoAcademica)}
+        <hr className="style-six" />
+      </Fragment>
+    );
   };
 
   buildRow = (key, value) => (
@@ -61,16 +77,14 @@ class showProfile extends Component {
               <br />
               <div className="basicInfo grey-text text-darken-2">
                 <span style={{ textTransform: "capitalize" }}>
-                  {this.buildRow("Nome:", usuario.nome.toLowerCase())}
+                  {this.buildRow("Nome:", usuario.nome)}
                 </span>
-                <hr className="style-six" />
-                {this.buildRow("CPF:", usuario.cpf)}
                 <hr className="style-six" />
                 {this.buildRow("E-mail:", usuario.email)}
                 <hr className="style-six" />
                 {this.buildRow("Username:", usuario.username)}
                 <hr className="style-six" />
-                {this.getExtrasPetiano()}
+                {this.getExtras()}
               </div>
               <div style={{ paddingTop: "2rem" }}>
                 <button
