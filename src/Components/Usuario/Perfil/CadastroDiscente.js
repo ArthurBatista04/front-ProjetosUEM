@@ -20,7 +20,12 @@ class Cadastro extends Component {
     password: "",
     confirmPassword: "",
     redirect: false,
-    type: this.props.type
+    type: this.props.type,
+    to: ""
+  };
+
+  handleClick = () => {
+    this.setState({ redirect: true, to: "Cadastro" });
   };
 
   handleChange = (e, mask) => {
@@ -98,7 +103,8 @@ class Cadastro extends Component {
   };
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/" />;
+      if (this.state.to === "Cadastro") return <Redirect to="/cadastro" />;
+      else return <Redirect to="/" />;
     }
     return (
       <Fragment>
@@ -238,18 +244,28 @@ class Cadastro extends Component {
                   </div>
                 </div>
                 <br />
-                <center>
-                  <div className="row">
+                <div>
+                  <div className="row" style={{ display: "flex" }}>
+                    <button
+                      type="button"
+                      name="btn_voltar"
+                      className="col s4 btn btn-large waves-effect black"
+                      style={{ float: "none", marginLeft: "auto" }}
+                      onClick={this.handleClick}
+                    >
+                      Voltar
+                    </button>
+
                     <button
                       type="submit"
-                      name="btn_login"
-                      className="col s6 btn btn-large waves-effect black"
-                      style={{ float: "none" }}
+                      name="btn_signup"
+                      className="col s4 btn btn-large waves-effect black"
+                      style={{ float: "none", marginRight: "auto" }}
                     >
                       Cadastrar
                     </button>
                   </div>
-                </center>
+                </div>
               </form>
             </div>
           </div>
