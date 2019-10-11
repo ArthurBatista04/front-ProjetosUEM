@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Header from "../../Header/Header";
 import { Redirect } from "react-router-dom";
-import { TextInput } from "react-materialize";
+import { TextInput, DatePicker } from "react-materialize";
 import {
   handleChange,
   handleClick,
@@ -103,7 +103,7 @@ class Cadastro extends Component {
                       }}
                     />
 
-                    <TextInput
+                    <DatePicker
                       s={12}
                       label="Vencimento do Contrato"
                       name="vencimentoContrato"
