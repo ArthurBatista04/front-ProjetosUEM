@@ -5,7 +5,8 @@ import { TextInput, DatePicker } from "react-materialize";
 import {
   handleChange,
   handleClick,
-  handleSignUp
+  handleSignUp,
+  handleDatePickerChange
 } from "../controller/CtrlCadastroDocente";
 
 class Cadastro extends Component {
@@ -110,7 +111,7 @@ class Cadastro extends Component {
                       name="vencimentoContrato"
                       value={this.state.vencimentoContrato}
                       onChange={e => {
-                        handleChange(this, e);
+                        handleDatePickerChange(this, e);
                       }}
                     />
 

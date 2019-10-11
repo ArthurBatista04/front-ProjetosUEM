@@ -15,7 +15,7 @@ export const handleChange = (self, e) => {
 };
 
 export const handleDatePickerChange = (self, e) => {
-  self.setState({ vencimentoContrato: new Date(e) });
+  self.setState({ vencimentoContrato: e.toString() });
 };
 
 export const handleClickVoltar = self => {
