@@ -1,5 +1,8 @@
 import React from "react";
 import {
+  number,
+  required,
+  minLength,
   Create,
   SimpleForm,
   TextInput,
@@ -10,29 +13,38 @@ import {
   SelectInput
 } from "react-admin";
 
+const validateTitulo = [required(), minLength(3)];
+const validateOrientadores = [required(), minLength(3)];
+const validateLimites = [required(), number()];
+
 export const ProjetosCreate = props => (
   <Create {...props}>
     <SimpleForm>
-      <TextInput source="titulo" />
-      <TextInput source="orientador" />
-      <TextInput source="coorientador" />
+      <TextInput source="titulo" validate={validateTitulo} />
+      <TextInput source="orientador" validate={validateOrientadores} />
+      <TextInput source="coorientador" validate={validateOrientadores} />
       <ReferenceInput source="areaId" reference="areas">
         <SelectInput label="Área" optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="subareaId" reference="subareas">
         <SelectInput label="Subárea" optionText="name" />
       </ReferenceInput>
-      <TextInput source="tipo" />
-      <DateInput source="dataInicio" />
-      <DateInput source="dataTermino" />
-      <TextInput source="status" />
-      <NumberInput label="Número de participantes" source="nroParticipantes" />
+      <TextInput source="tipo" validate={required()} />
+      <DateInput source="dataInicio" validate={required()} />
+      <DateInput source="dataTermino" validate={required()} />
+      <TextInput source="status" validate={required()} />
+      <NumberInput
+        label="Número de participantes"
+        source="nroParticipantes"
+        validate={validateLimites}
+      />
       <NumberInput
         label="Limite de participantes"
         source="limiteParticipantes"
+        validate={validateLimites}
       />
       <LongTextInput source="requisitos" />
-      <LongTextInput source="resumo" />
+      <LongTextInput source="resumo" validate={required()} />
     </SimpleForm>
   </Create>
 );
