@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
-import Header from "../../Header/Header";
-import axios from "axios";
-import Swal from "sweetalert2";
+import Header from "../../../Header/Header";
 import { TextInput } from "react-materialize";
 import { Redirect, Link } from "react-router-dom";
-import PathName from "../../pathConst.js";
+import { handleChange, handlePassChange } from "../controller/CtrlTrocarEmail";
 
 class TrocarEmail extends Component {
   constructor(props) {
@@ -15,53 +13,6 @@ class TrocarEmail extends Component {
       redirect: false
     };
   }
-
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handlePassChange = async e => {
-    e.preventDefault();
-    const { newEmail, confirmNewEmail } = this.state;
-    const userId = localStorage.getItem("user_id");
-    if (newEmail !== confirmNewEmail) {
-      return Swal.fire({
-        type: "error",
-        title: "Confirmação de e-mail inválida",
-        text: "Por favor, verifique os e-mails digitados"
-      });
-    }
-    axios
-      .patch(
-        `${PathName}/api//Usuarios/${userId}`,
-        {
-          email: this.state.newEmail
-        },
-        {
-          headers: {
-            Authorization: localStorage.getItem("access_token")
-          }
-        }
-      )
-      .then(async res => {
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("user_id");
-        localStorage.removeItem("petiano");
-        this.setState({ redirect: true });
-        return Swal.fire({
-          type: "success",
-          title: "E-mail alterada com sucesso!",
-          text: "Por favor, confirme seu e-mail antes de realizar um novo login"
-        });
-      })
-      .catch(err => {
-        return Swal.fire({
-          type: "error",
-          title: "Ops! algo deu errado",
-          text: err.response.data.error.message
-        });
-      });
-  };
 
   render() {
     if (this.state.redirect) {
@@ -74,7 +25,7 @@ class TrocarEmail extends Component {
         <div className="container">
           <div className="card-panel">
             <div className="row">
-              <form onSubmit={this.handlePassChange}>
+              <form onSubmit={e => handlePassChange(this, e)}>
                 <h5 className="indigo-text center">Alterar E-mail</h5>
                 <div className="conatiner">
                   <TextInput
@@ -87,7 +38,7 @@ class TrocarEmail extends Component {
                     success=""
                     required
                     onChange={e => {
-                      this.handleChange(e);
+                      handleChange(this, e);
                     }}
                   />
 
@@ -101,7 +52,7 @@ class TrocarEmail extends Component {
                     success=""
                     required
                     onChange={e => {
-                      this.handleChange(e);
+                      handleChange(this, e);
                     }}
                   />
                 </div>

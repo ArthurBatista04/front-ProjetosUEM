@@ -1,12 +1,18 @@
 import React, { Component, Fragment } from "react";
 import { TextInput, DatePicker } from "react-materialize";
-import Header from "../../Header/Header";
-import Axios from "axios";
-import Swal from "sweetalert2";
-import PathName from "../../pathConst";
-import UserProfile from "../userProfile";
+import Header from "../../../Header/Header";
+import UserProfile from "../../userProfile";
 import { Link } from "react-router-dom";
-import "../userProfile.css";
+import "../../userProfile.css";
+
+import {
+  capitalizeString,
+  handleChange,
+  handleClickVoltar,
+  handleSubmit,
+  handleDatePickerChange,
+  getRealm
+} from "../controller/CtrlEditProfile";
 
 class editProfile extends Component {
   state = {
@@ -28,59 +34,11 @@ class editProfile extends Component {
   };
 
   componentDidMount() {
-    this.setState({ nome: this.capitalizeString(this.state.nome) });
+    this.setState({ nome: capitalizeString(this.state.nome) });
   }
 
-  capitalizeString = str => {
-    return str.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
-  };
-
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleClickVoltar = () => {
-    this.setState({ redirect: true });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const userId = this.props.usuario.id;
-    const token = localStorage.getItem("access_token");
-    const Token = {
-      headers: {
-        Authorization: token
-      }
-    };
-    const userUpdated = {
-      nome: this.state.nome.toUpperCase(),
-      username: this.state.username.toLowerCase(),
-      github: this.state.github,
-      linkedin: this.state.linkedin,
-      lattes: this.state.lattes
-    };
-    Axios.patch(`${PathName}/api//Usuarios/${userId}`, userUpdated, Token)
-      .then(res => {
-        Swal.fire({
-          type: "success",
-          title: "Alteração realizada com sucesso",
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => {
-          this.setState({ redirect: true });
-        });
-      })
-      .catch(err => {
-        return Swal.fire({
-          type: "error",
-          title: "Ops! algo deu errado",
-          text: err.response.data.error.message
-        });
-      });
-  };
-
   getExtras = () => {
-    return localStorage.getItem("Discente") ? (
+    return getRealm() === "Discente" ? (
       <Fragment>
         <TextInput
           s={12}
@@ -89,7 +47,7 @@ class editProfile extends Component {
           value={this.state.ra}
           required
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
 
@@ -100,7 +58,7 @@ class editProfile extends Component {
           value={this.state.curso}
           required
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
 
@@ -110,7 +68,7 @@ class editProfile extends Component {
           name="serie"
           value={this.state.serie}
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
         <TextInput
@@ -120,7 +78,7 @@ class editProfile extends Component {
           value={this.state.turno}
           required
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
 
@@ -131,7 +89,7 @@ class editProfile extends Component {
           value={this.state.campus}
           required
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
 
@@ -141,7 +99,7 @@ class editProfile extends Component {
           name="situacaoAcademica"
           value={this.state.situacaoAcademica}
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
       </Fragment>
@@ -154,7 +112,7 @@ class editProfile extends Component {
           value={this.state.matricula}
           required
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
 
@@ -165,7 +123,7 @@ class editProfile extends Component {
           value={this.state.cargo}
           required
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
 
@@ -176,7 +134,7 @@ class editProfile extends Component {
           value={this.state.lotacao}
           required
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
 
@@ -187,7 +145,7 @@ class editProfile extends Component {
           value={this.state.situacao}
           required
           onChange={e => {
-            this.handleChange(e);
+            handleChange(this, e);
           }}
         />
 
@@ -197,7 +155,7 @@ class editProfile extends Component {
           name="vencimentoContrato"
           value={this.state.vencimentoContrato}
           onChange={e => {
-            this.handleChange(e);
+            handleDatePickerChange(this, e);
           }}
         />
       </Fragment>
@@ -216,7 +174,7 @@ class editProfile extends Component {
         <div className="container">
           <div className="card-panel">
             <div className="row">
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={e => handleSubmit(this, e)}>
                 <h3 className="center">Editar perfil</h3>
                 <TextInput
                   s={12}
@@ -226,7 +184,7 @@ class editProfile extends Component {
                   value={nome}
                   required
                   onChange={e => {
-                    this.handleChange(e);
+                    handleChange(this, e);
                   }}
                 />
 
@@ -238,7 +196,7 @@ class editProfile extends Component {
                   required
                   value={username}
                   onChange={e => {
-                    this.handleChange(e);
+                    handleChange(this, e);
                   }}
                 />
 
@@ -283,7 +241,7 @@ class editProfile extends Component {
               <button
                 type="button"
                 className=" btn waves-effect waves-light blue lighten-1 left"
-                onClick={this.handleClickVoltar}
+                onClick={() => handleClickVoltar(this)}
               >
                 Voltar
               </button>

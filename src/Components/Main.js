@@ -2,14 +2,14 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./Home";
-import chooseCadastro from "./Usuario/Perfil/chooseCadastro";
-import CadastroDocente from "./Usuario/Perfil/CadastroDocente";
-import CadastroDiscente from "./Usuario/Perfil/CadastroDiscente";
+import chooseCadastro from "./Usuario/Perfil/View/chooseCadastro";
+import CadastroDocente from "./Usuario/Perfil/View/CadastroDocente";
+import CadastroDiscente from "./Usuario/Perfil/View/CadastroDiscente";
 import Login from "./Login/Login";
 import Manager from "./Admin/Controller/controller";
 import userProfile from "./Usuario/userProfile";
-import TrocaSenha from "./Usuario/Perfil/TrocaSenha";
-import TrocaEmail from "./Usuario/Perfil/trocarEmail";
+import TrocaSenha from "./Usuario/Perfil/View/TrocaSenha";
+import TrocaEmail from "./Usuario/Perfil/View/trocarEmail";
 
 const Main = () => (
   <main>

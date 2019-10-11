@@ -21,6 +21,10 @@ export const handleChange = (self, e, mask) => {
   else self.setState({ [e.target.name]: e.target.value });
 };
 
+export const handleDatePickerChange = (self, e) => {
+  self.setState({ vencimentoContrato: e.toString() });
+};
+
 export const handleSignUp = (self, e) => {
   e.preventDefault();
 

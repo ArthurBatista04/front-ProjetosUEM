@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
-import "../userProfile.css";
+import "../../userProfile.css";
 import { Row, Col } from "react-materialize";
+
+import { getRealm } from "../controller/CtrlEditProfile";
 
 class showProfile extends Component {
   componentWillMount() {
@@ -16,7 +18,7 @@ class showProfile extends Component {
 
   getExtras = () => {
     const { usuario } = this.props;
-    return localStorage.getItem("Docente") ? (
+    return getRealm() === "Docente" ? (
       <Fragment>
         <hr className="style-six" />
         {this.buildRow("Matrícula:", usuario.matricula)}
@@ -64,6 +66,7 @@ class showProfile extends Component {
       </Col>
     </Row>
   );
+
   render() {
     const { usuario } = this.props;
     return (
@@ -82,7 +85,7 @@ class showProfile extends Component {
                 <hr className="style-six" />
                 {this.buildRow("E-mail:", usuario.email)}
                 <hr className="style-six" />
-                {this.buildRow("Username:", usuario.username)}
+                {this.buildRow("Nome de Usuário:", usuario.username)}
                 <hr className="style-six" />
                 {this.getExtras()}
               </div>

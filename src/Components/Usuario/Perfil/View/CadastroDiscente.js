@@ -1,22 +1,24 @@
 import React, { Component, Fragment } from "react";
-import Header from "../../Header/Header";
+import Header from "../../../Header/Header";
 import { Redirect } from "react-router-dom";
-import { TextInput, DatePicker } from "react-materialize";
+import { TextInput } from "react-materialize";
+
 import {
   handleChange,
   handleClick,
   handleSignUp
-} from "./controller/CtrlCadastroDocente";
+} from "../controller/CtrlCadastroDiscente";
 
 class Cadastro extends Component {
   state = {
     nome: "",
     email: "",
-    matricula: "",
-    cargo: "",
-    lotacao: "",
-    situacao: "",
-    vencimentoContrato: "",
+    ra: "",
+    curso: "",
+    turno: "",
+    campus: "",
+    serie: "",
+    situacaoAcademica: "",
     username: "",
     password: "",
     confirmPassword: "",
@@ -28,7 +30,7 @@ class Cadastro extends Component {
   render() {
     if (this.state.redirect) {
       if (this.state.to === "Cadastro") return <Redirect to="/cadastro" />;
-      return <Redirect to="/" />;
+      else return <Redirect to="/" />;
     }
     return (
       <Fragment>
@@ -46,7 +48,7 @@ class Cadastro extends Component {
             >
               <form className="col s12" onSubmit={e => handleSignUp(this, e)}>
                 <div className="container">
-                  <h3>Cadastro do Docente</h3>
+                  <h3>Cadastro do Discente</h3>
                   <div className="row">
                     <TextInput
                       s={12}
@@ -62,9 +64,9 @@ class Cadastro extends Component {
 
                     <TextInput
                       s={12}
-                      label="Matrícula"
-                      name="matricula"
-                      value={this.state.matricula}
+                      label="RA"
+                      name="ra"
+                      value={this.state.ra}
                       required
                       onChange={e => {
                         handleChange(this, e);
@@ -73,9 +75,9 @@ class Cadastro extends Component {
 
                     <TextInput
                       s={12}
-                      label="Cargo"
-                      name="cargo"
-                      value={this.state.cargo}
+                      label="Curso"
+                      name="curso"
+                      value={this.state.curso}
                       required
                       onChange={e => {
                         handleChange(this, e);
@@ -84,9 +86,18 @@ class Cadastro extends Component {
 
                     <TextInput
                       s={12}
-                      label="Lotação"
-                      name="lotacao"
-                      value={this.state.lotacao}
+                      label="Série"
+                      name="serie"
+                      value={this.state.serie}
+                      onChange={e => {
+                        handleChange(this, e);
+                      }}
+                    />
+                    <TextInput
+                      s={12}
+                      label="Turno"
+                      name="turno"
+                      value={this.state.turno}
                       required
                       onChange={e => {
                         handleChange(this, e);
@@ -95,20 +106,20 @@ class Cadastro extends Component {
 
                     <TextInput
                       s={12}
-                      label="Situação"
-                      name="situacao"
-                      value={this.state.situacao}
+                      label="Campus"
+                      name="campus"
+                      value={this.state.campus}
                       required
                       onChange={e => {
                         handleChange(this, e);
                       }}
                     />
 
-                    <DatePicker
+                    <TextInput
                       s={12}
-                      label="Vencimento do Contrato"
-                      name="vencimentoContrato"
-                      value={this.state.vencimentoContrato}
+                      label="Situação Acadêmica"
+                      name="situacaoAcademica"
+                      value={this.state.situacaoAcademica}
                       onChange={e => {
                         handleChange(this, e);
                       }}
@@ -146,7 +157,9 @@ class Cadastro extends Component {
                       name="password"
                       required
                       label="Senha"
-                      onChange={e => handleChange(this, e)}
+                      onChange={e => {
+                        handleChange(this, e);
+                      }}
                     />
                     <TextInput
                       s={12}
@@ -155,30 +168,34 @@ class Cadastro extends Component {
                       name="confirmPassword"
                       required
                       label="Confirme senha"
-                      onChange={e => handleChange(this, e)}
+                      onChange={e => {
+                        handleChange(this, e);
+                      }}
                     />
                   </div>
                 </div>
                 <br />
-                <div className="row" style={{ display: "flex" }}>
-                  <button
-                    type="button"
-                    name="btn_voltar"
-                    className="col s4 btn btn-large waves-effect black"
-                    style={{ float: "none", marginLeft: "auto" }}
-                    onClick={e => handleClick(this, e)}
-                  >
-                    Voltar
-                  </button>
+                <div>
+                  <div className="row" style={{ display: "flex" }}>
+                    <button
+                      type="button"
+                      name="btn_voltar"
+                      className="col s4 btn btn-large waves-effect black"
+                      style={{ float: "none", marginLeft: "auto" }}
+                      onClick={e => handleClick(this, e)}
+                    >
+                      Voltar
+                    </button>
 
-                  <button
-                    type="submit"
-                    name="btn_signup"
-                    className="col s4 btn btn-large waves-effect black"
-                    style={{ float: "none", marginRight: "auto" }}
-                  >
-                    Cadastrar
-                  </button>
+                    <button
+                      type="submit"
+                      name="btn_signup"
+                      className="col s4 btn btn-large waves-effect black"
+                      style={{ float: "none", marginRight: "auto" }}
+                    >
+                      Cadastrar
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
