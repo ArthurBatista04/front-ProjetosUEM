@@ -48,6 +48,7 @@ class Cadastro extends Component {
             >
               <form className="col s12" onSubmit={e => handleSignUp(this, e)}>
                 <div className="container">
+                  <h3>Cadastro do Discente</h3>
                   <div className="row">
                     <TextInput
                       s={12}
