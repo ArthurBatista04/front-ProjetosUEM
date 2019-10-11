@@ -2,8 +2,8 @@ import React, { Component, Fragment } from "react";
 import Axios from "axios";
 import Header from "../Header/Header";
 import PathName from "../pathConst";
-import ShowProfile from "./Perfil/showProfile";
-import EditProfile from "./Perfil/editProfile";
+import ShowProfile from "./Perfil/View/showProfile";
+import EditProfile from "./Perfil/View/editProfile";
 import ReactLoading from "react-loading";
 import Swal from "sweetalert2";
 

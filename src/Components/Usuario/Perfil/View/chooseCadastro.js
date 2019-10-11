@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
-import Header from "../../Header/Header";
+import Header from "../../../Header/Header";
 import { Select } from "react-materialize";
 import { Redirect } from "react-router-dom";
-import { handleChange, handleSubmit } from "./controller/CtrlChooseCadastro";
+import { handleChange, handleSubmit } from "../controller/CtrlChooseCadastro";
 
 class chooseCadastro extends Component {
   state = {

@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
-import Header from "../../Header/Header";
+import Header from "../../../Header/Header";
 import { Redirect } from "react-router-dom";
 import { TextInput, DatePicker } from "react-materialize";
 import {
   handleChange,
   handleClick,
   handleSignUp
-} from "./controller/CtrlCadastroDocente";
+} from "../controller/CtrlCadastroDocente";
 
 class Cadastro extends Component {
   state = {

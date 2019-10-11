@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
-import "../userProfile.css";
+import "../../userProfile.css";
 import { Row, Col } from "react-materialize";
 
-import { getRealm } from "./controller/CtrlEditProfile";
+import { getRealm } from "../controller/CtrlEditProfile";
 
 class showProfile extends Component {
   componentWillMount() {

@@ -1,15 +1,17 @@
 import React, { Component, Fragment } from "react";
-import Header from "../../Header/Header";
+import Header from "../../../Header/Header";
 import { TextInput } from "react-materialize";
 import { Redirect, Link } from "react-router-dom";
-import { handleChange, handlePassChange } from "./controller/CtrlTrocarEmail";
 
-class TrocarEmail extends Component {
+import { handleChange, handlePassChange } from "../controller/CtrlTrocaSenha";
+
+class TrocaSenha extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newEmail: "",
-      confirmNewEmail: "",
+      currentPassword: "",
+      newPassword: "",
+      confirmNewPassword: "",
       redirect: false
     };
   }
@@ -26,29 +28,42 @@ class TrocarEmail extends Component {
           <div className="card-panel">
             <div className="row">
               <form onSubmit={e => handlePassChange(this, e)}>
-                <h5 className="indigo-text center">Alterar E-mail</h5>
-                <div className="conatiner">
+                <h5 className="indigo-text center">Alterar senha</h5>
+
+                <div>
                   <TextInput
                     s={12}
-                    email
+                    password
                     validate
-                    label="Novo e-mail"
-                    name="newEmail"
-                    error="Insira o novo e-mail"
+                    label="Senha atual"
+                    name="currentPassword"
+                    error="Insira a senha atual"
                     success=""
                     required
                     onChange={e => {
                       handleChange(this, e);
                     }}
                   />
-
                   <TextInput
                     s={12}
-                    email
+                    password
                     validate
-                    label="Confirmar novo e-mail"
-                    name="confirmNewEmail"
-                    error="Insira o novo e-mail novamente"
+                    label="Senha nova"
+                    name="newPassword"
+                    error="Insira a nova senha"
+                    success=""
+                    required
+                    onChange={e => {
+                      handleChange(this, e);
+                    }}
+                  />
+                  <TextInput
+                    s={12}
+                    password
+                    validate
+                    label="Confirme nova senha"
+                    name="confirmNewPassword"
+                    error="Confirme a nova senha"
                     success=""
                     required
                     onChange={e => {
@@ -62,7 +77,7 @@ class TrocarEmail extends Component {
                   name="btn_senha"
                   className="btn blue waves-effect waves-light lighten-1 right"
                 >
-                  Alterar E-mail
+                  Alterar senha
                 </button>
                 <Link
                   to="/perfil"
@@ -79,4 +94,4 @@ class TrocarEmail extends Component {
   }
 }
 
-export default TrocarEmail;
+export default TrocaSenha;

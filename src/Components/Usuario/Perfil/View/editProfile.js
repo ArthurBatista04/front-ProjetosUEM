@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { TextInput, DatePicker } from "react-materialize";
-import Header from "../../Header/Header";
-import UserProfile from "../userProfile";
+import Header from "../../../Header/Header";
+import UserProfile from "../../userProfile";
 import { Link } from "react-router-dom";
-import "../userProfile.css";
+import "../../userProfile.css";
 
 import {
   capitalizeString,
@@ -12,7 +12,7 @@ import {
   handleSubmit,
   handleDatePickerChange,
   getRealm
-} from "./controller/CtrlEditProfile";
+} from "../controller/CtrlEditProfile";
 
 class editProfile extends Component {
   state = {

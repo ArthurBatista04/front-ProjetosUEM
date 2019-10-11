@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Header from "../../Header/Header";
+import Header from "../../../Header/Header";
 import { Redirect } from "react-router-dom";
 import { TextInput } from "react-materialize";
 
@@ -7,7 +7,7 @@ import {
   handleChange,
   handleClick,
   handleSignUp
-} from "./controller/CtrlCadastroDiscente";
+} from "../controller/CtrlCadastroDiscente";
 
 class Cadastro extends Component {
   state = {
