@@ -1,44 +1,20 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../Header/Header';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import { TextInput } from 'react-materialize';
-import PathName from '../pathConst.js';
+import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
+import Header from "../../Header/Header";
+import { TextInput } from "react-materialize";
+
+import {
+  handleChange,
+  handlePassForget
+} from "../controller/CtrlEsqueceuSenha";
 
 class EsqueceuSenha extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: ''
+      email: ""
     };
   }
-
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handlePassForget = async e => {
-    e.preventDefault();
-    axios
-      .post(`${PathName}/api/Usuarios/reset`, {
-        email: this.state.email
-      })
-      .then(async res => {
-        return Swal.fire({
-          type: 'success',
-          title: 'Requisição enviada!',
-          text: 'Verifique seu email'
-        });
-      })
-      .catch(err => {
-        return Swal.fire({
-          type: 'error',
-          title: 'Ops! algo deu errado',
-          text: err.response.data.error.message
-        });
-      });
-  };
 
   render() {
     return (
@@ -57,15 +33,15 @@ class EsqueceuSenha extends Component {
               <div
                 className="z-depth-1 grey lighten-4 row"
                 style={{
-                  display: 'inlineBlock',
-                  padding: 32 + 'px' + 48 + 'px' + 0 + 'px' + 48 + 'px',
-                  border: 1 + 'px solid  #EEE'
+                  display: "inlineBlock",
+                  padding: 32 + "px" + 48 + "px" + 0 + "px" + 48 + "px",
+                  border: 1 + "px solid  #EEE"
                 }}
               >
                 <form
                   className="col s12"
                   method="post"
-                  onSubmit={this.handlePassForget}
+                  onSubmit={e => handlePassForget(this, e)}
                 >
                   <div className="container">
                     <div className="row">
@@ -82,7 +58,7 @@ class EsqueceuSenha extends Component {
                           required
                           value={this.state.email}
                           onChange={e => {
-                            this.handleChange(e);
+                            handleChange(this, e);
                           }}
                         />
                       </div>
@@ -94,7 +70,7 @@ class EsqueceuSenha extends Component {
                         type="submit"
                         name="btn_email"
                         className="col s6 btn btn-large waves-effect indigo"
-                        style={{ float: 'none' }}
+                        style={{ float: "none" }}
                       >
                         Enviar requisição
                       </button>
@@ -103,7 +79,7 @@ class EsqueceuSenha extends Component {
                 </form>
               </div>
             </div>
-            <div style={{ marginBottom: 1 + 'rem' }}>
+            <div style={{ marginBottom: 1 + "rem" }}>
               <Link to="/pet/cadastro" className="blue-text">
                 <b>Criar uma conta</b>
               </Link>

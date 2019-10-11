@@ -10,6 +10,7 @@ import Manager from "./Admin/Controller/controller";
 import userProfile from "./Usuario/userProfile";
 import TrocaSenha from "./Usuario/Perfil/View/TrocaSenha";
 import TrocaEmail from "./Usuario/Perfil/View/trocarEmail";
+import EsqueceuSenha from "./Login/view/EsqueceuSenha";
 
 const Main = () => (
   <main>
@@ -27,6 +28,7 @@ const Main = () => (
       <Route exact path="/admin" component={Manager} />
       <Route exact path="/perfil/trocarSenha" component={TrocaSenha} />
       <Route exact path="/perfil/trocarEmail" component={TrocaEmail} />
+      <Route exact path="/esqueceuSenha" component={EsqueceuSenha} />
     </Switch>
   </main>
 );
