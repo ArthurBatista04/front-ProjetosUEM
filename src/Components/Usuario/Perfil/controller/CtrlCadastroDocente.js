@@ -65,7 +65,7 @@ export const handleSignUp = (self, e) => {
     realm: "Docente"
   };
   axios
-    .post(`${PathName}/api/Docentes`, newUser)
+    .post(`${PathName}/api/Usuarios`, newUser)
     .then(res => {
       if (res.status >= 200 && res.status < 300) {
         sweetAlert(

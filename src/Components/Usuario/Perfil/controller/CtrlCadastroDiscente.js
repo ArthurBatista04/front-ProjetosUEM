@@ -68,7 +68,7 @@ export const handleSignUp = (self, e) => {
   };
 
   axios
-    .post(`${PathName}/api/Discentes`, newUser)
+    .post(`${PathName}/api/Usuarios`, newUser)
     .then(res => {
       if (res.status >= 200 && res.status < 300) {
         sweetAlert(

@@ -73,7 +73,7 @@ class TrocaSenha extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/pet/login" />;
+      return <Redirect to="/login" />;
     }
     return (
       <Fragment>
