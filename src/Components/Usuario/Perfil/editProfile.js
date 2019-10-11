@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { TextInput } from "react-materialize";
+import { TextInput, DatePicker } from "react-materialize";
 import Header from "../../Header/Header";
 import Axios from "axios";
 import Swal from "sweetalert2";
@@ -10,12 +10,20 @@ import "../userProfile.css";
 
 class editProfile extends Component {
   state = {
-    nome: this.props.usuario.nome,
-    email: this.props.usuario.email,
-    username: this.props.usuario.username,
-    github: this.props.usuario.github,
-    linkedin: this.props.usuario.linkedin,
-    lattes: this.props.usuario.lattes,
+    nome: this.props.nome,
+    email: this.props.email,
+    username: this.props.username,
+    matricula: this.props.matricula,
+    cargo: this.props.cargo,
+    lotacao: this.props.lotacao,
+    situacao: this.props.situacao,
+    vencimentoContrato: this.props.vencimentoContrato,
+    ra: this.props.ra,
+    curso: this.props.curso,
+    turno: this.props.turno,
+    campus: this.props.campus,
+    serie: this.props.serie,
+    situacaoAcademica: this.props.situacaoAcademica,
     redirect: false
   };
 
@@ -51,11 +59,7 @@ class editProfile extends Component {
       linkedin: this.state.linkedin,
       lattes: this.state.lattes
     };
-    Axios.patch(
-      `${PathName}/api//Usuarios/${userId}`,
-      userUpdated,
-      Token
-    )
+    Axios.patch(`${PathName}/api//Usuarios/${userId}`, userUpdated, Token)
       .then(res => {
         Swal.fire({
           type: "success",
@@ -74,9 +78,136 @@ class editProfile extends Component {
         });
       });
   };
+
+  getExtras = () => {
+    return localStorage.getItem("Discente") ? (
+      <Fragment>
+        <TextInput
+          s={12}
+          label="RA"
+          name="ra"
+          value={this.state.ra}
+          required
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+
+        <TextInput
+          s={12}
+          label="Curso"
+          name="curso"
+          value={this.state.curso}
+          required
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+
+        <TextInput
+          s={12}
+          label="Série"
+          name="serie"
+          value={this.state.serie}
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+        <TextInput
+          s={12}
+          label="Turno"
+          name="turno"
+          value={this.state.turno}
+          required
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+
+        <TextInput
+          s={12}
+          label="Campus"
+          name="campus"
+          value={this.state.campus}
+          required
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+
+        <TextInput
+          s={12}
+          label="Situação Acadêmica"
+          name="situacaoAcademica"
+          value={this.state.situacaoAcademica}
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+      </Fragment>
+    ) : (
+      <Fragment>
+        <TextInput
+          s={12}
+          label="Matrícula"
+          name="matricula"
+          value={this.state.matricula}
+          required
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+
+        <TextInput
+          s={12}
+          label="Cargo"
+          name="cargo"
+          value={this.state.cargo}
+          required
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+
+        <TextInput
+          s={12}
+          label="Lotação"
+          name="lotacao"
+          value={this.state.lotacao}
+          required
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+
+        <TextInput
+          s={12}
+          label="Situação"
+          name="situacao"
+          value={this.state.situacao}
+          required
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+
+        <DatePicker
+          s={12}
+          label="Vencimento do Contrato"
+          name="vencimentoContrato"
+          value={this.state.vencimentoContrato}
+          onChange={e => {
+            this.handleChange(e);
+          }}
+        />
+      </Fragment>
+    );
+  };
+
   render() {
-    const { redirect, nome, username, github, linkedin, lattes } = this.state;
-    if (redirect) {
+    const { nome, username } = this.state;
+
+    if (this.state.redirect) {
       return <UserProfile />;
     }
     return (
@@ -111,38 +242,7 @@ class editProfile extends Component {
                   }}
                 />
 
-                <TextInput
-                  s={12}
-                  label="Link do GitHub"
-                  type="text"
-                  name="github"
-                  value={github}
-                  onChange={e => {
-                    this.handleChange(e);
-                  }}
-                />
-
-                <TextInput
-                  s={12}
-                  label="Link do LinkedIn"
-                  type="text"
-                  name="linkedin"
-                  value={linkedin}
-                  onChange={e => {
-                    this.handleChange(e);
-                  }}
-                />
-
-                <TextInput
-                  s={12}
-                  label="Link do Lattes"
-                  type="text"
-                  name="lattes"
-                  value={lattes}
-                  onChange={e => {
-                    this.handleChange(e);
-                  }}
-                />
+                {this.getExtras()}
 
                 <div className="row">
                   <div className="col s12">
@@ -150,7 +250,7 @@ class editProfile extends Component {
                       <p>
                         <b>E-mail:</b>
                         <Link
-                          to="/pet/perfil/trocarEmail"
+                          to="/perfil/trocarEmail"
                           className="right"
                           style={{ marginRight: "5px" }}
                         >
@@ -161,7 +261,7 @@ class editProfile extends Component {
                       <p>
                         <b>Senha:</b>
                         <Link
-                          to="/pet/perfil/trocarSenha"
+                          to="/perfil/trocarSenha"
                           className="right"
                           style={{ marginRight: "5px" }}
                         >

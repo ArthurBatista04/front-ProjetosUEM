@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "../userProfile.css";
 import { Row, Col } from "react-materialize";
-import "../../Eventos/centerIfSmall.css";
 
 class showProfile extends Component {
   componentWillMount() {
@@ -78,7 +77,7 @@ class showProfile extends Component {
               <br />
               <div className="basicInfo grey-text text-darken-2">
                 <span style={{ textTransform: "capitalize" }}>
-                  {this.buildRow("Nome:", usuario.nome.toLowerCase())}
+                  {this.buildRow("Nome:", usuario.nome)}
                 </span>
                 <hr className="style-six" />
                 {this.buildRow("E-mail:", usuario.email)}

@@ -65,7 +65,7 @@ class TrocarEmail extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/pet/login" />;
+      return <Redirect to="/login" />;
     }
     return (
       <Fragment>
@@ -114,7 +114,7 @@ class TrocarEmail extends Component {
                   Alterar E-mail
                 </button>
                 <Link
-                  to="/pet/perfil"
+                  to="/perfil"
                   className="btn waves-effect waves-light blue lighten-1 left"
                 >
                   Voltar
