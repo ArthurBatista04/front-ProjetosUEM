@@ -16,14 +16,14 @@ export const ProjetosEdit = props => (
     <SimpleForm>
       <DisabledInput source="id" />
       <TextInput source="titulo" />
-      <ReferenceInput source="docenteId" reference="docentes">
-        <SelectInput label="Orientador" optionText="name" />
+      <TextInput source="orientador" />
+      <TextInput source="coorientador" />
+      <ReferenceInput source="areaId" reference="areas">
+        <SelectInput label="Área" optionText="name" />
       </ReferenceInput>
-      <ReferenceInput source="docenteId" reference="docentes">
-        <SelectInput label="Coorientador" optionText="name" />
+      <ReferenceInput source="subareaId" reference="subareas">
+        <SelectInput label="Subárea" optionText="name" />
       </ReferenceInput>
-      <TextInput source="area" />
-      <TextInput source="subarea" />
       <TextInput source="tipo" />
       <DateInput source="dataInicio" />
       <DateInput source="dataTermino" />
