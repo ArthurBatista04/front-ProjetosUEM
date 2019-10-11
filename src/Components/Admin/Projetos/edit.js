@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Edit,
   SimpleForm,
@@ -9,9 +9,9 @@ import {
   ReferenceInput,
   SelectInput,
   DisabledInput
-} from "react-admin";
+} from 'react-admin';
 
-export const ProjetosEdit = props => (
+export default props => (
   <Edit {...props}>
     <SimpleForm>
       <DisabledInput source="id" />
