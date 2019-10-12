@@ -11,6 +11,7 @@ import userProfile from "./Usuario/userProfile";
 import TrocaSenha from "./Usuario/Perfil/View/TrocaSenha";
 import TrocaEmail from "./Usuario/Perfil/View/trocarEmail";
 import EsqueceuSenha from "./Login/view/EsqueceuSenha";
+import RedefineSenha from "./Login/view/RedefineSenha";
 
 const Main = () => (
   <main>
@@ -29,6 +30,7 @@ const Main = () => (
       <Route exact path="/perfil/trocarSenha" component={TrocaSenha} />
       <Route exact path="/perfil/trocarEmail" component={TrocaEmail} />
       <Route exact path="/esqueceuSenha" component={EsqueceuSenha} />
+      <Route path="/reset-password/:access_token" component={RedefineSenha} />
     </Switch>
   </main>
 );
