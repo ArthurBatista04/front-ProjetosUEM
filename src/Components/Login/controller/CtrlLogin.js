@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import PathName from "../../pathConst.js";
-import expression from "../regex";
+import expression from "../src/regex";
 
 const isEmail = email => {
   return expression.test(String(email).toLowerCase());
