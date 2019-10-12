@@ -1,81 +1,35 @@
-import React, { Component, Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
-import Header from '../Header/Header';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import { TextInput } from 'react-materialize';
-import PathName from '../pathConst.js';
+import React, { Component, Fragment } from "react";
+import { Redirect } from "react-router-dom";
+import Header from "../../Header/Header";
+import { TextInput } from "react-materialize";
+
+import {
+  handleChange,
+  handlePassChange
+} from "../controller/CtrlRedefineSenha";
 
 class RedefineSenha extends Component {
   componentWillMount() {
     let token = window.location.pathname;
-    token = token.substring(token.indexOf('=') + 1, token.length);
+    token = token.substring(token.indexOf("=") + 1, token.length);
     this.setState({ token });
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      password: '',
-      confirmPassword: '',
-      token: '',
+      password: "",
+      confirmPassword: "",
+      token: "",
       redirect: false
     };
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handlePassChange = async e => {
-    e.preventDefault();
-    const { password, confirmPassword } = this.state;
-    if (password.length < 4) {
-      return Swal.fire({
-        type: 'error',
-        title: 'Senha deve ter pelo menos 4 caracteres',
-        text: 'Tente novamente'
-      });
-    } else if (password !== confirmPassword) {
-      return Swal.fire({
-        type: 'error',
-        title: 'As senhas são diferentes',
-        text: 'É necessário que a nova senha e a confirmação sejam iguais'
-      });
-    } else {
-      axios
-        .post(
-          `${PathName}/api//Usuarios/reset-password`,
-          {
-            newPassword: this.state.password
-          },
-          {
-            headers: {
-              Authorization: this.state.token
-            }
-          }
-        )
-        .then(async res => {
-          this.setState({ redirect: true });
-          return Swal.fire({
-            type: 'success',
-            title: 'Senha alterada com sucesso!'
-          });
-        })
-        .catch(err => {
-          return Swal.fire({
-            type: 'error',
-            title: 'Ops! algo deu errado',
-            text: err.response.data.error.message
-          });
-        });
-    }
-  };
-
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/pet/login" />;
+      return <Redirect to="/login" />;
     }
+
     return (
       <Fragment>
         <Header />
@@ -90,15 +44,15 @@ class RedefineSenha extends Component {
               <div
                 className="z-depth-1 grey lighten-4 row"
                 style={{
-                  display: 'inlineBlock',
-                  padding: 32 + 'px' + 48 + 'px' + 0 + 'px' + 48 + 'px',
-                  border: 1 + 'px solid  #EEE'
+                  display: "inlineBlock",
+                  padding: 32 + "px" + 48 + "px" + 0 + "px" + 48 + "px",
+                  border: 1 + "px solid  #EEE"
                 }}
               >
                 <form
                   className="col s12"
                   method="post"
-                  onSubmit={this.handlePassChange}
+                  onSubmit={e => handlePassChange(this, e)}
                 >
                   <div className="container">
                     <div className="row">
@@ -114,7 +68,7 @@ class RedefineSenha extends Component {
                           success=""
                           required
                           onChange={e => {
-                            this.handleChange(e);
+                            handleChange(this, e);
                           }}
                         />
                       </span>
@@ -130,7 +84,7 @@ class RedefineSenha extends Component {
                           success=""
                           required
                           onChange={e => {
-                            this.handleChange(e);
+                            handleChange(this, e);
                           }}
                         />
                       </span>
@@ -142,7 +96,7 @@ class RedefineSenha extends Component {
                         type="submit"
                         name="btn_senha"
                         className="col s6 btn btn-large waves-effect indigo"
-                        style={{ float: 'none' }}
+                        style={{ float: "none" }}
                       >
                         Redefinir Senha
                       </button>
