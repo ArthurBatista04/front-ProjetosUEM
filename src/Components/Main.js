@@ -5,7 +5,7 @@ import Home from "./Home";
 import chooseCadastro from "./Usuario/Perfil/View/chooseCadastro";
 import CadastroDocente from "./Usuario/Perfil/View/CadastroDocente";
 import CadastroDiscente from "./Usuario/Perfil/View/CadastroDiscente";
-import Login from "./Login/Login";
+import Login from "./Login/view/Login";
 import Manager from "./Admin/Controller/controller";
 import userProfile from "./Usuario/userProfile";
 import TrocaSenha from "./Usuario/Perfil/View/TrocaSenha";
