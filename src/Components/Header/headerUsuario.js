@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import banner from '../../images/logo_transparent.png';
-import M from 'materialize-css';
-import Axios from 'axios';
-import PathName from '../pathConst';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import banner from "../../images/logo_transparent.png";
+import M from "materialize-css";
+import Axios from "axios";
+import PathName from "../pathConst";
 
 export class headerUsuario extends Component {
   componentWillMount() {
-    const userId = localStorage.getItem('user_id');
-    const token = localStorage.getItem('access_token');
+    const userId = localStorage.getItem("user_id");
+    const token = localStorage.getItem("access_token");
     const Token = {
       headers: {
         Authorization: token
@@ -17,20 +17,20 @@ export class headerUsuario extends Component {
   }
 
   componentDidMount() {
-    var elem = document.querySelector('.sidenav');
+    var elem = document.querySelector(".sidenav");
     M.Sidenav.init(elem, {
-      edge: 'left',
+      edge: "left",
       inDuration: 250
     });
-    var elems = document.querySelectorAll('.dropdown-trigger');
+    var elems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(elems, {
-      alignment: 'left',
+      alignment: "left",
       autoTrigger: true,
       coverTrigger: false,
       closeOnClick: true
     });
     const pagina = window.location.pathname;
-    if (pagina !== '/' && pagina !== '/' && pagina !== '/') {
+    if (pagina !== "/" && pagina !== "/" && pagina !== "/") {
       this.setState({ homePage: false });
     } else {
       this.setState({ homePage: true });
@@ -38,17 +38,17 @@ export class headerUsuario extends Component {
   }
   state = {
     homePage: false,
-    nome: ''
+    nome: ""
   };
 
   getStyle = () => {
     const { homePage } = this.state;
     const style = {
-      backgroundColor: 'black',
+      backgroundColor: "black",
       marginBottom: `${4}em`
     };
     const styleHeader = {
-      backgroundColor: 'black'
+      backgroundColor: "black"
     };
     return homePage ? styleHeader : style;
   };
@@ -61,7 +61,7 @@ export class headerUsuario extends Component {
             <img
               src={banner}
               alt="Logo "
-              style={{ height: 55 + 'px', marginLeft: 10 + 'px' }}
+              style={{ height: 55 + "px", marginLeft: 10 + "px" }}
             />
           </Link>
 
@@ -69,6 +69,12 @@ export class headerUsuario extends Component {
             <li>
               <Link to="/">
                 <i className="material-icons left">home</i>Início
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/">
+                <i className="material-icons left">search</i>Pesquisar Projetos
               </Link>
             </li>
 

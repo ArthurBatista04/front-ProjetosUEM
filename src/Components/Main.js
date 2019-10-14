@@ -7,6 +7,7 @@ import CadastroDocente from "./Usuario/Perfil/CadastroDocente";
 import CadastroDiscente from "./Usuario/Perfil/CadastroDiscente";
 import Login from "./Login/Login";
 import Manager from "./Admin/Controller/controller";
+import SearchPage from "./Search/SearchPage";
 
 const Main = () => (
   <main>
@@ -20,6 +21,7 @@ const Main = () => (
         component={CadastroDiscente}
       ></Route>
       <Route exact path="/login" component={Login}></Route>
+      <Route exact path="/pesquisar" component={SearchPage}></Route>
       <Route exact path="/admin" component={Manager} />
     </Switch>
   </main>
