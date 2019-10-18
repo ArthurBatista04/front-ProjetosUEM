@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import headerAutorizado from './headerAutorizado';
-import HeaderUsuario from './headerUsuario.js';
-import HeaderDeslogado from './headerDeslogado.js';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import HeaderAutorizado from "./headerAutorizado";
+import HeaderUsuario from "./headerUsuario.js";
+import HeaderDeslogado from "./headerDeslogado.js";
 
 class Header extends Component {
   state = {
@@ -11,7 +11,7 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    localStorage.getItem('access_token')
+    localStorage.getItem("access_token")
       ? this.setState({ logged: true })
       : this.setState({ logged: false });
   }
@@ -23,11 +23,11 @@ class Header extends Component {
   };
 
   verifyAuthorization = () => {
-    if (localStorage.getItem('Petiano')) {
+    if (localStorage.getItem("Docente")) {
       return true;
-    } else if (localStorage.getItem('Ajudante')) {
-      return true;
-    } else if (localStorage.getItem('admin')) {
+    } else if (localStorage.getItem("Discente")) {
+      return false;
+    } else if (localStorage.getItem("admin")) {
       return true;
     } else {
       return false;
@@ -42,7 +42,7 @@ class Header extends Component {
     }
     if (logged) {
       if (this.verifyAuthorization()) {
-        return <headerAutorizado handleLogOut={this.handleLogOut} />;
+        return <HeaderAutorizado handleLogOut={this.handleLogOut} />;
       } else {
         return <HeaderUsuario handleLogOut={this.handleLogOut} />;
       }

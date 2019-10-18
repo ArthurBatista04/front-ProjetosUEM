@@ -10,13 +10,13 @@ export class headerPetiano extends Component {
       edge: "left",
       inDuration: 250
     });
-    var elems = document.querySelectorAll(".dropdown-trigger");
-    M.Dropdown.init(elems, {
-      alignment: "left",
-      autoTrigger: true,
-      coverTrigger: false,
-      closeOnClick: true
-    });
+    // var elems = document.querySelectorAll(".dropdown-trigger");
+    // M.Dropdown.init(elems, {
+    //   alignment: "left",
+    //   autoTrigger: true,
+    //   coverTrigger: false,
+    //   closeOnClick: true
+    // });
     const pagina = window.location.pathname;
     if (pagina !== "/" && pagina !== "/" && pagina !== "/") {
       this.setState({ homePage: false });
@@ -61,7 +61,7 @@ export class headerPetiano extends Component {
             </li>
 
             <li>
-              <Link to="/pet/admin#/">
+              <Link to="/admin#/">
                 <i className="material-icons left">verified_user</i>Painel
                 Administrativo
               </Link>

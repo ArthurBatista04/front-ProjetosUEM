@@ -28,7 +28,7 @@ class Login extends Component {
     };
 
     if (this.state.redirect) {
-      return <Redirect to="/pet" />;
+      return <Redirect to="/" />;
     }
 
     return (

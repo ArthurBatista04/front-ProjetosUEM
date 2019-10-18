@@ -26,11 +26,16 @@ export const handleSignIn = async (self, e) => {
   }
 
   axios
-    .post(`${PathName}/api/Usuarios/login/`, newLogin)
+    .post(`${PathName}/api/Usuarios/login?include=user`, newLogin)
     .then(async res => {
       localStorage.setItem(res.data.user.realm, res.data.id);
       localStorage.setItem("user_id", res.data.userId);
       localStorage.setItem("access_token", res.data.id);
+      if (res.data.user.docenteId) {
+        localStorage.setItem("docenteId", res.data.user.docenteId);
+      } else if (res.data.user.discenteId) {
+        localStorage.setItem("discenteId", res.data.user.discenteId);
+      }
       self.setState({ redirect: true });
     })
     .catch(err => {
