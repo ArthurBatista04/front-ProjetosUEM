@@ -11,6 +11,14 @@ const sweetAlert = (type, title, text, showConfirmButton) => {
   });
 };
 
+const createDocente = docente => {
+  return axios.post(`${PathName}/api/Docentes`, docente);
+};
+
+const createUsuario = usuario => {
+  return axios.post(`${PathName}/api/Usuarios`, usuario);
+};
+
 export const handleClick = self => {
   self.setState({ redirect: true, to: "Cadastro" });
 };
@@ -25,7 +33,7 @@ export const handleDatePickerChange = (self, e) => {
   self.setState({ vencimentoContrato: e.toString() });
 };
 
-export const handleSignUp = (self, e) => {
+export const handleSignUp = async (self, e) => {
   e.preventDefault();
 
   if (self.state.password !== self.state.confirmPassword) {
@@ -56,38 +64,42 @@ export const handleSignUp = (self, e) => {
     password
   } = self.state;
 
-  const newUser = {
-    nome: nome.toUpperCase(),
-    email,
+  const newDocente = {
     matricula,
     cargo,
     lotacao,
     situacao,
-    vencimentoContrato,
+    vencimentoContrato
+  };
+
+  const newUser = {
+    nome: nome.toUpperCase(),
+    email,
     password,
     username: username.toLowerCase(),
     realm: "Docente"
   };
-  axios
-    .post(`${PathName}/api/Usuarios`, newUser)
-    .then(res => {
-      if (res.status >= 200 && res.status < 300) {
-        sweetAlert(
-          "success",
-          "Cadastro realizado com sucesso",
-          "Veja seu email para confirmar sua conta",
-          true
-        ).then(() => {
-          self.setState({ redirect: true });
-        });
-      }
-    })
-    .catch(err => {
-      return sweetAlert(
-        "error",
-        "Ops! Algo deu errado",
-        "err.response.data.error.message",
+
+  try {
+    const docente = await createDocente(newDocente);
+    newUser["docenteId"] = docente.data.id;
+    const res = await createUsuario(newUser);
+
+    if (res.status >= 200 && res.status < 300) {
+      sweetAlert(
+        "success",
+        "Cadastro realizado com sucesso",
+        "Veja seu email para confirmar sua conta",
         true
       );
-    });
+      self.setState({ redirect: true });
+    }
+  } catch (err) {
+    sweetAlert(
+      "error",
+      "Ops! Algo deu errado",
+      err.response.data.error.message,
+      true
+    );
+  }
 };
