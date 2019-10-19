@@ -31,10 +31,6 @@ class showProfile extends Component {
         <hr className="style-six" />
         {this.buildRow("Vencimento do Contrato:", usuario.vencimentoContrato)}
         <hr className="style-six" />
-        {this.buildRow("E-mail:", usuario.email)}
-        <hr className="style-six" />
-        {this.buildRow("Nome de Usuário:", usuario.username)}
-        <hr className="style-six" />
       </Fragment>
     ) : (
       <Fragment>

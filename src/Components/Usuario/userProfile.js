@@ -17,7 +17,7 @@ class userProfile extends Component {
       }
     };
     this.setState({ Token: Token });
-    Axios.get(`${PathName}/api//Usuarios/${userId}`, Token)
+    Axios.get(`${PathName}/api/Usuarios/${userId}`, Token)
       .then(res => {
         this.setState({ usuario: res.data, done: true });
       })
