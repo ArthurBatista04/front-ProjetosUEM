@@ -21,29 +21,35 @@ class showProfile extends Component {
     return getRealm() === "Docente" ? (
       <Fragment>
         <hr className="style-six" />
-        {this.buildRow("Matrícula:", usuario.matricula)}
+        {this.buildRow("Matrícula:", usuario.docente.matricula)}
         <hr className="style-six" />
-        {this.buildRow("Cargo:", usuario.cargo)}
+        {this.buildRow("Cargo:", usuario.docente.cargo)}
         <hr className="style-six" />
-        {this.buildRow("Lotação:", usuario.lotacao)}
+        {this.buildRow("Lotação:", usuario.docente.lotacao)}
         <hr className="style-six" />
-        {this.buildRow("Situação:", usuario.situacao)}
+        {this.buildRow("Situação:", usuario.docente.situacao)}
         <hr className="style-six" />
-        {this.buildRow("Vencimento do Contrato:", usuario.vencimentoContrato)}
+        {this.buildRow(
+          "Vencimento do Contrato:",
+          new Date(usuario.docente.vencimentoContrato).toLocaleDateString()
+        )}
         <hr className="style-six" />
       </Fragment>
     ) : (
       <Fragment>
         <hr className="style-six" />
-        {this.buildRow("RA:", usuario.ra)}
+        {this.buildRow("RA:", usuario.discente.ra)}
         <hr className="style-six" />
-        {this.buildRow("Curso:", usuario.curso)}
+        {this.buildRow("Curso:", usuario.discente.curso)}
         <hr className="style-six" />
-        {this.buildRow("Turno:", usuario.turno)}
+        {this.buildRow("Turno:", usuario.discente.turno)}
         <hr className="style-six" />
-        {this.buildRow("Campus:", usuario.campus)}
+        {this.buildRow("Campus:", usuario.discente.campus)}
         <hr className="style-six" />
-        {this.buildRow("Situação Acadêmica:", usuario.situacaoAcademica)}
+        {this.buildRow(
+          "Situação Acadêmica:",
+          usuario.discente.situacaoAcademica
+        )}
         <hr className="style-six" />
       </Fragment>
     );

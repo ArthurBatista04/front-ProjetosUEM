@@ -16,8 +16,15 @@ class userProfile extends Component {
         Authorization: token
       }
     };
+    const filter = {
+      include: ["docente", "discente"]
+    };
+
     this.setState({ Token: Token });
-    Axios.get(`${PathName}/api/Usuarios/${userId}`, Token)
+    Axios.get(
+      `${PathName}/api/Usuarios/${userId}?filter=${JSON.stringify(filter)}`,
+      Token
+    )
       .then(res => {
         this.setState({ usuario: res.data, done: true });
       })
