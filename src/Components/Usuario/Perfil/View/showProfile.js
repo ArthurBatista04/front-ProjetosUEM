@@ -42,6 +42,8 @@ class showProfile extends Component {
         <hr className="style-six" />
         {this.buildRow("Curso:", usuario.discente.curso)}
         <hr className="style-six" />
+        {this.buildRow("Série:", usuario.discente.serie)}
+        <hr className="style-six" />
         {this.buildRow("Turno:", usuario.discente.turno)}
         <hr className="style-six" />
         {this.buildRow("Campus:", usuario.discente.campus)}
