@@ -26,10 +26,10 @@ export const handlePassChange = async (self, e) => {
       text: "Tente novamente"
     });
   } else {
-    Axios.put(
-      `${PathName}/api//Usuarios/change-password/${userId}`,
+    Axios.post(
+      `${PathName}/api/Usuarios/change-password`,
       {
-        currentPassword: self.state.currentPassword,
+        oldPassword: self.state.currentPassword,
         newPassword: self.state.newPassword
       },
       {
