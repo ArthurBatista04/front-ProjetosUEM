@@ -14,8 +14,25 @@ export const handleChange = (self, e) => {
   self.setState({ [e.target.name]: e.target.value });
 };
 
+export const handleDiscenteChange = (self, e) => {
+  const { discente } = self.state;
+
+  discente[e.target.name] = e.target.value;
+  self.setState({ [discente]: discente });
+};
+
+export const handleDocenteChange = (self, e) => {
+  const { docente } = self.state;
+
+  docente[e.target.name] = e.target.value;
+  self.setState({ [docente]: docente });
+};
+
 export const handleDatePickerChange = (self, e) => {
-  self.setState({ vencimentoContrato: e.toString() });
+  const { docente } = self.state;
+
+  docente["vencimentoContrato"] = e.toString();
+  self.setState({ [docente]: docente });
 };
 
 export const handleClickVoltar = self => {

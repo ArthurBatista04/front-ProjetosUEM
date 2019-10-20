@@ -8,6 +8,8 @@ import "../../userProfile.css";
 import {
   capitalizeString,
   handleChange,
+  handleDiscenteChange,
+  handleDocenteChange,
   handleClickVoltar,
   handleSubmit,
   handleDatePickerChange,
@@ -34,63 +36,63 @@ class editProfile extends Component {
         <TextInput
           s={12}
           label="RA"
-          name="discente.ra"
+          name="ra"
           value={this.state.discente.ra}
           required
           onChange={e => {
-            handleChange(this, e);
+            handleDiscenteChange(this, e);
           }}
         />
 
         <TextInput
           s={12}
           label="Curso"
-          name="discente.curso"
+          name="curso"
           value={this.state.discente.curso}
           required
           onChange={e => {
-            handleChange(this, e);
+            handleDiscenteChange(this, e);
           }}
         />
 
         <TextInput
           s={12}
           label="Série"
-          name="discente.serie"
+          name="serie"
           value={this.state.discente.serie}
           onChange={e => {
-            handleChange(this, e);
+            handleDiscenteChange(this, e);
           }}
         />
         <TextInput
           s={12}
           label="Turno"
-          name="discente.turno"
+          name="turno"
           value={this.state.discente.turno}
           required
           onChange={e => {
-            handleChange(this, e);
+            handleDiscenteChange(this, e);
           }}
         />
 
         <TextInput
           s={12}
           label="Campus"
-          name="discente.campus"
+          name="campus"
           value={this.state.discente.campus}
           required
           onChange={e => {
-            handleChange(this, e);
+            handleDiscenteChange(this, e);
           }}
         />
 
         <TextInput
           s={12}
           label="Situação Acadêmica"
-          name="discente.situacaoAcademica"
+          name="situacaoAcademica"
           value={this.state.discente.situacaoAcademica}
           onChange={e => {
-            handleChange(this, e);
+            handleDiscenteChange(this, e);
           }}
         />
       </Fragment>
@@ -99,51 +101,51 @@ class editProfile extends Component {
         <TextInput
           s={12}
           label="Matrícula"
-          name="docente.matricula"
+          name="matricula"
           value={this.state.docente.matricula}
           required
           onChange={e => {
-            handleChange(this, e);
+            handleDocenteChange(this, e);
           }}
         />
 
         <TextInput
           s={12}
           label="Cargo"
-          name="docente.cargo"
+          name="cargo"
           value={this.state.docente.cargo}
           required
           onChange={e => {
-            handleChange(this, e);
+            handleDocenteChange(this, e);
           }}
         />
 
         <TextInput
           s={12}
           label="Lotação"
-          name="docente.lotacao"
+          name="lotacao"
           value={this.state.docente.lotacao}
           required
           onChange={e => {
-            handleChange(this, e);
+            handleDocenteChange(this, e);
           }}
         />
 
         <TextInput
           s={12}
           label="Situação"
-          name="docente.situacao"
+          name="situacao"
           value={this.state.docente.situacao}
           required
           onChange={e => {
-            handleChange(this, e);
+            handleDocenteChange(this, e);
           }}
         />
 
         <DatePicker
           s={12}
           label="Vencimento do Contrato"
-          name="docente.vencimentoContrato"
+          name="vencimentoContrato"
           value={new Date(
             this.state.docente.vencimentoContrato
           ).toLocaleDateString()}
