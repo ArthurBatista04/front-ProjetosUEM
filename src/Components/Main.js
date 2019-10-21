@@ -12,6 +12,7 @@ import TrocaSenha from "./Usuario/Perfil/View/TrocaSenha";
 import TrocaEmail from "./Usuario/Perfil/View/trocarEmail";
 import EsqueceuSenha from "./Login/view/EsqueceuSenha";
 import RedefineSenha from "./Login/view/RedefineSenha";
+import SearchPage from "./Search/SearchPage";
 
 const Main = () => (
   <main>
