@@ -76,7 +76,7 @@ export class headerUsuario extends Component {
             </li>
 
             <li>
-              <Link to="/">
+              <Link to="/pesquisar">
                 <i className="material-icons left">search</i>Pesquisar Projetos
               </Link>
             </li>

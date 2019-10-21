@@ -67,6 +67,12 @@ export class headerAutorizado extends Component {
             </li>
 
             <li>
+              <Link to="/pesquisar">
+                <i className="material-icons left">search</i>Pesquisar Projetos
+              </Link>
+            </li>
+
+            <li>
               <Link to="/admin#/">
                 <i className="material-icons left">verified_user</i>Painel
                 Administrativo
