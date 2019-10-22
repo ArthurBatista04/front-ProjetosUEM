@@ -76,6 +76,12 @@ export class headerUsuario extends Component {
             </li>
 
             <li>
+              <Link to="/pesquisar">
+                <i className="material-icons left">search</i>Pesquisar Projetos
+              </Link>
+            </li>
+
+            <li>
               <Link className="dropdown-trigger" to="#" data-target="dropdown1">
                 <i className="material-icons left">person_pin</i>
                 {nome}
