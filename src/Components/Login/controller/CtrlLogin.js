@@ -1,7 +1,6 @@
-import axios from "axios";
-import Swal from "sweetalert2";
-import PathName from "../../pathConst.js";
 import expression from "../src/regex";
+import Swal from "sweetalert2";
+import { login } from "../../Usuario/controller/CtrlUsuario";
 
 const isEmail = email => {
   return expression.test(String(email).toLowerCase());
@@ -25,24 +24,23 @@ export const handleSignIn = async (self, e) => {
     newLogin.password = password;
   }
 
-  axios
-    .post(`${PathName}/api/Usuarios/login?include=user`, newLogin)
-    .then(async res => {
-      localStorage.setItem(res.data.user.realm, res.data.id);
-      localStorage.setItem("user_id", res.data.userId);
-      localStorage.setItem("access_token", res.data.id);
-      if (res.data.user.docenteId) {
-        localStorage.setItem("docenteId", res.data.user.docenteId);
-      } else if (res.data.user.discenteId) {
-        localStorage.setItem("discenteId", res.data.user.discenteId);
-      }
-      self.setState({ redirect: true });
-    })
-    .catch(err => {
-      return Swal.fire({
-        type: "error",
-        title: "Ops! algo deu errado",
-        text: err.response.data.error.message
-      });
+  try {
+    const res = await login(newLogin);
+
+    localStorage.setItem(res.data.user.realm, res.data.id);
+    localStorage.setItem("user_id", res.data.userId);
+    localStorage.setItem("access_token", res.data.id);
+    if (res.data.user.docenteId) {
+      localStorage.setItem("docenteId", res.data.user.docenteId);
+    } else if (res.data.user.discenteId) {
+      localStorage.setItem("discenteId", res.data.user.discenteId);
+    }
+    self.setState({ redirect: true });
+  } catch (err) {
+    return Swal.fire({
+      type: "error",
+      title: "Ops! algo deu errado",
+      text: err.response.data.error.message
     });
+  }
 };
