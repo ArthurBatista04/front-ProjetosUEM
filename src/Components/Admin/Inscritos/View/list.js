@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Datagrid, TextField, List } from 'react-admin';
+import { Datagrid, TextField, List, NumberField } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Divider from '@material-ui/core/Divider';
 import Tabs from '@material-ui/core/Tabs';
@@ -52,6 +52,7 @@ class TabbedDatagrid extends React.Component {
               <TextField source="nome" />
               <TextField source="email" />
               <TextField label="Privilégio" source="status" />
+              <NumberField source="rank"></NumberField>
             </Datagrid>
           )}
           {filterValues.status === false && (
@@ -66,6 +67,7 @@ class TabbedDatagrid extends React.Component {
               <TextField source="nome" />
               <TextField source="email" />
               <TextField label="Privilégio" source="status" />
+              <NumberField source="rank"></NumberField>
             </Datagrid>
           )}
         </div>
