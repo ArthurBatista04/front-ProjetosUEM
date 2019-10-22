@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import banner from '../../images/logo_transparent.png';
-import M from 'materialize-css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import banner from "../../images/logo_transparent.png";
+import M from "materialize-css";
 
 class headerDeslogado extends Component {
   componentDidMount() {
-    var elem = document.querySelector('.sidenav');
+    var elem = document.querySelector(".sidenav");
     M.Sidenav.init(elem, {
-      edge: 'left',
+      edge: "left",
       inDuration: 250
     });
     const pagina = window.location.pathname;
-    if (pagina !== '/' && pagina !== '/' && pagina !== '/') {
+    if (pagina !== "/" && pagina !== "/" && pagina !== "/") {
       this.setState({ homePage: false });
     } else {
       this.setState({ homePage: true });
@@ -24,11 +24,11 @@ class headerDeslogado extends Component {
   getStyle = () => {
     const { homePage } = this.state;
     const style = {
-      backgroundColor: 'black',
+      backgroundColor: "black",
       marginBottom: `${4}em`
     };
     const styleHeader = {
-      backgroundColor: 'black'
+      backgroundColor: "black"
     };
     return homePage ? styleHeader : style;
   };
@@ -41,7 +41,7 @@ class headerDeslogado extends Component {
             <img
               src={banner}
               alt="Logo"
-              style={{ height: 55 + 'px', marginLeft: 10 + 'px' }}
+              style={{ height: 55 + "px", marginLeft: 10 + "px" }}
             />
           </Link>
 
@@ -53,8 +53,14 @@ class headerDeslogado extends Component {
             </li>
 
             <li>
+              <Link to="/pesquisar">
+                <i className="material-icons left">search</i>Pesquisar Projetos
+              </Link>
+            </li>
+
+            <li>
               <Link to="/cadastro">
-                {' '}
+                {" "}
                 <i className="material-icons left">create</i>Cadastro
               </Link>
             </li>

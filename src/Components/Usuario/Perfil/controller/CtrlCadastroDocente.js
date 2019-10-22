@@ -1,6 +1,5 @@
-import axios from "axios";
 import Swal from "sweetalert2";
-import PathName from "../../../pathConst.js";
+import { createDocente, createUsuario } from "../../controller/CtrlUsuario";
 
 const sweetAlert = (type, title, text, showConfirmButton) => {
   return Swal.fire({
@@ -9,14 +8,6 @@ const sweetAlert = (type, title, text, showConfirmButton) => {
     text,
     showConfirmButton
   });
-};
-
-const createDocente = docente => {
-  return axios.post(`${PathName}/api/Docentes`, docente);
-};
-
-const createUsuario = usuario => {
-  return axios.post(`${PathName}/api/Usuarios`, usuario);
 };
 
 export const handleClick = self => {
