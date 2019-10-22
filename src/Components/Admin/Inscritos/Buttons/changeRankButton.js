@@ -65,11 +65,7 @@ class PostQuickCreateButton extends Component {
               toolbar={null}
               record={record}
             >
-              <NumberInput
-                label="Pagamento"
-                defaultValue={false}
-                source="pago"
-              />
+              <NumberInput label="Rank" defaultValue={0} source="rank" />
             </SimpleForm>
           </DialogContent>
           <DialogActions>
