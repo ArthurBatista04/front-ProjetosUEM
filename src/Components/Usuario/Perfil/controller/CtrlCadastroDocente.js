@@ -72,9 +72,9 @@ export const handleSignUp = async (self, e) => {
   };
 
   try {
-    const docente = await createDocente(newDocente);
-    newUser["docenteId"] = docente.data.id;
     const res = await createUsuario(newUser);
+    newDocente["usuarioId"] = res.data.id;
+    await createDocente(newDocente);
 
     if (res.status >= 200 && res.status < 300) {
       sweetAlert(

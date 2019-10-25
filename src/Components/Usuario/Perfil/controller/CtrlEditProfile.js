@@ -43,8 +43,8 @@ export const handleSubmit = (self, e) => {
   e.preventDefault();
 
   const userId = self.props.usuario.id;
-  const docenteId = self.props.usuario.docenteId;
-  const discenteId = self.props.usuario.discenteId;
+  const docenteId = localStorage.getItem("docenteId");
+  const discenteId = localStorage.getItem("discenteId");
   const token = localStorage.getItem("access_token");
   const Token = {
     headers: {

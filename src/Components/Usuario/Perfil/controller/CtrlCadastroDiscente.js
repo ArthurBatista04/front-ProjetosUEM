@@ -70,9 +70,9 @@ export const handleSignUp = async (self, e) => {
   };
 
   try {
-    const discente = await createDiscente(newDiscente);
-    newUser["discenteId"] = discente.data.id;
     const res = await createUsuario(newUser);
+    newDiscente["usuarioId"] = res.data.id;
+    await createDiscente(newDiscente);
 
     if (res.status >= 200 && res.status < 300) {
       sweetAlert(
