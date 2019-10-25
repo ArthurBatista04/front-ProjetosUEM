@@ -65,10 +65,10 @@ export const handleSubmit = (self, e) => {
       cargo: self.state.docente.cargo,
       lotacao: self.state.docente.lotacao,
       situacao: self.state.docente.situacao,
-      vencimentoContrato: self.state.docente.vencimentoContrato
+      vencimentoContrato: self.state.docente.vencimentoContrato,
+      usuarioId: localStorage.getItem("user_id")
     };
 
-    userUpdated.docenteId = docenteId;
     Axios.patch(`${PathName}/api/Docentes/${docenteId}`, docenteUpdated, Token)
       .then(() => {
         Swal.fire({
@@ -113,10 +113,10 @@ export const handleSubmit = (self, e) => {
       turno: self.state.discente.turno,
       campus: self.state.discente.campus,
       serie: self.state.discente.serie,
-      situacaoAcademica: self.state.discente.situacaoAcademica
+      situacaoAcademica: self.state.discente.situacaoAcademica,
+      usuarioId: localStorage.getItem("user_id")
     };
 
-    userUpdated.discenteId = discenteId;
     Axios.patch(
       `${PathName}/api/Discentes/${discenteId}`,
       discenteUpdated,
