@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   number,
   required,
@@ -11,22 +11,25 @@ import {
   LongTextInput,
   ReferenceInput,
   SelectInput
-} from 'react-admin';
+} from "react-admin";
 
 const validateTitulo = [required(), minLength(3)];
-const validateOrientadores = [required(), minLength(3)];
 const validateLimites = [required(), number()];
 
 export default props => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="titulo" validate={validateTitulo} />
-      <TextInput source="orientador" validate={validateOrientadores} />
-      <TextInput source="coorientador" validate={validateOrientadores} />
-      <ReferenceInput source="areaId" reference="areas">
+      <ReferenceInput source="docenteId" reference="Docentes">
+        <SelectInput label="Orientador" optionText="name" />
+      </ReferenceInput>
+      <ReferenceInput source="docenteId" reference="Docentes">
+        <SelectInput label="Coorientador" optionText="name" />
+      </ReferenceInput>
+      <ReferenceInput source="areaId" reference="Areas">
         <SelectInput label="Área" optionText="name" />
       </ReferenceInput>
-      <ReferenceInput source="subareaId" reference="subareas">
+      <ReferenceInput source="subareaId" reference="Subareas">
         <SelectInput label="Subárea" optionText="name" />
       </ReferenceInput>
       <TextInput source="tipo" validate={required()} />
