@@ -1,19 +1,20 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import Home from "./Home";
-import chooseCadastro from "./Usuario/Perfil/View/chooseCadastro";
-import CadastroDocente from "./Usuario/Perfil/View/CadastroDocente";
-import CadastroDiscente from "./Usuario/Perfil/View/CadastroDiscente";
-import Login from "./Login/view/Login";
-import Manager from "./Admin/View/manager";
-import userProfile from "./Usuario/userProfile";
-import TrocaSenha from "./Usuario/Perfil/View/TrocaSenha";
-import TrocaEmail from "./Usuario/Perfil/View/trocarEmail";
-import EsqueceuSenha from "./Login/view/EsqueceuSenha";
-import RedefineSenha from "./Login/view/RedefineSenha";
-import SearchPage from "./Search/SearchPage";
-
+import Home from './Home';
+import chooseCadastro from './Usuario/Perfil/View/chooseCadastro';
+import CadastroDocente from './Usuario/Perfil/View/CadastroDocente';
+import CadastroDiscente from './Usuario/Perfil/View/CadastroDiscente';
+import Login from './Login/view/Login';
+import Manager from './Admin/View/manager';
+import userProfile from './Usuario/userProfile';
+import TrocaSenha from './Usuario/Perfil/View/TrocaSenha';
+import TrocaEmail from './Usuario/Perfil/View/trocarEmail';
+import EsqueceuSenha from './Login/view/EsqueceuSenha';
+import RedefineSenha from './Login/view/RedefineSenha';
+import SearchPage from './Search/SearchPage';
+import ProcessoSeletivo from './ProcessoSeletivo/View/showProcessosSeletivos';
+import SobreProcessoSeletivo from './ProcessoSeletivo/View/sobreProcessoSeletivo';
 const Main = () => (
   <main>
     <Switch>
@@ -33,6 +34,14 @@ const Main = () => (
       <Route exact path="/perfil/trocarEmail" component={TrocaEmail} />
       <Route exact path="/esqueceuSenha" component={EsqueceuSenha} />
       <Route path="/reset-password/:access_token" component={RedefineSenha} />
+      <Route
+        path="/projeto/:id/processoSeletivo"
+        component={ProcessoSeletivo}
+      ></Route>
+      <Route
+        path="/processoSeletivo/:processoId"
+        component={SobreProcessoSeletivo}
+      ></Route>
     </Switch>
   </main>
 );
