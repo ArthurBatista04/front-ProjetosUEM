@@ -1,5 +1,12 @@
 import React, { Fragment } from 'react';
-import { Datagrid, TextField, List, NumberField } from 'react-admin';
+import {
+  Datagrid,
+  BooleanField,
+  List,
+  NumberField,
+  Show,
+  ReferenceManyField
+} from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Divider from '@material-ui/core/Divider';
 import Tabs from '@material-ui/core/Tabs';
@@ -19,15 +26,15 @@ class TabbedDatagrid extends React.Component {
   state = { Aprovados: [], Rejeitados: [], Pendentes: [] };
 
   static getDerivedStateFromProps(props, state) {
-    if (props.ids !== state[props.filterValues.status]) {
-      return { ...state, [props.filterValues.status]: props.ids };
+    if (props.ids !== state[props.filterValues.aprovado]) {
+      return { ...state, [props.filterValues.aprovado]: props.ids };
     }
     return null;
   }
 
   handleChange = (event, value) => {
     const { filterValues, setFilters } = this.props;
-    setFilters({ ...filterValues, status: value });
+    setFilters({ ...filterValues, aprovado: value });
   };
 
   render() {
@@ -37,7 +44,7 @@ class TabbedDatagrid extends React.Component {
         <Tabs
           fullWidth
           centered
-          value={filterValues.status}
+          value={filterValues.aprovado}
           indicatorColor="primary"
           onChange={this.handleChange}
         >
@@ -47,26 +54,21 @@ class TabbedDatagrid extends React.Component {
         </Tabs>
         <Divider />
         <div>
-          {filterValues.status === true && (
+          {filterValues.aprovado === true && (
             <Datagrid {...props}>
-              <TextField source="nome" />
-              <TextField source="email" />
-              <TextField label="Privilégio" source="status" />
+              <BooleanField label="Status" source="aprovado" />
               <NumberField source="rank"></NumberField>
             </Datagrid>
           )}
-          {filterValues.status === false && (
+          {filterValues.aprovado === false && (
             <Datagrid {...props}>
-              <TextField source="nome" />
-              <TextField source="email" />
-              <TextField label="Privilégio" source="status" />
+              <BooleanField label="Status" source="aprovado" />
+              <NumberField source="rank"></NumberField>
             </Datagrid>
           )}
-          {filterValues.status === null && (
+          {filterValues.aprovado == null && (
             <Datagrid {...props}>
-              <TextField source="nome" />
-              <TextField source="email" />
-              <TextField label="Privilégio" source="status" />
+              <BooleanField label="Status" source="aprovado" />
               <NumberField source="rank"></NumberField>
             </Datagrid>
           )}
@@ -79,14 +81,18 @@ class TabbedDatagrid extends React.Component {
 const StyledTabbedDatagrid = withStyles(datagridStyles)(TabbedDatagrid);
 
 const InscritoList = ({ classes, ...props }) => (
-  <List
-    sort={{ field: 'nome', order: 'ASC' }}
-    filter={{ processoseletivoId: window.location.hash.substring(12) }}
-    bulkActionButtons={false}
-    {...props}
-  >
-    <StyledTabbedDatagrid></StyledTabbedDatagrid>
-  </List>
+  <Show actions={false} {...props}>
+    <ReferenceManyField title={false} reference="Inscritos" target="inscritoId">
+      <List
+        sort={{ field: 'nome', order: 'ASC' }}
+        filter={{ processoSeletivoId: props.id }}
+        bulkActionButtons={false}
+        {...props}
+      >
+        <StyledTabbedDatagrid></StyledTabbedDatagrid>
+      </List>
+    </ReferenceManyField>
+  </Show>
 );
 
 export default InscritoList;
