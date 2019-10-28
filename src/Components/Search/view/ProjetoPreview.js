@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import Axios from 'axios';
 import formatDate from '../../formatDate';
 import moment from 'moment';
 // eslint-disable-next-line no-unused-vars
@@ -33,7 +32,6 @@ class ProjetoPreview extends Component {
 	);
 	render() {
 		const { projeto } = this.props;
-		console.log(projeto);
 		return (
 			<Fragment>
 				<div
@@ -49,9 +47,10 @@ class ProjetoPreview extends Component {
 						<div className="col s12">
 							{this.getText(titleStyle, projeto.titulo)}
 							<div className="basicInfo grey-text text-darken-2">
-								{this.buildRow('Orientador:', projeto.nomeOrientador)}
-								<hr className="style-six" />
-								{this.buildRow('Área:', projeto.areaProjeto)}
+								{this.buildRow(
+									'Orientador:',
+									projeto.docente ? projeto.docente.usuario.nome : ''
+								)}
 								<hr className="style-six" />
 								{this.buildRow('Tipo:', projeto.tipo)}
 								<hr className="style-six" />
