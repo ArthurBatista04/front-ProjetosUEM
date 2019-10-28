@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import Axios from 'axios';
-import PathName from '../../pathConst';
+import { TextInput, DatePicker } from 'react-materialize';
 import ShowBuscaProjeto from './showBuscaProjetos';
 import M from 'materialize-css';
 import Header from '../../Header/Header';
 import '../controller/ctrSearch';
 import {
 	handleChange,
-	handleDatePicker,
+	handleDatePickerChange,
+	handleDatePickerChangeTermino,
 	handleClick,
 	getAreas,
 	getSubareas
@@ -15,8 +15,8 @@ import {
 
 class SearchPage extends Component {
 	state = {
-		nomeProjeto: [],
-		nomeOrientador: [],
+		nomeProjeto: '',
+		nomeOrientador: '',
 		areas: [],
 		subareas: [],
 		tipos: ['teste4', 'teste5'],
@@ -24,6 +24,7 @@ class SearchPage extends Component {
 		optionSubarea: '',
 		optionTipo: '',
 		dataInicio: '',
+		dataTermino: '',
 		showCards: false,
 		resultadoBusca: []
 	};
@@ -33,9 +34,15 @@ class SearchPage extends Component {
 		getSubareas(this);
 	}
 
+	setStateAndInitSelect = (name, data) => {
+		this.setState({ [name]: data });
+		let elem = document.getElementById(name);
+		M.FormSelect.init(elem);
+	};
+
 	componentDidMount() {
 		document.addEventListener('DOMContentLoaded', function() {
-			let elems = document.querySelectorAll('select');
+			var elems = document.querySelectorAll('select');
 			M.FormSelect.init(elems);
 		});
 		document.addEventListener('DOMContentLoaded', function() {
@@ -50,7 +57,6 @@ class SearchPage extends Component {
 
 	render() {
 		const { showCards } = this.state;
-		// console.log(this.state.resultadoBusca);
 		return (
 			<Fragment>
 				<Header />
@@ -97,8 +103,9 @@ class SearchPage extends Component {
 									</div>
 									<div className="input-field col s6">
 										<select
+											id="area"
 											value={this.state.optionArea}
-											name="optionAreaa"
+											name="optionArea"
 											onChange={e => {
 												handleChange(this, e);
 											}}
@@ -107,8 +114,8 @@ class SearchPage extends Component {
 												Selecione a área
 											</option>
 											{this.state.areas.map(area => (
-												<option key={area.id} value={area.nome}>
-													teste
+												<option id={area.id} key={area.id} value={area.nome}>
+													{area.nome}
 												</option>
 											))}
 										</select>
@@ -116,6 +123,7 @@ class SearchPage extends Component {
 									</div>
 									<div className="input-field col s6">
 										<select
+											id="subarea"
 											value={this.state.optionSubarea}
 											name="optionSubarea"
 											onChange={e => {
@@ -133,7 +141,7 @@ class SearchPage extends Component {
 										</select>
 										<label>Sub-área do projeto</label>
 									</div>
-									<div className="input-field col s4">
+									{/* <div className="input-field col s4">
 										<select
 											value={this.state.optionTipo}
 											name="optionTipo"
@@ -151,23 +159,29 @@ class SearchPage extends Component {
 											))}
 										</select>
 										<label>Tipo do projeto</label>
-									</div>
+									</div> */}
 
-									<div className="input-field col s4">
-										<input
-											type="text"
-											className="datepicker"
-											value={this.state.dataInicio}
+									<div className="input-field col s6">
+										<DatePicker
+											s={12}
+											label="Data início projeto"
 											name="dataInicio"
+											value={this.state.dataInicio}
 											onChange={e => {
-												handleChange(this, e);
+												handleDatePickerChange(this, e);
 											}}
 										/>
-										<label>Data início do projeto</label>
 									</div>
-									<div className="input-field col s4">
-										<input type="text" className="datepicker" />
-										<label>Data fim do projeto</label>
+									<div className="input-field col s6">
+										<DatePicker
+											s={12}
+											label="Data fim do projeto"
+											name="dataTermino"
+											value={this.state.dataTermino}
+											onChange={e => {
+												handleDatePickerChangeTermino(this, e);
+											}}
+										/>
 									</div>
 									<button
 										className="btn waves-effect waves-light blue-grey darken-4 right"
