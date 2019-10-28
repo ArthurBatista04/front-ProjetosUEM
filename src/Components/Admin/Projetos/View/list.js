@@ -3,6 +3,7 @@ import {
   List,
   Datagrid,
   TextField,
+  ShowButton,
   NumberField,
   ReferenceField,
   SelectField,
@@ -25,6 +26,7 @@ export default props => (
         label="Limite de participantes"
         source="limiteParticipantes"
       />
+      <ShowButton label="Visualizar processos seletivos"></ShowButton>
       <EditButton />
     </Datagrid>
   </List>

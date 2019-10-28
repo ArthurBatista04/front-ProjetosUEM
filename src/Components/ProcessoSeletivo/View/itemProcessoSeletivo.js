@@ -91,14 +91,6 @@ export class ItemProcessoSeletivo extends Component {
                           : descricao}
                       </p>
 
-                      <hr className="style-six" />
-                      {this.buildRow(
-                        'Início do processo seletivo:',
-                        formatDate(
-                          moment.tz(dataInicio, 'America/Sao_Paulo').format()
-                        )
-                      )}
-
                       {dataInicio ? (
                         <Fragment>
                           <hr className="style-six" />

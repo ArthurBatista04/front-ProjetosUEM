@@ -9,7 +9,7 @@ export default class cadastroProcessoSeletivo extends Component {
   state = {
     mensagem: '',
     curriculo: '',
-    projetoId: this.props.match.params.processoId
+    processoSeletivoId: this.props.match.params.processoId
   };
 
   handleSubmit = e => {

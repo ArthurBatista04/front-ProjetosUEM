@@ -57,7 +57,7 @@ export const HandleInscricao = self => {
     Axios.post(`${PathName}/api/Inscritos`, {
       discenteId: discenteId,
       mensagem: self.state.mensagem,
-      projetoId: self.state.projetoId,
+      processoSeletivoId: self.state.processoSeletivoId,
       curriculo: self.state.curriculo
     })
       .then(res => {
