@@ -46,3 +46,33 @@ export const HandleGetProcessosSeletivo = (self, id) => {
       });
     });
 };
+
+export const handleChange = (self, e) => {
+  self.setState({ [e.target.name]: e.target.value });
+};
+
+export const HandleInscricao = self => {
+  const discenteId = localStorage.getItem('discenteId');
+  if (discenteId) {
+    Axios.post(`${PathName}/api/Inscritos`, {
+      discenteId: discenteId,
+      mensagem: self.state.mensagem,
+      projetoId: self.state.projetoId,
+      curriculo: self.state.curriculo
+    })
+      .then(res => {
+        Swal.fire({
+          type: 'success',
+          title: 'Inscrição realizada com sucesso',
+          text: 'Aguarde a divulação do edital dos aprovados pelo docente!'
+        });
+      })
+      .catch(err => {
+        Swal.fire({
+          type: 'error',
+          title: 'Ops! Algo deu errado',
+          text: err.response.data.error.message
+        });
+      });
+  }
+};

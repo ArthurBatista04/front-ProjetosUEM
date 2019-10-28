@@ -15,6 +15,7 @@ import RedefineSenha from './Login/view/RedefineSenha';
 import SearchPage from './Search/SearchPage';
 import ProcessoSeletivo from './ProcessoSeletivo/View/showProcessosSeletivos';
 import SobreProcessoSeletivo from './ProcessoSeletivo/View/sobreProcessoSeletivo';
+import CadastroProcessoSeletivo from './ProcessoSeletivo/View/cadastroProcessoSeletivo';
 const Main = () => (
   <main>
     <Switch>
@@ -39,8 +40,14 @@ const Main = () => (
         component={ProcessoSeletivo}
       ></Route>
       <Route
+        exact
         path="/processoSeletivo/:processoId"
         component={SobreProcessoSeletivo}
+      ></Route>
+      <Route
+        exact
+        path="/processoSeletivo/:processoId/cadastro"
+        component={CadastroProcessoSeletivo}
       ></Route>
     </Switch>
   </main>
