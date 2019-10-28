@@ -1,19 +1,22 @@
-import React from 'react';
+import React from "react";
 import {
   List,
   Datagrid,
   TextField,
   NumberField,
   ReferenceField,
+  SelectField,
   EditButton
-} from 'react-admin';
+} from "react-admin";
 
 export default props => (
   <List {...props}>
     <Datagrid>
       <TextField source="titulo" />
-      <TextField source="docente" />
-      <ReferenceField source="areaId" reference="areas">
+      <ReferenceField source="docenteId" reference="Docentes">
+        <SelectField label="Orientador" optionText="nome" />
+      </ReferenceField>
+      <ReferenceField source="areaId" reference="Areas">
         <TextField label="Área" source="nome" />
       </ReferenceField>
       <TextField source="status" />

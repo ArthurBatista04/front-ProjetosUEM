@@ -8,7 +8,7 @@ import {
   TextInput,
   NumberInput,
   DateInput,
-  LongTextInput,
+  RichTextInput,
   ReferenceInput,
   SelectInput
 } from "react-admin";
@@ -20,17 +20,17 @@ export default props => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="titulo" validate={validateTitulo} />
-      <ReferenceInput source="docenteId" reference="Docentes">
-        <SelectInput label="Orientador" optionText="name" />
+      <ReferenceInput source="docenteId" reference="Docentes" allowEmpty>
+        <SelectInput label="Orientador" optionText="nome" />
       </ReferenceInput>
-      <ReferenceInput source="docenteId" reference="Docentes">
-        <SelectInput label="Coorientador" optionText="name" />
+      <ReferenceInput source="coorientadorId" reference="Docentes" allowEmpty>
+        <SelectInput label="Coorientador" optionText="nome" />
       </ReferenceInput>
-      <ReferenceInput source="areaId" reference="Areas">
-        <SelectInput label="Área" optionText="name" />
+      <ReferenceInput source="areaId" reference="Areas" allowEmpty>
+        <SelectInput label="Área" optionText="nome" />
       </ReferenceInput>
-      <ReferenceInput source="subareaId" reference="Subareas">
-        <SelectInput label="Subárea" optionText="name" />
+      <ReferenceInput source="subareaId" reference="Subareas" allowEmpty>
+        <SelectInput label="Subárea" optionText="nome" />
       </ReferenceInput>
       <TextInput source="tipo" validate={required()} />
       <DateInput source="dataInicio" validate={required()} />
@@ -46,8 +46,8 @@ export default props => (
         source="limiteParticipantes"
         validate={validateLimites}
       />
-      <LongTextInput source="requisitos" />
-      <LongTextInput source="resumo" validate={required()} />
+      <RichTextInput source="requisitos" />
+      <RichTextInput source="resumo" validate={required()} />
     </SimpleForm>
   </Create>
 );
