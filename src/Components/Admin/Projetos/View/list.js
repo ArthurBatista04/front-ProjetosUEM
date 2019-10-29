@@ -14,7 +14,7 @@ export default props => (
     <Datagrid>
       <TextField source="titulo" />
       <ReferenceField source="docenteId" reference="Docentes">
-        <SelectField label="Orientador" optionText="nome" />
+        <TextField label="Orientador" optionText="nome" />
       </ReferenceField>
       <ReferenceField source="areaId" reference="Areas">
         <TextField label="Área" source="nome" />
