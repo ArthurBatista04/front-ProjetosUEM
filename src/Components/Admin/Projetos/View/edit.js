@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   number,
   required,
@@ -11,25 +11,36 @@ import {
   LongTextInput,
   ReferenceInput,
   SelectInput,
+  SelectArrayInput,
   DisabledInput
-} from 'react-admin';
+} from "react-admin";
 
 const validateTitulo = [required(), minLength(3)];
-const validateOrientadores = [required(), minLength(3)];
 const validateLimites = [required(), number()];
 
 export default props => (
   <Edit {...props}>
     <SimpleForm>
-      <DisabledInput source="id" />
       <TextInput source="titulo" validate={validateTitulo} />
-      <TextInput source="orientador" validate={validateOrientadores} />
-      <TextInput source="coorientador" validate={validateOrientadores} />
-      <ReferenceInput source="areaId" reference="areas">
-        <SelectInput label="Área" optionText="name" />
+      <ReferenceInput
+        source="docenteId"
+        reference="Docentes"
+        validate={required()}
+      >
+        <SelectArrayInput label="Orientador" optionText="nome" />
       </ReferenceInput>
-      <ReferenceInput source="subareaId" reference="subareas">
-        <SelectInput label="Subárea" optionText="name" />
+      <ReferenceInput source="coorientadorId" reference="Docentes">
+        <SelectArrayInput label="Coorientador" optionText="nome" />
+      </ReferenceInput>
+      <ReferenceInput source="areaId" reference="Areas" validate={required()}>
+        <SelectArrayInput label="Área" optionText="nome" />
+      </ReferenceInput>
+      <ReferenceInput
+        source="subareaId"
+        reference="Subareas"
+        validate={required()}
+      >
+        <SelectArrayInput label="Subárea" optionText="nome" />
       </ReferenceInput>
       <TextInput source="tipo" validate={required()} />
       <DateInput source="dataInicio" validate={required()} />
@@ -43,7 +54,7 @@ export default props => (
       <NumberInput
         label="Limite de participantes"
         source="limiteParticipantes"
-        validate={validateLimites}
+        validate={number()}
       />
       <LongTextInput source="requisitos" />
       <LongTextInput source="resumo" validate={required()} />

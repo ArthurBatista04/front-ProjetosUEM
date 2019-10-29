@@ -37,6 +37,7 @@ export default () => (
       show={ProjetosShow}
       create={ProjetosCreate}
     />
+    <Resource name="Docentes" />
     <Resource
       name="processosSeletivos"
       create={ProcessoSeletivoCreate}

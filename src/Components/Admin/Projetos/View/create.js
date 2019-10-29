@@ -8,9 +8,9 @@ import {
   TextInput,
   NumberInput,
   DateInput,
-  RichTextInput,
+  LongTextInput,
   ReferenceInput,
-  SelectInput
+  SelectArrayInput
 } from "react-admin";
 
 const validateTitulo = [required(), minLength(3)];
@@ -20,17 +20,25 @@ export default props => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="titulo" validate={validateTitulo} />
-      <ReferenceInput source="docenteId" reference="Docentes" allowEmpty>
-        <SelectInput label="Orientador" optionText="nome" />
+      <ReferenceInput
+        source="docenteId"
+        reference="Docentes"
+        validate={required()}
+      >
+        <SelectArrayInput label="Orientador" optionText="nome" />
       </ReferenceInput>
-      <ReferenceInput source="coorientadorId" reference="Docentes" allowEmpty>
-        <SelectInput label="Coorientador" optionText="nome" />
+      <ReferenceInput source="coorientadorId" reference="Docentes">
+        <SelectArrayInput label="Coorientador" optionText="nome" />
       </ReferenceInput>
-      <ReferenceInput source="areaId" reference="Areas" allowEmpty>
-        <SelectInput label="Área" optionText="nome" />
+      <ReferenceInput source="areaId" reference="Areas" validate={required()}>
+        <SelectArrayInput label="Área" optionText="nome" />
       </ReferenceInput>
-      <ReferenceInput source="subareaId" reference="Subareas" allowEmpty>
-        <SelectInput label="Subárea" optionText="nome" />
+      <ReferenceInput
+        source="subareaId"
+        reference="Subareas"
+        validate={required()}
+      >
+        <SelectArrayInput label="Subárea" optionText="nome" />
       </ReferenceInput>
       <TextInput source="tipo" validate={required()} />
       <DateInput source="dataInicio" validate={required()} />
@@ -44,10 +52,10 @@ export default props => (
       <NumberInput
         label="Limite de participantes"
         source="limiteParticipantes"
-        validate={validateLimites}
+        validate={number()}
       />
-      <RichTextInput source="requisitos" />
-      <RichTextInput source="resumo" validate={required()} />
+      <LongTextInput source="requisitos" />
+      <LongTextInput source="resumo" validate={required()} />
     </SimpleForm>
   </Create>
 );
