@@ -3,6 +3,7 @@ import {
   List,
   Datagrid,
   DateField,
+  EditButton,
   BooleanField,
   ShowButton,
   Show,
@@ -33,6 +34,7 @@ export default props => (
           <DateField locales="pt-BR" label="Início" source="dataInicio" />
           <BooleanField source="encerrado"></BooleanField>
           <ShowButton label="Visualizar inscritos"></ShowButton>
+          <EditButton></EditButton>
         </Datagrid>
       </List>
     </ReferenceManyField>

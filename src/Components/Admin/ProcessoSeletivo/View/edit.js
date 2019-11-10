@@ -13,7 +13,7 @@ import { DateTimeInput } from 'react-admin-date-inputs';
 DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
 export default props => (
   <Edit {...props}>
-    <SimpleForm>
+    <SimpleForm redirect={false}>
       <LongTextInput validate={required()} source="prerequisitos" />
       <LongTextInput validate={required()} source="descricao" />
       <DateTimeInput
@@ -22,7 +22,7 @@ export default props => (
         providerOptions={{ utils: DateFnsUtils, locale: Br }}
       />
       <BooleanInput
-        label="Processo seletivo ativo"
+        label="Deseja encerrar o processo seletivo?"
         source="encerrado"
       ></BooleanInput>
     </SimpleForm>

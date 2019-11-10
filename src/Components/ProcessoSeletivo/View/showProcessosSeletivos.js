@@ -12,7 +12,8 @@ export class showProcessosSeeltivos extends Component {
   }
 
   componentWillMount() {
-    HandleProcessosSeletivos(this, this.props.id);
+    console.log(this.props);
+    HandleProcessosSeletivos(this, this.props.match.params.id);
   }
 
   render() {

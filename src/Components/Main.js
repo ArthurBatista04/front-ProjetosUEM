@@ -16,6 +16,7 @@ import SearchPage from './Search/SearchPage';
 import ProcessoSeletivo from './ProcessoSeletivo/View/showProcessosSeletivos';
 import SobreProcessoSeletivo from './ProcessoSeletivo/View/sobreProcessoSeletivo';
 import CadastroProcessoSeletivo from './ProcessoSeletivo/View/cadastroProcessoSeletivo';
+import EditalProcessoSeletivo from './ProcessoSeletivo/View/editalProcessoSeletivo';
 const Main = () => (
   <main>
     <Switch>
@@ -48,6 +49,11 @@ const Main = () => (
         exact
         path="/processoSeletivo/:processoId/cadastro"
         component={CadastroProcessoSeletivo}
+      ></Route>
+      <Route
+        exact
+        path="/processoSeletivo/:processoId/edital"
+        component={EditalProcessoSeletivo}
       ></Route>
     </Switch>
   </main>

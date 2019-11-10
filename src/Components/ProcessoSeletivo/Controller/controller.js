@@ -76,3 +76,22 @@ export const HandleInscricao = self => {
       });
   }
 };
+
+export const HandleInscrito = (self, id) => {
+  const filter = {
+    where: {
+      processoSeletivoId: id
+    }
+  };
+  Axios.get(`${PathName}/api/Inscritos?filter=${JSON.stringify(filter)}`)
+    .then(res => {
+      self.setState({ Inscritos: res.data });
+    })
+    .catch(err => {
+      Swal.fire({
+        type: 'error',
+        title: 'Ops! Algo deu errado',
+        text: err.response.data.error.message
+      });
+    });
+};
