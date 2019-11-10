@@ -1,7 +1,7 @@
 import { UPDATE } from 'react-admin';
 
-export default async values => {
-  const { dataProvider, record, resource } = this.props;
+export const HandleRank = (self, rank) => {
+  const { dataProvider, record, resource } = self.props;
 
   dataProvider(
     UPDATE,
@@ -10,8 +10,8 @@ export default async values => {
       pagination: { page: 1, perPage: 0 },
       sort: { field: 'id', order: 'DESC' },
       id: record.id,
-      data: { pago: values.pago },
-      previousData: { pago: record.pago }
+      data: { rank: rank },
+      previousData: { rank: record.rank }
     },
     {
       onSuccess: {
@@ -25,5 +25,59 @@ export default async values => {
       }
     }
   ).then(res => {});
-  this.setState({ showDialog: false });
+  self.setState({ showDialog: false });
+};
+export const HandleAprove = self => {
+  const { dataProvider, record, resource } = self.props;
+
+  dataProvider(
+    UPDATE,
+    resource,
+    {
+      pagination: { page: 1, perPage: 0 },
+      sort: { field: 'id', order: 'DESC' },
+      id: record.id,
+      data: { aprovado: true },
+      previousData: { aprovado: record.aprovado }
+    },
+    {
+      onSuccess: {
+        refresh: true
+      },
+      onError: {
+        notification: {
+          body: 'Error: algo deu errado!',
+          level: 'warning'
+        }
+      }
+    }
+  ).then(res => {});
+  self.setState({ showDialog: false });
+};
+export const HandleDisaprove = self => {
+  const { dataProvider, record, resource } = self.props;
+
+  dataProvider(
+    UPDATE,
+    resource,
+    {
+      pagination: { page: 1, perPage: 0 },
+      sort: { field: 'id', order: 'DESC' },
+      id: record.id,
+      data: { aprovado: false },
+      previousData: { aprovado: record.aprovado }
+    },
+    {
+      onSuccess: {
+        refresh: true
+      },
+      onError: {
+        notification: {
+          body: 'Error: algo deu errado!',
+          level: 'warning'
+        }
+      }
+    }
+  ).then(res => {});
+  self.setState({ showDialog: false });
 };

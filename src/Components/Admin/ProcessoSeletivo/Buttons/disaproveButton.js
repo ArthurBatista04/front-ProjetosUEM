@@ -4,18 +4,22 @@ import React, { Component, Fragment } from 'react';
 import {
   Button,
   SaveButton,
+  BooleanInput,
   NumberInput,
+  ReferenceField,
+  TextField,
+  DisabledInput,
   SimpleForm,
   withDataProvider
 } from 'react-admin';
-import IconContentAdd from '@material-ui/icons/People';
+import IconContentAdd from '@material-ui/icons/ThumbDown';
 import IconCancel from '@material-ui/icons/Cancel';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
-import { HandleRank } from '../Controller/CrtlInscrito';
+import { HandleDisaprove } from '../Controller/CrtlInscrito';
 class PostQuickCreateButton extends Component {
   state = {
     error: false,
@@ -37,17 +41,17 @@ class PostQuickCreateButton extends Component {
     // This is needed because our modal action buttons are oustide the form
     submit('post-quick-create');
   };
-
   handleSubmit = value => {
-    HandleRank(this, value.rank);
+    HandleDisaprove(this);
   };
+
   render() {
     const { showDialog } = this.state;
     const { isSubmitting, basePath, record, resource } = this.props;
 
     return (
       <Fragment>
-        <Button onClick={this.handleClick} label="Alterar rank">
+        <Button onClick={this.handleClick} label="Rejeitar">
           <IconContentAdd />
         </Button>
         <Dialog
@@ -56,7 +60,7 @@ class PostQuickCreateButton extends Component {
           onClose={this.handleCloseClick}
           aria-label="Alterar rank"
         >
-          <DialogTitle>Alterar rank</DialogTitle>
+          <DialogTitle>Realmente deseja rejeitar esse candidato?</DialogTitle>
           <DialogContent>
             <SimpleForm
               // We override the redux-form name to avoid collision with the react-admin main form
@@ -68,7 +72,19 @@ class PostQuickCreateButton extends Component {
               toolbar={null}
               record={record}
             >
-              <NumberInput label="Rank" defaultValue={0} source="rank" />
+              {/* <ReferenceField
+                label="Nome"
+                reference="Discentes"
+                source="discenteId"
+              >
+                <ReferenceField
+                  label="Nome"
+                  reference="Usuarios"
+                  source="usuarioId"
+                >
+                  <TextField source="nome"></TextField>
+                </ReferenceField>
+              </ReferenceField> */}
             </SimpleForm>
           </DialogContent>
           <DialogActions>
