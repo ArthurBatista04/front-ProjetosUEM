@@ -14,6 +14,7 @@ export default class cadastroProcessoSeletivo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     HandleInscricao(this);
   };
 
@@ -56,7 +57,7 @@ export default class cadastroProcessoSeletivo extends Component {
                   </button>
                   <Link
                     className="btn blue lighten-1 left"
-                    to={`/processoSeletivo/${this.state.projetoId}`}
+                    to={`/processoSeletivo/${this.state.processoSeletivoId}`}
                   >
                     {'Voltar'}
                   </Link>
