@@ -25,12 +25,18 @@ export const assuntoEmail = self => {
   return assunto;
 };
 
-const sendEmail = email => {
+const sendEmail = (email, remetente) => {
   const Authorization = {
     headers: {
       Authorization: localStorage.getItem("access_token")
     }
   };
+
+  if (email.bcc === "Sem cópia") {
+    email.bcc = [];
+  }
+
+  email.text += `\n\nEmail enviado por ${remetente} por meio do ProjetosUEM.`;
 
   return Axios.post(
     `${PathName}/api/Usuarios/send-email`,
@@ -59,11 +65,12 @@ export const enviar = async (self, e) => {
   }
 
   try {
-    const res = await sendEmail(newEmail);
+    const remetente = self.state.remetente;
+    const res = await sendEmail(newEmail, remetente);
 
     if (res.status >= 200 && res.status < 300) {
       let mensagem = "";
-      if (newEmail.bcc.length === 0) {
+      if (newEmail.bcc.length === 0 || newEmail.bcc === "Sem cópia") {
         mensagem = `Seu email foi enviado para o orientador do projeto (${newEmail.to})`;
       } else {
         mensagem = `Seu email foi enviado para o orientador do projeto (${newEmail.to}) com uma cópia para o coorientardor (${newEmail.bcc[0]})`;

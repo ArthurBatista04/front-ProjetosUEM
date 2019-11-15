@@ -11,6 +11,7 @@ import {
 
 class Email extends Component {
   state = {
+    remetente: "",
     para: "",
     texto: "",
     assunto: "",
@@ -22,7 +23,8 @@ class Email extends Component {
     this.setState({
       assunto: assuntoEmail(this),
       para: this.props.para,
-      cco: this.props.cco ? this.props.cco : "Sem cópia"
+      cco: this.props.cco ? this.props.cco : "Sem cópia",
+      remetente: this.props.remetente
     });
   }
 
