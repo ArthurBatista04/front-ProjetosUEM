@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Header from "../../../Header/Header";
 import { Redirect } from "react-router-dom";
-import { TextInput } from "react-materialize";
+import { TextInput, Select } from "react-materialize";
 
 import {
   handleChange,
@@ -93,16 +93,29 @@ class Cadastro extends Component {
                         handleChange(this, e);
                       }}
                     />
-                    <TextInput
+
+                    <Select
                       s={12}
-                      label="Turno"
+                      value={this.state.value}
                       name="turno"
-                      value={this.state.turno}
-                      required
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                      onChange={e => handleChange(this, e)}
+                    >
+                      <option name="Turno" value="0" defaultValue>
+                        Turno
+                      </option>
+                      <option name="Integral" value="Integral">
+                        Integral
+                      </option>
+                      <option name="Matutino" value="Matutino">
+                        Matutino
+                      </option>
+                      <option name="Vespertino" value="Vespertino">
+                        Vespertino
+                      </option>
+                      <option name="Noturno" value="Noturno">
+                        Noturno
+                      </option>
+                    </Select>
 
                     <TextInput
                       s={12}
@@ -115,15 +128,25 @@ class Cadastro extends Component {
                       }}
                     />
 
-                    <TextInput
+                    <Select
                       s={12}
-                      label="Situação Acadêmica"
+                      value={this.state.value}
                       name="situacaoAcademica"
-                      value={this.state.situacaoAcademica}
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                      onChange={e => handleChange(this, e)}
+                    >
+                      <option name="Situação Acadêmica" value="0" defaultValue>
+                        Situação Acadêmica
+                      </option>
+                      <option name="Matriculado" value="Matriculado">
+                        Matriculado
+                      </option>
+                      <option name="Trancado" value="Trancado">
+                        Trancado
+                      </option>
+                      <option name="Desistente" value="Desistente">
+                        Desistente
+                      </option>
+                    </Select>
 
                     <TextInput
                       s={12}
