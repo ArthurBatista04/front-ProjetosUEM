@@ -13,26 +13,31 @@ import TrocaEmail from './Usuario/Perfil/View/trocarEmail';
 import EsqueceuSenha from './Login/view/EsqueceuSenha';
 import RedefineSenha from './Login/view/RedefineSenha';
 import SearchPage from './Search//view/SearchPage';
+import ShowProject from './Projeto/showProject';
 
 const Main = () => (
 	<main>
 		<Switch>
-			<Route exact path="/" component={Home} />
-			<Route exact path="/cadastro" component={chooseCadastro}></Route>
-			<Route exact path="/cadastro/Docente" component={CadastroDocente}></Route>
+			<Route exact path='/' component={Home} />
+			<Route exact path='/cadastro' component={chooseCadastro}></Route>
+			<Route exact path='/cadastro/Docente' component={CadastroDocente}></Route>
 			<Route
 				exact
-				path="/cadastro/Discente"
+				path='/cadastro/Discente'
 				component={CadastroDiscente}
 			></Route>
-			<Route exact path="/login" component={Login}></Route>
-			<Route exact path="/perfil" component={userProfile}></Route>
-			<Route exact path="/pesquisar" component={SearchPage}></Route>
-			<Route exact path="/admin" component={Manager} />
-			<Route exact path="/perfil/trocarSenha" component={TrocaSenha} />
-			<Route exact path="/perfil/trocarEmail" component={TrocaEmail} />
-			<Route exact path="/esqueceuSenha" component={EsqueceuSenha} />
-			<Route path="/reset-password/:access_token" component={RedefineSenha} />
+			<Route exact path='/login' component={Login}></Route>
+			<Route exact path='/perfil' component={userProfile}></Route>
+			<Route exact path='/pesquisar' component={SearchPage}></Route>
+			<Route exact path='/admin' component={Manager} />
+			<Route exact path='/perfil/trocarSenha' component={TrocaSenha} />
+			<Route exact path='/perfil/trocarEmail' component={TrocaEmail} />
+			<Route exact path='/esqueceuSenha' component={EsqueceuSenha} />
+			<Route path='/reset-password/:access_token' component={RedefineSenha} />
+			<Route
+				path='/showProject/:id/'
+				render={({ match }) => <ShowProject idEvento={match.params.id} />}
+			/>
 		</Switch>
 	</main>
 );
