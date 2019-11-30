@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import { createDocente, createUsuario } from "../../controller/CtrlUsuario";
+import { DocenteBuilder } from "../../model/Usuario";
 
 const sweetAlert = (type, title, text, showConfirmButton) => {
   return Swal.fire({
@@ -55,26 +56,25 @@ export const handleSignUp = async (self, e) => {
     password
   } = self.state;
 
-  const newDocente = {
+  const docenteFactory = new DocenteBuilder(
+    nome,
+    email,
     matricula,
     cargo,
     lotacao,
     situacao,
-    vencimentoContrato
-  };
+    vencimentoContrato,
+    username,
+    password
+  );
 
-  const newUser = {
-    nome: nome.toUpperCase(),
-    email,
-    password,
-    username: username.toLowerCase(),
-    realm: "Docente"
-  };
+  const usuario = docenteFactory.getUsuario();
+  const docente = docenteFactory.getDocente();
 
   try {
-    const res = await createUsuario(newUser);
-    newDocente["usuarioId"] = res.data.id;
-    await createDocente(newDocente);
+    const res = await createUsuario(usuario);
+    docente.usuarioId = res.data.id;
+    await createDocente(docente);
 
     if (res.status >= 200 && res.status < 300) {
       sweetAlert(
