@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { createDocente, createUsuario } from "../../controller/CtrlUsuario";
-import { DocenteBuilder } from "../../model/Usuario";
+import DocenteBuilder from "../../model/DocenteBuilder";
 
 const sweetAlert = (type, title, text, showConfirmButton) => {
   return Swal.fire({
@@ -73,7 +73,7 @@ export const handleSignUp = async (self, e) => {
 
   try {
     const res = await createUsuario(usuario);
-    docente.usuarioId = res.data.id;
+    docenteFactory.setUsuarioId(res.data.id); // Atualiza o usuarioId da instância de Docente criada
     await createDocente(docente);
 
     if (res.status >= 200 && res.status < 300) {

@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { createDiscente, createUsuario } from "../../controller/CtrlUsuario";
-import { DiscenteBuilder } from "../../model/Usuario";
+import DiscenteBuilder from "../../model/DiscenteBuilder";
 
 const sweetAlert = (type, title, text, showConfirmButton) => {
   return Swal.fire({
@@ -71,7 +71,7 @@ export const handleSignUp = async (self, e) => {
 
   try {
     const res = await createUsuario(usuario);
-    discente.usuarioId = res.data.id;
+    discenteFactory.setUsuarioId(res.data.id); // Atualiza o usuarioId da instância de Discente criada
     await createDiscente(discente);
 
     if (res.status >= 200 && res.status < 300) {
