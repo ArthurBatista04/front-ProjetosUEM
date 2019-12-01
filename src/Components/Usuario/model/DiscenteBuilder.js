@@ -1,39 +1,48 @@
 import Usuario from "./Usuario";
 import Discente from "./Discente";
+import UsuarioBuilder from "./UsuarioBuilder";
 
-export default class DiscenteBuilder {
-  constructor(
-    nome,
-    email,
-    ra,
-    curso,
-    turno,
-    campus,
-    serie,
-    situacaoAcademica,
-    username,
-    password
-  ) {
-    this.usuario = new Usuario(nome, email, password, username, "Discente");
-    this.discente = new Discente(
+// Concrete Builder Discente
+export default class DiscenteBuilder extends UsuarioBuilder {
+  constructor() {
+    super();
+
+    this.buildUsuario = (
+      nome,
+      email,
+      username,
+      password,
+      realm = "Discente"
+    ) => {
+      this.usuario = new Usuario(nome, email, password, username, realm);
+    };
+
+    this.buildDiscente = (
       ra,
       curso,
       turno,
       campus,
       serie,
       situacaoAcademica
-    );
+    ) => {
+      this.discente = new Discente(
+        ra,
+        curso,
+        turno,
+        campus,
+        serie,
+        situacaoAcademica
+      );
+    };
+
+    this.get = () => {
+      return { usuario: this.usuario, discente: this.discente };
+    };
+
+    this.buildDocente = () => {};
   }
 
   setUsuarioId(usuarioId) {
     this.discente.setUsuarioId(usuarioId);
-  }
-
-  getDiscente() {
-    return this.discente;
-  }
-
-  getUsuario() {
-    return this.usuario;
   }
 }
