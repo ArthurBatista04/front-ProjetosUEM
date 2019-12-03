@@ -19,8 +19,8 @@ export const handleChange = (self, e) => {
   self.setState({ [e.target.name]: e.target.value });
 };
 
-export const assuntoEmail = self => {
-  const assunto = `Nova mensagem no Projeto "${self.props.nomeProjeto}" de ${self.props.nomeUsuario}`;
+export const assuntoEmail = (projeto, usuario) => {
+  const assunto = `Nova mensagem no Projeto "${projeto.titulo}" de ${usuario.nome}`;
 
   return assunto;
 };

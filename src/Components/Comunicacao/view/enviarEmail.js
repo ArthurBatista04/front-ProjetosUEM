@@ -8,6 +8,8 @@ import {
   assuntoEmail,
   handleClick
 } from "../controller/CtrlEnviarEmail";
+import Axios from "axios";
+import PathName from "../../pathConst";
 
 class Email extends Component {
   state = {
@@ -19,13 +21,49 @@ class Email extends Component {
     redirect: false
   };
 
-  componentWillMount() {
-    this.setState({
-      assunto: assuntoEmail(this),
-      para: this.props.para,
-      cco: this.props.cco ? this.props.cco : "Sem cópia",
-      remetente: this.props.remetente
-    });
+  async componentWillMount() {
+    const idProjeto = this.props.match.params.id;
+    const userId = localStorage.getItem("user_id");
+
+    try {
+      const filter = {
+        include: [
+          {
+            relation: "docente",
+            scope: {
+              include: {
+                relation: "usuario"
+              }
+            }
+          },
+          {
+            relation: "coorientador",
+            scope: {
+              include: {
+                relation: "usuario"
+              }
+            }
+          }
+        ]
+      };
+
+      const resProjeto = await Axios.get(
+        `${PathName}/api/Projetos/${idProjeto}?filter=${JSON.stringify(filter)}`
+      );
+      const resUser = await Axios.get(`${PathName}/api/Usuarios/${userId}`);
+
+      const projeto = resProjeto.data;
+      const user = resUser.data;
+
+      this.setState({
+        assunto: assuntoEmail(projeto, user),
+        para: projeto.docente.usuario ? projeto.docente.usuario.email : "NULL",
+        cco: this.props.cco ? this.props.cco : "Sem cópia",
+        remetente: user.email
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {

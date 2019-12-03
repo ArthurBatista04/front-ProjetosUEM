@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { change, submit, isSubmitting } from 'redux-form';
-import React, { Component, Fragment } from 'react';
+import { connect } from "react-redux";
+import { change, submit, isSubmitting } from "redux-form";
+import React, { Component, Fragment } from "react";
 import {
   required,
   Button,
@@ -9,18 +9,18 @@ import {
   SimpleForm,
   withDataProvider,
   LongTextInput
-} from 'react-admin';
-import IconContentAdd from '@material-ui/icons/Add';
-import IconCancel from '@material-ui/icons/Cancel';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import PropTypes from 'prop-types';
-import DialogContent from '@material-ui/core/DialogContent';
-import Br from 'date-fns/locale/pt-BR';
-import DateFnsUtils from '@date-io/date-fns';
-import { DateTimeInput } from 'react-admin-date-inputs';
-import DialogActions from '@material-ui/core/DialogActions';
-DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
+} from "react-admin";
+import IconContentAdd from "@material-ui/icons/Add";
+import IconCancel from "@material-ui/icons/Cancel";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import PropTypes from "prop-types";
+import DialogContent from "@material-ui/core/DialogContent";
+// import Br from 'date-fns/locale/pt-BR';
+// import DateFnsUtils from '@date-io/date-fns';
+// import { DateTimeInput } from 'react-admin-date-inputs';
+// import DialogActions from '@material-ui/core/DialogActions';
+// DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
 
 class PostQuickCreateButton extends Component {
   state = {
@@ -41,7 +41,7 @@ class PostQuickCreateButton extends Component {
 
     // Trigger a submit of our custom quick create form
     // This is needed because our modal action buttons are oustide the form
-    submit('post-quick-create');
+    submit("post-quick-create");
   };
 
   handleSubmit = values => {
@@ -49,10 +49,10 @@ class PostQuickCreateButton extends Component {
     console.log(this.props);
     dataProvider(
       CREATE,
-      'processosSeletivos',
+      "processosSeletivos",
       {
         pagination: { page: 1, perPage: 0 },
-        sort: { field: 'id', order: 'DESC' },
+        sort: { field: "id", order: "DESC" },
         data: {
           projetoId: this.props.projetoId,
           prerequisitos: values.prerequisitos,
@@ -66,8 +66,8 @@ class PostQuickCreateButton extends Component {
         },
         onError: {
           notification: {
-            body: 'Error: algo deu errado!',
-            level: 'warning'
+            body: "Error: algo deu errado!",
+            level: "warning"
           }
         }
       }
@@ -103,14 +103,14 @@ class PostQuickCreateButton extends Component {
             >
               <LongTextInput validate={required()} source="prerequisitos" />
               <LongTextInput validate={required()} source="descricao" />
-              <DateTimeInput
+              {/* <DateTimeInput
                 label="Início do processo seletivo"
                 source="dataInicio"
                 providerOptions={{ utils: DateFnsUtils, locale: Br }}
-              />
+              /> */}
             </SimpleForm>
           </DialogContent>
-          <DialogActions>
+          {/* <DialogActions>
             <SaveButton
               label="Criar processo seletivo"
               saving={isSubmitting}
@@ -119,7 +119,7 @@ class PostQuickCreateButton extends Component {
             <Button label="ra.action.cancel" onClick={this.handleCloseClick}>
               <IconCancel />
             </Button>
-          </DialogActions>
+          </DialogActions> */}
         </Dialog>
       </Fragment>
     );
@@ -132,7 +132,7 @@ PostQuickCreateButton.propTypes = {
   record: PropTypes.object
 };
 const mapStateToProps = state => ({
-  isSubmitting: isSubmitting('post-quick-create')(state)
+  isSubmitting: isSubmitting("post-quick-create")(state)
 });
 
 const mapDispatchToProps = {

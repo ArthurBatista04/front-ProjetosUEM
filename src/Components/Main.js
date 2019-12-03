@@ -12,12 +12,14 @@ import TrocaSenha from "./Usuario/Perfil/View/TrocaSenha";
 import TrocaEmail from "./Usuario/Perfil/View/trocarEmail";
 import EsqueceuSenha from "./Login/view/EsqueceuSenha";
 import RedefineSenha from "./Login/view/RedefineSenha";
-import SearchPage from "./Search/SearchPage";
 import ProcessoSeletivo from "./ProcessoSeletivo/View/showProcessosSeletivos";
 import SobreProcessoSeletivo from "./ProcessoSeletivo/View/sobreProcessoSeletivo";
 import CadastroProcessoSeletivo from "./ProcessoSeletivo/View/cadastroProcessoSeletivo";
 import EditalProcessoSeletivo from "./ProcessoSeletivo/View/editalProcessoSeletivo";
 import Email from "./Comunicacao/view/enviarEmail";
+import SearchPage from "./Search//view/SearchPage";
+import ShowProject from "./Projeto/showProject";
+
 const Main = () => (
   <main>
     <Switch>
@@ -56,7 +58,15 @@ const Main = () => (
         path="/processoSeletivo/:processoId/edital"
         component={EditalProcessoSeletivo}
       ></Route>
-      <Route exact path="/projeto/email" component={Email}></Route>
+      <Route exact path="/projeto/email/:id" component={Email}></Route>
+      <Route
+        path="/showProject/:id"
+        render={({ match }) => <ShowProject idEvento={match.params.id} />}
+      />
+      <Route
+        path="/showProject/:id"
+        render={({ match }) => <ShowProject idEvento={match.params.id} />}
+      />
     </Switch>
   </main>
 );
