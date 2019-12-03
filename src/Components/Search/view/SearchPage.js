@@ -60,57 +60,57 @@ class SearchPage extends Component {
 		return (
 			<Fragment>
 				<Header />
-				<div className="container">
-					<div className="card-panel">
-						<div className="row">
-							<div className="col s12">
-								<div className="row">
-									<div className="input-field col s12">
+				<div className='container'>
+					<div className='card-panel'>
+						<div className='row'>
+							<div className='col s12'>
+								<div className='row'>
+									<div className='input-field col s12'>
 										<input
-											type="text"
-											className="validate"
+											type='text'
+											className='validate'
 											value={this.state.nomeProjeto}
-											name="nomeProjeto"
+											name='nomeProjeto'
 											onChange={e => {
 												handleChange(this, e);
 											}}
 										/>
-										<label htmlFor="last_name">Nome do projeto</label>
+										<label htmlFor='last_name'>Nome do projeto</label>
 									</div>
-									<div className="input-field col s6">
+									<div className='input-field col s6'>
 										<input
-											type="text"
-											className="validate"
+											type='text'
+											className='validate'
 											value={this.state.nomeOrientador}
-											name="nomeOrientador"
+											name='nomeOrientador'
 											onChange={e => {
 												handleChange(this, e);
 											}}
 										/>
-										<label htmlFor="last_name">Nome do orientador</label>
+										<label htmlFor='last_name'>Nome do orientador</label>
 									</div>
-									<div className="input-field col s6">
+									<div className='input-field col s6'>
 										<input
-											type="text"
-											className="validate"
+											type='text'
+											className='validate'
 											value={this.state.nomeCoorientador}
-											name="nomeCoorientador"
+											name='nomeCoorientador'
 											onChange={e => {
 												handleChange(this, e);
 											}}
 										/>
-										<label htmlFor="last_name">Nome do corientador</label>
+										<label htmlFor='last_name'>Nome do corientador</label>
 									</div>
-									<div className="input-field col s6">
+									<div className='input-field col s6'>
 										<select
-											id="area"
+											id='area'
 											value={this.state.optionArea}
-											name="optionArea"
+											name='optionArea'
 											onChange={e => {
 												handleChange(this, e);
 											}}
 										>
-											<option value="" disabled>
+											<option value='' disabled>
 												Selecione a área
 											</option>
 											{this.state.areas.map(area => (
@@ -121,16 +121,16 @@ class SearchPage extends Component {
 										</select>
 										<label>Área do projeto</label>
 									</div>
-									<div className="input-field col s6">
+									<div className='input-field col s6'>
 										<select
-											id="subarea"
+											id='subarea'
 											value={this.state.optionSubarea}
-											name="optionSubarea"
+											name='optionSubarea'
 											onChange={e => {
 												handleChange(this, e);
 											}}
 										>
-											<option value="" disabled>
+											<option value='' disabled>
 												Selecione a subárea
 											</option>
 											{this.state.subareas.map(subarea => (
@@ -141,42 +141,23 @@ class SearchPage extends Component {
 										</select>
 										<label>Sub-área do projeto</label>
 									</div>
-									{/* <div className="input-field col s4">
-										<select
-											value={this.state.optionTipo}
-											name="optionTipo"
-											onChange={e => {
-												handleChange(this, e);
-											}}
-										>
-											<option value="" disabled>
-												Selecione o tipo
-											</option>
-											{this.state.tipos.map((tipo, i) => (
-												<option key={i} value={tipo}>
-													{tipo}
-												</option>
-											))}
-										</select>
-										<label>Tipo do projeto</label>
-									</div> */}
 
-									<div className="input-field col s6">
+									<div className='input-field col s6'>
 										<DatePicker
 											s={12}
-											label="Data início projeto"
-											name="dataInicio"
+											label='Data início projeto'
+											name='dataInicio'
 											value={this.state.dataInicio}
 											onChange={e => {
 												handleDatePickerChange(this, e);
 											}}
 										/>
 									</div>
-									<div className="input-field col s6">
+									<div className='input-field col s6'>
 										<DatePicker
 											s={12}
-											label="Data fim do projeto"
-											name="dataTermino"
+											label='Data fim do projeto'
+											name='dataTermino'
 											value={this.state.dataTermino}
 											onChange={e => {
 												handleDatePickerChangeTermino(this, e);
@@ -184,14 +165,14 @@ class SearchPage extends Component {
 										/>
 									</div>
 									<button
-										className="btn waves-effect waves-light blue-grey darken-4 right"
-										type="button"
+										className='btn waves-effect waves-light blue-grey darken-4 right'
+										type='button'
 										onClick={e => {
 											handleClick(this, e);
 										}}
 									>
 										Pesquisar
-										<i className="material-icons right">search</i>
+										<i className='material-icons right'>search</i>
 									</button>
 								</div>
 							</div>

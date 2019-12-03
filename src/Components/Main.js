@@ -35,7 +35,7 @@ const Main = () => (
 			<Route exact path='/esqueceuSenha' component={EsqueceuSenha} />
 			<Route path='/reset-password/:access_token' component={RedefineSenha} />
 			<Route
-				path='/showProject/:id/'
+				path='/showProject/:id'
 				render={({ match }) => <ShowProject idEvento={match.params.id} />}
 			/>
 		</Switch>

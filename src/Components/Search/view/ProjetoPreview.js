@@ -71,15 +71,14 @@ class ProjetoPreview extends Component {
 								)}
 							</div>
 						</div>
+						<Link
+							className='btn waves-effect waves-light blue-grey darken-4 right'
+							type='button'
+							to={`showProject/${projeto.id}`}
+						>
+							Ver detalhes
+						</Link>
 					</div>
-					<Link
-						className='btn waves-effect waves-light blue-grey darken-4 right'
-						type='button'
-						to={`showProject/${projeto.id}`}
-					>
-						Pesquisar
-						<i className='material-icons right'>search</i>
-					</Link>
 				</div>
 			</Fragment>
 		);
