@@ -22,15 +22,15 @@ export default props => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput source="titulo" validate={validateTitulo} />
-      <ReferenceInput
+      {/* <ReferenceInput
         source="docenteId"
         reference="Docentes"
         validate={required()}
       >
         <SelectArrayInput label="Orientador" optionText="nome" />
-      </ReferenceInput>
+      </ReferenceInput> */}
       <ReferenceInput source="coorientadorId" reference="Docentes">
-        <SelectArrayInput label="Coorientador" optionText="nome" />
+        <SelectInput label="Coorientador" optionText="cargo" />
       </ReferenceInput>
       <ReferenceInput source="areaId" reference="Areas" validate={required()}>
         <SelectArrayInput label="Área" optionText="nome" />

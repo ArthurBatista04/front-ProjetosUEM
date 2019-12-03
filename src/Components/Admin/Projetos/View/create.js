@@ -6,7 +6,9 @@ import {
   Create,
   SimpleForm,
   TextInput,
+  ReferenceArrayInput,
   NumberInput,
+  SelectInput,
   DateInput,
   LongTextInput,
   ReferenceInput,
@@ -25,10 +27,21 @@ export default props => (
         reference="Docentes"
         validate={required()}
       >
-        <SelectArrayInput label="Orientador" optionText="nome" />
+        <SelectInput
+          label="Docente"
+          optionText="cargo"
+          filter={{ user_id: localStorage.getItem("user_id") }}
+        />
       </ReferenceInput>
+      {/* <ReferenceInput
+        source="docenteId"
+        reference="Docentes"
+        validate={required()}
+      >
+        <SelectArrayInput label="Orientador" optionText="nome" />
+      </ReferenceInput> */}
       <ReferenceInput source="coorientadorId" reference="Docentes">
-        <SelectArrayInput label="Coorientador" optionText="nome" />
+        <SelectInput label="Coorientador" optionText="cargo" />
       </ReferenceInput>
       <ReferenceInput source="areaId" reference="Areas" validate={required()}>
         <SelectArrayInput label="Área" optionText="nome" />
