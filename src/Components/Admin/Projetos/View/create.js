@@ -11,8 +11,7 @@ import {
   SelectInput,
   DateInput,
   LongTextInput,
-  ReferenceInput,
-  SelectArrayInput
+  ReferenceInput
 } from "react-admin";
 
 const validateTitulo = [required(), minLength(3)];
@@ -26,12 +25,9 @@ export default props => (
         source="docenteId"
         reference="Docentes"
         validate={required()}
+        filter={{ id: localStorage.getItem("docenteId") }}
       >
-        <SelectInput
-          label="Docente"
-          optionText="cargo"
-          filter={{ user_id: localStorage.getItem("user_id") }}
-        />
+        <SelectInput label="Orientador" optionText="cargo" />
       </ReferenceInput>
       {/* <ReferenceInput
         source="docenteId"
@@ -44,14 +40,14 @@ export default props => (
         <SelectInput label="Coorientador" optionText="cargo" />
       </ReferenceInput>
       <ReferenceInput source="areaId" reference="Areas" validate={required()}>
-        <SelectArrayInput label="Área" optionText="nome" />
+        <SelectInput label="Área" optionText="nome" />
       </ReferenceInput>
       <ReferenceInput
         source="subareaId"
         reference="Subareas"
         validate={required()}
       >
-        <SelectArrayInput label="Subárea" optionText="nome" />
+        <SelectInput label="Subárea" optionText="nome" />
       </ReferenceInput>
       <TextInput source="tipo" validate={required()} />
       <DateInput source="dataInicio" validate={required()} />
