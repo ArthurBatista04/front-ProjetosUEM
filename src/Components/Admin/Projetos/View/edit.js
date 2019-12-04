@@ -10,9 +10,7 @@ import {
   DateInput,
   LongTextInput,
   ReferenceInput,
-  SelectInput,
-  SelectArrayInput,
-  DisabledInput
+  SelectInput
 } from "react-admin";
 
 const validateTitulo = [required(), minLength(3)];
