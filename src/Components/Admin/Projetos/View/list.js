@@ -10,7 +10,7 @@ import {
 } from "react-admin";
 
 export default props => (
-  <List {...props}>
+  <List {...props} filter={{ docenteId: localStorage.getItem("docenteId") }}>
     <Datagrid>
       <TextField source="titulo" />
       <ReferenceField source="docenteId" reference="Docentes">
