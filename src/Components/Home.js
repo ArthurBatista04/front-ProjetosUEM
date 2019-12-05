@@ -1,21 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import Axios from 'axios';
 import PathConst from './pathConst';
 import Header from './Header/Header';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
-import { CarouselContainer } from './carouselCss/carouselStyle';
+import {Carousel} from 'react-responsive-carousel';
+import {CarouselContainer} from './carouselCss/carouselStyle';
 
 import foto from '../images/facebook_cover_photo_2.png';
 
 class Home extends Component {
 	componentWillMount() {
-		Axios.get(`${PathConst}/api/relatorioAdmin`).then(res => {
+		Axios.get(`${PathConst}/api/relatorioAdmins/1`).then(res => {
 			const numberViews = {
 				qntdVisualizacoesTotal: res.data.qntdVisualizacoesTotal + 1
 			};
 
-			Axios.patch(`${PathConst}/api/relatorioAdmin`, numberViews).then(
+			Axios.patch(`${PathConst}/api/relatorioAdmins/1`, numberViews).then(
 				response => {
 					console.log(response.data);
 				}
