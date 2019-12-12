@@ -16,12 +16,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import DialogContent from '@material-ui/core/DialogContent';
-import Br from 'date-fns/locale/pt-BR';
-import DateFnsUtils from '@date-io/date-fns';
-import {DateTimeInput} from 'react-admin-date-inputs';
+// import Br from 'date-fns/locale/pt-BR';
+// import DateFnsUtils from '@date-io/date-fns';
+// import {DateTimeInput} from 'react-admin-date-inputs';
 import DialogActions from '@material-ui/core/DialogActions';
 import {HandleProcesso} from '../Controller/CrtlInscrito';
-DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
+// DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
 
 class PostQuickCreateButton extends Component {
 	state = {

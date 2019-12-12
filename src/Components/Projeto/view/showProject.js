@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import Axios from 'axios';
 import Header from '../../Header/Header';
 import PathName from '../../pathConst';
 import moment from 'moment';
 import formatDate from '../../formatDate';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 class ShowProject extends Component {
 	componentWillMount() {
 		const token = localStorage.getItem('access_token');
@@ -14,7 +14,7 @@ class ShowProject extends Component {
 			}
 		};
 		const filterProjeto = {
-			include: ['area', 'subarea']
+			include: ['area', 'subarea', 'docente']
 		};
 		Axios.get(
 			`${PathName}/api/Projetos/${this.props.idEvento}/?filter=${JSON.stringify(
@@ -22,9 +22,15 @@ class ShowProject extends Component {
 			)}`,
 			Token
 		).then(res => {
-			this.setState({ projeto: res.data });
-			this.setState({ area: res.data.area.nome });
-			this.setState({ subarea: res.data.area.nome });
+			this.setState({projeto: res.data});
+			this.setState({area: res.data.area.nome});
+			this.setState({subarea: res.data.area.nome});
+			Axios.get(`${PathName}/api/Usuarios/${res.data.docente.usuarioId}`).then(
+				response => {
+					console.log(response.data);
+					this.setState({nomeOrientador: response.data.nome});
+				}
+			);
 		});
 	}
 
@@ -45,11 +51,13 @@ class ShowProject extends Component {
 	state = {
 		projeto: [],
 		area: '',
-		subarea: ''
+		subarea: '',
+		nomeOrientador: ''
 	};
 
 	render() {
-		const { projeto, area, subarea } = this.state;
+		const {nomeOrientador, projeto, area, subarea} = this.state;
+		// console.log(projeto);
 		return (
 			<Fragment>
 				<Header />
@@ -71,10 +79,7 @@ class ShowProject extends Component {
 								</h5>
 								<div className='basicInfo grey-text text-darken-2'>
 									<hr className='style-six' />
-									{this.buildRow(
-										'Nome do orientador:',
-										projeto.nomeDoOrientador
-									)}
+									{this.buildRow('Nome do orientador:', nomeOrientador)}
 									{projeto.requisitos
 										? this.buildRow('Tipo do projeto:', projeto.tipo)
 										: null}
@@ -120,6 +125,18 @@ class ShowProject extends Component {
 									}}
 								>
 									Inscrever-se
+								</Link>
+								<Link
+									to={`/projeto/email/${projeto.id}`}
+									className='btn blue lighten-1 right'
+									style={{
+										textOverflow: 'ellipsis',
+										whiteSpace: 'nowrap',
+										overflow: 'hidden',
+										marginRight: '5px'
+									}}
+								>
+									Enviar email
 								</Link>
 							</div>
 						</div>
