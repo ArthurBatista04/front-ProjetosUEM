@@ -17,9 +17,10 @@ const PostActions = props => (
   </CardActions>
 );
 export default props => (
-  <Show actions={false} title={false} {...props}>
+  <Show actions={false} title={'Listar Processos Seletivos'} {...props}>
     <ReferenceManyField reference="processosSeletivos" target="projetoId">
       <List
+        title={'.'}
         actions={
           <PostActions
             {...{
