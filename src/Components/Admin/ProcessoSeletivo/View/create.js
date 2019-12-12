@@ -16,28 +16,28 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import PropTypes from "prop-types";
 import DialogContent from "@material-ui/core/DialogContent";
-// import Br from 'date-fns/locale/pt-BR';
-// import DateFnsUtils from '@date-io/date-fns';
-// import { DateTimeInput } from 'react-admin-date-inputs';
-// import DialogActions from '@material-ui/core/DialogActions';
-// DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
+import Br from "date-fns/locale/pt-BR";
+import DateFnsUtils from "@date-io/date-fns";
+import { DateTimeInput } from "react-admin-date-inputs";
+import DialogActions from "@material-ui/core/DialogActions";
+DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
 
-// class PostQuickCreateButton extends Component {
-//   state = {
-//     error: false,
-//     showDialog: false
-//   };
+class PostQuickCreateButton extends Component {
+  state = {
+    error: false,
+    showDialog: false
+  };
 
-//   handleClick = () => {
-//     this.setState({ showDialog: true });
-//   };
+  handleClick = () => {
+    this.setState({ showDialog: true });
+  };
 
-//   handleCloseClick = () => {
-//     this.setState({ showDialog: false });
-//   };
+  handleCloseClick = () => {
+    this.setState({ showDialog: false });
+  };
 
-//   handleSaveClick = () => {
-//     const { submit } = this.props;
+  handleSaveClick = () => {
+    const { submit } = this.props;
 
     // Trigger a submit of our custom quick create form
     // This is needed because our modal action buttons are oustide the form
@@ -75,9 +75,9 @@ import DialogContent from "@material-ui/core/DialogContent";
     this.setState({ showDialog: false });
   };
 
-//   render() {
-//     const { showDialog } = this.state;
-//     const { isSubmitting } = this.props;
+  render() {
+    const { showDialog } = this.state;
+    const { isSubmitting } = this.props;
 
     return (
       <Fragment>
@@ -103,14 +103,14 @@ import DialogContent from "@material-ui/core/DialogContent";
             >
               <LongTextInput validate={required()} source="prerequisitos" />
               <LongTextInput validate={required()} source="descricao" />
-              {/* <DateTimeInput
+              <DateTimeInput
                 label="Início do processo seletivo"
                 source="dataInicio"
                 providerOptions={{ utils: DateFnsUtils, locale: Br }}
-              /> */}
+              />
             </SimpleForm>
           </DialogContent>
-          {/* <DialogActions>
+          <DialogActions>
             <SaveButton
               label="Criar processo seletivo"
               saving={isSubmitting}
@@ -119,7 +119,7 @@ import DialogContent from "@material-ui/core/DialogContent";
             <Button label="ra.action.cancel" onClick={this.handleCloseClick}>
               <IconCancel />
             </Button>
-          </DialogActions> */}
+          </DialogActions>
         </Dialog>
       </Fragment>
     );
@@ -135,12 +135,12 @@ const mapStateToProps = state => ({
   isSubmitting: isSubmitting("post-quick-create")(state)
 });
 
-// const mapDispatchToProps = {
-//   change,
+const mapDispatchToProps = {
+  change,
 
-//   submit
-// };
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(withDataProvider(PostQuickCreateButton));
+  submit
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withDataProvider(PostQuickCreateButton));
