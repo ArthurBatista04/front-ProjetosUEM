@@ -44,7 +44,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-rte": "^0.16.1",
-    "react-scripts": "3.0.0",
+    "react-scripts": "^3.3.0",
     "react-spinners": "^0.6.1",
     "rodal": "^1.6.3",
     "styled-components": "^4.3.2",

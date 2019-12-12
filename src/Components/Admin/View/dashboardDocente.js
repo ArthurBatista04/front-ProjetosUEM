@@ -5,7 +5,7 @@ import {Title} from 'react-admin';
 import compose from 'recompose/compose';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
-import {Line, Bar} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import {MDBContainer} from 'mdbreact';
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
@@ -17,7 +17,7 @@ const styles = {
 	}
 };
 
-class Dashboard extends React.Component {
+class DashboardDocente extends React.Component {
 	state = {
 		dadosUsuarios: {
 			labels: [
@@ -37,7 +37,7 @@ class Dashboard extends React.Component {
 			datasets: [
 				{
 					label: 'Quantidade de usuarios cadastrados',
-					data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					data: [0, 4, 5, 9, 0, 0, 0, 0, 0, 0, 0, 0],
 					backgroundColor: [
 						'rgba(255, 134,159,0.4)',
 						'rgba(98,  182, 239,0.4)',
@@ -246,4 +246,4 @@ class Dashboard extends React.Component {
 
 const enhance = compose(withStyles(styles), translate);
 
-export default enhance(Dashboard);
+export default enhance(DashboardDocente);

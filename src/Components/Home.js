@@ -17,7 +17,7 @@ class Home extends Component {
 
 			Axios.patch(`${PathConst}/api/relatorioAdmins/1`, numberViews).then(
 				response => {
-					console.log(response.data);
+					// console.log(response.data);
 				}
 			);
 		});
