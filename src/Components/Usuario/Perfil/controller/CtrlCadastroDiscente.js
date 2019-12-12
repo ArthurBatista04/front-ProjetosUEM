@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
 import { createDiscente, createUsuario } from "../../controller/CtrlUsuario";
+import DiscenteBuilder from "../../model/DiscenteBuilder";
+import Director from "../../model/Director";
 
 const sweetAlert = (type, title, text, showConfirmButton) => {
   return Swal.fire({
@@ -52,27 +54,21 @@ export const handleSignUp = async (self, e) => {
     password
   } = self.state;
 
-  const newDiscente = {
-    ra,
-    curso,
-    turno,
-    campus,
-    serie,
-    situacaoAcademica
-  };
+  const director = new Director();
+  const discenteBuilder = new DiscenteBuilder();
 
-  const newUser = {
-    nome: nome.toUpperCase(),
-    email,
-    password,
-    username: username.toLowerCase(),
-    realm: "Discente"
-  };
+  director.usuarioBuilder = discenteBuilder;
+  director.buildUsuario({
+    usuario: { nome, email, username, password },
+    discente: { ra, curso, turno, campus, serie, situacaoAcademica }
+  });
+
+  const { usuario, discente } = director.getUsuario();
 
   try {
-    const res = await createUsuario(newUser);
-    newDiscente["usuarioId"] = res.data.id;
-    await createDiscente(newDiscente);
+    const res = await createUsuario(usuario);
+    director.usuarioBuilder.setUsuarioId(res.data.id); // Atualiza o usuarioId da instância de Discente criada
+    await createDiscente(discente);
 
     if (res.status >= 200 && res.status < 300) {
       sweetAlert(

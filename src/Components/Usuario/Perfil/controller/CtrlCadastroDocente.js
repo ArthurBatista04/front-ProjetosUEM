@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
 import { createDocente, createUsuario } from "../../controller/CtrlUsuario";
+import DocenteBuilder from "../../model/DocenteBuilder";
+import Director from "../../model/Director";
 
 const sweetAlert = (type, title, text, showConfirmButton) => {
   return Swal.fire({
@@ -55,26 +57,21 @@ export const handleSignUp = async (self, e) => {
     password
   } = self.state;
 
-  const newDocente = {
-    matricula,
-    cargo,
-    lotacao,
-    situacao,
-    vencimentoContrato
-  };
+  const director = new Director();
+  const docenteBuilder = new DocenteBuilder();
 
-  const newUser = {
-    nome: nome.toUpperCase(),
-    email,
-    password,
-    username: username.toLowerCase(),
-    realm: "Docente"
-  };
+  director.usuarioBuilder = docenteBuilder;
+  director.buildUsuario({
+    usuario: { nome, email, username, password },
+    docente: { matricula, cargo, lotacao, situacao, vencimentoContrato }
+  });
+
+  const { usuario, docente } = director.getUsuario();
 
   try {
-    const res = await createUsuario(newUser);
-    newDocente["usuarioId"] = res.data.id;
-    await createDocente(newDocente);
+    const res = await createUsuario(usuario);
+    director.usuarioBuilder.setUsuarioId(res.data.id); // Atualiza o usuarioId da instância de Docente criada
+    await createDocente(docente);
 
     if (res.status >= 200 && res.status < 300) {
       sweetAlert(
