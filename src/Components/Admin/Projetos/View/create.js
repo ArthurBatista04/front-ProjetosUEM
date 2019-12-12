@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   number,
   required,
@@ -9,32 +9,18 @@ import {
   NumberInput,
   SelectInput,
   DateInput,
+  BooleanInput,
   LongTextInput,
   ReferenceInput
-} from "react-admin";
+} from 'react-admin';
 
 const validateTitulo = [required(), minLength(3)];
 const validateLimites = [required(), number()];
-
+const postDefaultValue = { docenteId: localStorage.getItem('docenteId') };
 export default props => (
   <Create {...props}>
-    <SimpleForm>
+    <SimpleForm redirect={false} defaultValue={postDefaultValue}>
       <TextInput source="titulo" validate={validateTitulo} />
-      <ReferenceInput
-        source="docenteId"
-        reference="Docentes"
-        validate={required()}
-        filter={{ id: localStorage.getItem("docenteId") }}
-      >
-        <SelectInput label="Orientador" optionText="cargo" />
-      </ReferenceInput>
-      {/* <ReferenceInput
-        source="docenteId"
-        reference="Docentes"
-        validate={required()}
-      >
-        <SelectArrayInput label="Orientador" optionText="nome" />
-      </ReferenceInput> */}
       <ReferenceInput source="coorientadorId" reference="Docentes">
         <SelectInput label="Coorientador" optionText="cargo" />
       </ReferenceInput>
@@ -51,10 +37,15 @@ export default props => (
       <TextInput source="tipo" validate={required()} />
       <DateInput source="dataInicio" validate={required()} />
       <DateInput source="dataTermino" validate={required()} />
-      <TextInput source="status" validate={required()} />
+      <BooleanInput
+        defaultValue={false}
+        label="Projeto em andamento?"
+        source="ativo"
+        validate={required()}
+      />
       <NumberInput
         label="Número de participantes"
-        source="nroParticipantes"
+        source="atualParticipantes"
         validate={validateLimites}
       />
       <NumberInput

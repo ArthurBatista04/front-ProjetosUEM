@@ -1,26 +1,30 @@
-import React from "react";
+import React from 'react';
 import {
   List,
+  BooleanField,
   Datagrid,
   TextField,
   ShowButton,
   NumberField,
   ReferenceField,
   EditButton
-} from "react-admin";
+} from 'react-admin';
 
 export default props => (
-  <List {...props} filter={{ docenteId: localStorage.getItem("docenteId") }}>
+  <List {...props} filter={{ docenteId: localStorage.getItem('docenteId') }}>
     <Datagrid>
       <TextField source="titulo" />
-      <ReferenceField source="docenteId" reference="Docentes">
+      <ReferenceField linkType={false} source="docenteId" reference="Docentes">
         <TextField label="Orientador" source="cargo" />
       </ReferenceField>
-      <ReferenceField source="areaId" reference="Areas">
+      <ReferenceField source="areaId" linkType={false} reference="Areas">
         <TextField label="Área" source="nome" />
       </ReferenceField>
-      <TextField source="status" />
-      <NumberField label="Número de participantes" source="nroParticipantes" />
+      <BooleanField source="ativo" label="Status" />
+      <NumberField
+        label="Número de participantes"
+        source="atualParticipantes"
+      />
       <NumberField
         label="Limite de participantes"
         source="limiteParticipantes"

@@ -78,11 +78,11 @@ class PostQuickCreateButton extends Component {
 						>
 							<LongTextInput validate={required()} source='prerequisitos' />
 							<LongTextInput validate={required()} source='descricao' />
-							{/* <DateTimeInput
+							<DateTimeInput
 								label='Início do processo seletivo'
 								source='dataInicio'
 								providerOptions={{utils: DateFnsUtils, locale: Br}}
-							/> */}
+							/>
 						</SimpleForm>
 					</DialogContent>
 					<DialogActions>
