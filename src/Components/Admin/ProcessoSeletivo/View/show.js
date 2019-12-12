@@ -25,7 +25,7 @@ class TabbedDatagrid extends React.Component {
   tabs = [
     { id: true, name: 'Aprovados' },
     { id: false, name: 'Rejeitados' },
-    { id: undefined, name: 'Pendentes' }
+    { id: null, name: 'Pendentes' }
   ];
 
   state = { Aprovados: [], Rejeitados: [], Pendentes: [] };
@@ -219,6 +219,7 @@ const InscritoList = ({ classes, ...props }) => (
   <Show title="Listar Inscritos" actions={false} {...props}>
     <ReferenceManyField title={false} reference="Inscritos" target="inscritoId">
       <List
+        actions={false}
         title="."
         filter={{ processoSeletivoId: props.id }}
         bulkActionButtons={false}
