@@ -6,7 +6,7 @@ export default createMuiTheme({
   palette: {
     primary: {
       // light: será calculada com base em palette.primary.main,
-      main: '#E6E6FA'
+      main: '#00FFFF'
       // dark: será calculada com base em palette.primary.main,
       // contrastText: será calculada para contrastar com palette.primary.main
     },
