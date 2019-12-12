@@ -1,6 +1,6 @@
-import { connect } from "react-redux";
-import { change, submit, isSubmitting } from "redux-form";
-import React, { Component, Fragment } from "react";
+import { connect } from 'react-redux';
+import { change, submit, isSubmitting } from 'redux-form';
+import React, { Component, Fragment } from 'react';
 import {
   required,
   Button,
@@ -9,17 +9,18 @@ import {
   SimpleForm,
   withDataProvider,
   LongTextInput
-} from "react-admin";
-import IconContentAdd from "@material-ui/icons/Add";
-import IconCancel from "@material-ui/icons/Cancel";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import PropTypes from "prop-types";
-import DialogContent from "@material-ui/core/DialogContent";
-import Br from "date-fns/locale/pt-BR";
-import DateFnsUtils from "@date-io/date-fns";
-import { DateTimeInput } from "react-admin-date-inputs";
-import DialogActions from "@material-ui/core/DialogActions";
+} from 'react-admin';
+import IconContentAdd from '@material-ui/icons/Add';
+import IconCancel from '@material-ui/icons/Cancel';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import PropTypes from 'prop-types';
+import DialogContent from '@material-ui/core/DialogContent';
+import Br from 'date-fns/locale/pt-BR';
+import DateFnsUtils from '@date-io/date-fns';
+import { DateTimeInput } from 'react-admin-date-inputs';
+import DialogActions from '@material-ui/core/DialogActions';
+import { HandleProcesso } from '../Controller/CrtlInscrito';
 DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
 
 class PostQuickCreateButton extends Component {
@@ -41,37 +42,11 @@ class PostQuickCreateButton extends Component {
 
     // Trigger a submit of our custom quick create form
     // This is needed because our modal action buttons are oustide the form
-    submit("post-quick-create");
+    submit('post-quick-create');
   };
 
   handleSubmit = values => {
-    const { dataProvider } = this.props;
-    console.log(this.props);
-    dataProvider(
-      CREATE,
-      "processosSeletivos",
-      {
-        pagination: { page: 1, perPage: 0 },
-        sort: { field: "id", order: "DESC" },
-        data: {
-          projetoId: this.props.projetoId,
-          prerequisitos: values.prerequisitos,
-          descricao: values.descricao,
-          dataInicio: values.dataInicio
-        }
-      },
-      {
-        onSuccess: {
-          refresh: true
-        },
-        onError: {
-          notification: {
-            body: "Error: algo deu errado!",
-            level: "warning"
-          }
-        }
-      }
-    );
+    HandleProcesso(this, values);
     this.setState({ showDialog: false });
   };
 
@@ -132,7 +107,7 @@ PostQuickCreateButton.propTypes = {
   record: PropTypes.object
 };
 const mapStateToProps = state => ({
-  isSubmitting: isSubmitting("post-quick-create")(state)
+  isSubmitting: isSubmitting('post-quick-create')(state)
 });
 
 const mapDispatchToProps = {

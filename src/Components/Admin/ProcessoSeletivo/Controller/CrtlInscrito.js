@@ -1,4 +1,33 @@
-import { UPDATE } from 'react-admin';
+import { UPDATE, CREATE } from 'react-admin';
+
+export const HandleProcesso = (self, values) => {
+  const { dataProvider, record, resource } = self.props;
+  dataProvider(
+    CREATE,
+    'processosSeletivos',
+    {
+      pagination: { page: 1, perPage: 0 },
+      sort: { field: 'id', order: 'DESC' },
+      data: {
+        projetoId: self.props.projetoId,
+        prerequisitos: values.prerequisitos,
+        descricao: values.descricao,
+        dataInicio: values.dataInicio
+      }
+    },
+    {
+      onSuccess: {
+        refresh: true
+      },
+      onError: {
+        notification: {
+          body: 'Error: algo deu errado!',
+          level: 'warning'
+        }
+      }
+    }
+  );
+};
 
 export const HandleRank = (self, rank) => {
   const { dataProvider, record, resource } = self.props;
