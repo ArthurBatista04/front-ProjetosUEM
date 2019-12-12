@@ -216,10 +216,11 @@ class TabbedDatagrid extends React.Component {
 const StyledTabbedDatagrid = withStyles(datagridStyles)(TabbedDatagrid);
 
 const InscritoList = ({ classes, ...props }) => (
-  <Show actions={false} {...props}>
+  <Show title="Listar Inscritos" actions={false} {...props}>
     <ReferenceManyField title={false} reference="Inscritos" target="inscritoId">
       <List
-        filter={{ processoSeletivoId: props.id }}
+        title="."
+        filter={{ processoSeletivoId: props.id, aprovado: null }}
         bulkActionButtons={false}
         {...props}
       >
