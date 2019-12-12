@@ -220,7 +220,7 @@ const InscritoList = ({ classes, ...props }) => (
     <ReferenceManyField title={false} reference="Inscritos" target="inscritoId">
       <List
         title="."
-        filter={{ processoSeletivoId: props.id, aprovado: null }}
+        filter={{ processoSeletivoId: props.id }}
         bulkActionButtons={false}
         {...props}
       >
