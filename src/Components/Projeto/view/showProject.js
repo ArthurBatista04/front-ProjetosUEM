@@ -116,7 +116,7 @@ class ShowProject extends Component {
                   Voltar
                 </Link>
                 <Link
-                  to={`/projeto/${projeto.id}/processoSeletivo `}
+                  to={`/projeto/${projeto.id}/processoSeletivo`}
                   className="btn blue lighten-1 right"
                   style={{
                     textOverflow: 'ellipsis',
