@@ -1,32 +1,26 @@
-import React from "react";
+import React from 'react';
 import {
   number,
   required,
   minLength,
   Edit,
   SimpleForm,
+  BooleanInput,
   TextInput,
   NumberInput,
   DateInput,
   LongTextInput,
   ReferenceInput,
   SelectInput
-} from "react-admin";
+} from 'react-admin';
 
 const validateTitulo = [required(), minLength(3)];
 const validateLimites = [required(), number()];
-
+const postDefaultValue = { docenteId: localStorage.getItem('docenteId') };
 export default props => (
   <Edit {...props}>
-    <SimpleForm>
+    <SimpleForm defaultValue={postDefaultValue}>
       <TextInput source="titulo" validate={validateTitulo} />
-      {/* <ReferenceInput
-        source="docenteId"
-        reference="Docentes"
-        validate={required()}
-      >
-        <SelectArrayInput label="Orientador" optionText="nome" />
-      </ReferenceInput> */}
       <ReferenceInput source="coorientadorId" reference="Docentes">
         <SelectInput label="Coorientador" optionText="cargo" />
       </ReferenceInput>
@@ -43,10 +37,15 @@ export default props => (
       <TextInput source="tipo" validate={required()} />
       <DateInput source="dataInicio" validate={required()} />
       <DateInput source="dataTermino" validate={required()} />
-      <TextInput source="status" validate={required()} />
+      <BooleanInput
+        defaultValue={false}
+        label="Projeto em andamento?"
+        source="ativo"
+        validate={required()}
+      />
       <NumberInput
         label="Número de participantes"
-        source="nroParticipantes"
+        source="atualParticipantes"
         validate={validateLimites}
       />
       <NumberInput
