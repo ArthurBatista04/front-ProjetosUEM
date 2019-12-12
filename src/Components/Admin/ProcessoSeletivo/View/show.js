@@ -25,7 +25,7 @@ class TabbedDatagrid extends React.Component {
   tabs = [
     { id: true, name: 'Aprovados' },
     { id: false, name: 'Rejeitados' },
-    { id: null, name: 'Pendentes' }
+    { id: null, name: 'Todos Inscritos' }
   ];
 
   state = { Aprovados: [], Rejeitados: [], Pendentes: [] };
