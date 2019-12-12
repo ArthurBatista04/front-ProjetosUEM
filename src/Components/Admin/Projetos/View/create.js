@@ -7,10 +7,10 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
+  SelectInput,
   DateInput,
   LongTextInput,
-  ReferenceInput,
-  SelectArrayInput
+  ReferenceInput
 } from "react-admin";
 
 const validateTitulo = [required(), minLength(3)];
@@ -24,21 +24,29 @@ export default props => (
         source="docenteId"
         reference="Docentes"
         validate={required()}
+        filter={{ id: localStorage.getItem("docenteId") }}
+      >
+        <SelectInput label="Orientador" optionText="cargo" />
+      </ReferenceInput>
+      {/* <ReferenceInput
+        source="docenteId"
+        reference="Docentes"
+        validate={required()}
       >
         <SelectArrayInput label="Orientador" optionText="nome" />
-      </ReferenceInput>
+      </ReferenceInput> */}
       <ReferenceInput source="coorientadorId" reference="Docentes">
-        <SelectArrayInput label="Coorientador" optionText="nome" />
+        <SelectInput label="Coorientador" optionText="cargo" />
       </ReferenceInput>
       <ReferenceInput source="areaId" reference="Areas" validate={required()}>
-        <SelectArrayInput label="Área" optionText="nome" />
+        <SelectInput label="Área" optionText="nome" />
       </ReferenceInput>
       <ReferenceInput
         source="subareaId"
         reference="Subareas"
         validate={required()}
       >
-        <SelectArrayInput label="Subárea" optionText="nome" />
+        <SelectInput label="Subárea" optionText="nome" />
       </ReferenceInput>
       <TextInput source="tipo" validate={required()} />
       <DateInput source="dataInicio" validate={required()} />

@@ -22,22 +22,22 @@ import DialogContent from "@material-ui/core/DialogContent";
 // import DialogActions from '@material-ui/core/DialogActions';
 // DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
 
-class PostQuickCreateButton extends Component {
-  state = {
-    error: false,
-    showDialog: false
-  };
+// class PostQuickCreateButton extends Component {
+//   state = {
+//     error: false,
+//     showDialog: false
+//   };
 
-  handleClick = () => {
-    this.setState({ showDialog: true });
-  };
+//   handleClick = () => {
+//     this.setState({ showDialog: true });
+//   };
 
-  handleCloseClick = () => {
-    this.setState({ showDialog: false });
-  };
+//   handleCloseClick = () => {
+//     this.setState({ showDialog: false });
+//   };
 
-  handleSaveClick = () => {
-    const { submit } = this.props;
+//   handleSaveClick = () => {
+//     const { submit } = this.props;
 
     // Trigger a submit of our custom quick create form
     // This is needed because our modal action buttons are oustide the form
@@ -75,9 +75,9 @@ class PostQuickCreateButton extends Component {
     this.setState({ showDialog: false });
   };
 
-  render() {
-    const { showDialog } = this.state;
-    const { isSubmitting } = this.props;
+//   render() {
+//     const { showDialog } = this.state;
+//     const { isSubmitting } = this.props;
 
     return (
       <Fragment>
@@ -135,12 +135,12 @@ const mapStateToProps = state => ({
   isSubmitting: isSubmitting("post-quick-create")(state)
 });
 
-const mapDispatchToProps = {
-  change,
+// const mapDispatchToProps = {
+//   change,
 
-  submit
-};
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withDataProvider(PostQuickCreateButton));
+//   submit
+// };
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(withDataProvider(PostQuickCreateButton));
