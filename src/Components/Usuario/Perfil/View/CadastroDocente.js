@@ -8,6 +8,8 @@ import {
   handleSignUp,
   handleDatePickerChange
 } from "../controller/CtrlCadastroDocente";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 
 class Cadastro extends Component {
   state = {
@@ -49,61 +51,111 @@ class Cadastro extends Component {
                 <div className="container">
                   <h3>Cadastro do Docente</h3>
                   <div className="row">
-                    <TextInput
-                      s={12}
-                      label="Nome completo"
-                      type="text"
-                      name="nome"
-                      value={this.state.nome}
-                      required
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Insira seu nome completo
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        label="Nome completo"
+                        type="text"
+                        name="nome"
+                        value={this.state.nome}
+                        required
+                        onChange={e => {
+                          handleChange(this, e);
+                        }}
+                      />
+                    </Tooltip>
 
-                    <TextInput
-                      s={12}
-                      label="Matrícula"
-                      name="matricula"
-                      value={this.state.matricula}
-                      required
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Insira o número de sua matrícula de professor
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        label="Matrícula"
+                        name="matricula"
+                        value={this.state.matricula}
+                        required
+                        onChange={e => {
+                          handleChange(this, e);
+                        }}
+                      />
+                    </Tooltip>
 
-                    <TextInput
-                      s={12}
-                      label="Cargo"
-                      name="cargo"
-                      value={this.state.cargo}
-                      required
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Por exemplo: Professor, Chefe do departamento, etc
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        label="Cargo"
+                        name="cargo"
+                        value={this.state.cargo}
+                        required
+                        onChange={e => {
+                          handleChange(this, e);
+                        }}
+                      />
+                    </Tooltip>
 
-                    <TextInput
-                      s={12}
-                      label="Lotação"
-                      name="lotacao"
-                      value={this.state.lotacao}
-                      required
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Por exemplo: Departamento de Informática
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        label="Lotação"
+                        name="lotacao"
+                        value={this.state.lotacao}
+                        required
+                        onChange={e => {
+                          handleChange(this, e);
+                        }}
+                      />
+                    </Tooltip>
 
-                    <TextInput
-                      s={12}
-                      label="Situação"
-                      name="situacao"
-                      value={this.state.situacao}
-                      required
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Por exemplo: Professor titular, Professor adjunto
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        label="Situação"
+                        name="situacao"
+                        value={this.state.situacao}
+                        required
+                        onChange={e => {
+                          handleChange(this, e);
+                        }}
+                      />
+                    </Tooltip>
 
                     <DatePicker
                       s={12}
@@ -115,49 +167,90 @@ class Cadastro extends Component {
                       }}
                     />
 
-                    <TextInput
-                      s={12}
-                      email
-                      validate
-                      label="Email"
-                      name="email"
-                      required
-                      value={this.state.email}
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Insira seu email, de preferência, institucional
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        email
+                        validate
+                        label="Email"
+                        name="email"
+                        required
+                        value={this.state.email}
+                        onChange={e => {
+                          handleChange(this, e);
+                        }}
+                      />
+                    </Tooltip>
 
-                    <TextInput
-                      s={12}
-                      label="Nome de usuário"
-                      type="text"
-                      name="username"
-                      required
-                      value={this.state.username}
-                      onChange={e => {
-                        handleChange(this, e);
-                      }}
-                    />
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Insira um nome de usuário para sua conta.
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        label="Nome de usuário"
+                        type="text"
+                        name="username"
+                        required
+                        value={this.state.username}
+                        onChange={e => {
+                          handleChange(this, e);
+                        }}
+                      />
+                    </Tooltip>
 
-                    <TextInput
-                      s={12}
-                      password
-                      value={this.state.password}
-                      name="password"
-                      required
-                      label="Senha"
-                      onChange={e => handleChange(this, e)}
-                    />
-                    <TextInput
-                      s={12}
-                      password
-                      value={this.state.confirmPassword}
-                      name="confirmPassword"
-                      required
-                      label="Confirme senha"
-                      onChange={e => handleChange(this, e)}
-                    />
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Insira uma senha de no mínimo 4 dígitos
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        password
+                        value={this.state.password}
+                        name="password"
+                        required
+                        label="Senha"
+                        onChange={e => handleChange(this, e)}
+                      />
+                    </Tooltip>
+
+                    <Tooltip
+                      title={
+                        <span style={{ fontSize: "12px" }}>
+                          Insira a mesma senha inserida acima
+                        </span>
+                      }
+                      TransitionComponent={Zoom}
+                      enterDelay={500}
+                    >
+                      <TextInput
+                        s={12}
+                        password
+                        value={this.state.confirmPassword}
+                        name="confirmPassword"
+                        required
+                        label="Confirme senha"
+                        onChange={e => handleChange(this, e)}
+                      />
+                    </Tooltip>
                   </div>
                 </div>
                 <br />

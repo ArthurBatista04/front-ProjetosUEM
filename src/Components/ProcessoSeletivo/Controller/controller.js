@@ -74,6 +74,12 @@ export const HandleInscricao = self => {
           text: err.response.data.error.message
         });
       });
+  } else {
+    Swal.fire({
+      type: 'error',
+      title: 'Ops! Algo deu errado',
+      text: 'Apenas discentes podem se inscrever em um processo seletivo!'
+    });
   }
 };
 

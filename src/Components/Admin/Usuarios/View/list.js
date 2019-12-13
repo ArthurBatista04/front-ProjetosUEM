@@ -1,27 +1,27 @@
-import React, { Fragment } from "react";
-import { Datagrid, TextField, List } from "react-admin";
-import withStyles from "@material-ui/core/styles/withStyles";
+import React, { Fragment } from 'react';
+import { Datagrid, TextField, List } from 'react-admin';
+import withStyles from '@material-ui/core/styles/withStyles';
 
-import Divider from "@material-ui/core/Divider";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import Divider from '@material-ui/core/Divider';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 const datagridStyles = {
-  total: { fontWeight: "bold" }
+  total: { fontWeight: 'bold' }
 };
 
 class TabbedDatagrid extends React.Component {
   tabs = [
-    { id: "Discente", name: "Discente" },
-    { id: "Docente", name: "Docente" },
-    { id: "admin", name: "admin" }
+    { id: 'Discente', name: 'Discente' },
+    { id: 'Docente', name: 'Docente' },
+    { id: 'admin', name: 'admin' }
   ];
 
   state = { admin: [], discente: [], docente: [] };
 
   static getDerivedStateFromProps(props, state) {
-    if (props.ids !== state[props.filterValues.status]) {
-      return { ...state, [props.filterValues.status]: props.ids };
+    if (props.ids !== state[props.filterValues.realm]) {
+      return { ...state, [props.filterValues.realm]: props.ids };
     }
     return null;
   }
@@ -49,21 +49,21 @@ class TabbedDatagrid extends React.Component {
         </Tabs>
         <Divider />
         <div>
-          {filterValues.realm === "Docente" && (
+          {filterValues.realm === 'Docente' && (
             <Datagrid {...props}>
               <TextField source="nome" />
               <TextField source="email" />
               <TextField label="Privilégio" source="realm" />
             </Datagrid>
           )}
-          {filterValues.realm === "Discente" && (
+          {filterValues.realm === 'Discente' && (
             <Datagrid {...props}>
               <TextField source="nome" />
               <TextField source="email" />
               <TextField label="Privilégio" source="realm" />
             </Datagrid>
           )}
-          {filterValues.realm === "admin" && (
+          {filterValues.realm === 'admin' && (
             <Datagrid {...props}>
               <TextField source="nome" />
               <TextField source="email" />
@@ -80,7 +80,7 @@ const StyledTabbedDatagrid = withStyles(datagridStyles)(TabbedDatagrid);
 
 const UserList = ({ classes, ...props }) => (
   <List
-    sort={{ field: "nome", order: "ASC" }}
+    sort={{ field: 'nome', order: 'ASC' }}
     bulkActionButtons={false}
     {...props}
   >
