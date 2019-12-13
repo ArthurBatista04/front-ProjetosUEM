@@ -54,7 +54,7 @@ class Cadastro extends Component {
                     <Tooltip
                       title={
                         <span style={{ fontSize: "12px" }}>
-                          Insira seu nome
+                          Insira seu nome completo
                         </span>
                       }
                       TransitionComponent={Zoom}
