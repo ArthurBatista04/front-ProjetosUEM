@@ -71,12 +71,7 @@ export const handleSignUp = async (self, e) => {
     await createDiscente(discente);
 
     if (res.status >= 200 && res.status < 300) {
-      sweetAlert(
-        "success",
-        "Cadastro realizado com sucesso",
-        "Veja seu email para confirmar sua conta",
-        true
-      );
+      sweetAlert("success", "Cadastro realizado com sucesso", "", true);
       self.setState({ redirect: true });
     }
   } catch (err) {
