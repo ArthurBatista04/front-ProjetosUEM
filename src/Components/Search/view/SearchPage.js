@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { TextInput, DatePicker } from 'react-materialize';
+import React, {Component, Fragment} from 'react';
+import {TextInput, DatePicker} from 'react-materialize';
 import ShowBuscaProjeto from './showBuscaProjetos';
 import M from 'materialize-css';
 import Header from '../../Header/Header';
@@ -35,7 +35,7 @@ class SearchPage extends Component {
 	}
 
 	setStateAndInitSelect = (name, data) => {
-		this.setState({ [name]: data });
+		this.setState({[name]: data});
 		let elem = document.getElementById(name);
 		M.FormSelect.init(elem);
 	};
@@ -56,7 +56,7 @@ class SearchPage extends Component {
 	}
 
 	render() {
-		const { showCards } = this.state;
+		const {showCards} = this.state;
 		return (
 			<Fragment>
 				<Header />
@@ -114,7 +114,7 @@ class SearchPage extends Component {
 												Selecione a área
 											</option>
 											{this.state.areas.map(area => (
-												<option id={area.id} key={area.id} value={area.nome}>
+												<option id={area.id} key={area.id} value={area.id}>
 													{area.nome}
 												</option>
 											))}
@@ -134,7 +134,7 @@ class SearchPage extends Component {
 												Selecione a subárea
 											</option>
 											{this.state.subareas.map(subarea => (
-												<option key={subarea.id} value={subarea.nome}>
+												<option key={subarea.id} value={subarea.id}>
 													{subarea.nome}
 												</option>
 											))}
@@ -165,7 +165,7 @@ class SearchPage extends Component {
 										/>
 									</div>
 									<button
-										className='btn waves-effect waves-light blue-grey darken-4 right'
+										className='btn blue-grey darken-4 right'
 										type='button'
 										onClick={e => {
 											handleClick(this, e);

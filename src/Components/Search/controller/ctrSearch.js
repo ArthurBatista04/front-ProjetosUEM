@@ -84,16 +84,10 @@ export const handleClick = (self, e) => {
 		filterSearch.include.push(include);
 	}
 	if (self.state.optionArea && self.state.optionArea !== '') {
-		console.log(self.state.optionArea);
-		if (typeof filterSearch.include !== 'undefined') {
-			filterSearch.include.push(self.state.optionArea);
-		}
+		filterSearch['where']['areaId'] = self.state.optionArea;
 	}
 	if (self.state.optionSubarea && self.state.optionSubarea !== '') {
-		const include = {
-			relation: 'subarea'
-		};
-		filterSearch.include.push(include);
+		filterSearch['where']['subareaId'] = self.state.optionSubarea;
 	}
 
 	console.log(filterSearch);
