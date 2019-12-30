@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import PathName from '../../pathConst';
 import M from 'materialize-css';
+import Swal from 'sweetalert2';
 
 export const getAreas = self => {
 	Axios.get(`${PathName}/api/Areas`).then(res => {
@@ -50,9 +51,23 @@ export const handleClick = (self, e) => {
 		include: []
 	};
 	if (self.state.nomeProjeto && self.state.nomeProjeto !== '') {
+		if (self.state.nomeProjeto.length > 100) {
+			return Swal.fire({
+				type: 'error',
+				title: 'Nome do projeto é muito grande',
+				text: 'O nome do projeto deve conter no máximo 100 caracteres'
+			});
+		}
 		filterSearch['where']['titulo'] = self.state.nomeProjeto;
 	}
 	if (self.state.nomeOrientador && self.state.nomeOrientador !== '') {
+		if (self.state.nomeOrientador.length > 100) {
+			return Swal.fire({
+				type: 'error',
+				title: 'Nome do orientador é muito grande',
+				text: 'O nome do orientador deve conter no máximo 100 caracteres'
+			});
+		}
 		const include = {
 			relation: 'docente',
 			scope: {
