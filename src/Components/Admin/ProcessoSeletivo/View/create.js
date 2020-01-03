@@ -22,7 +22,23 @@ import { DateTimeInput } from 'react-admin-date-inputs';
 import DialogActions from '@material-ui/core/DialogActions';
 import { HandleProcesso } from '../Controller/CrtlInscrito';
 DateFnsUtils.prototype.getStartOfMonth = DateFnsUtils.prototype.startOfMonth;
-
+const validarDados = values => {
+  const errors = {};
+  const dataAtual = new Date().setHours(0, 0, 0, 0).valueOf();
+  if (!values.prerequisitos) {
+    errors.prerequisitos = ['Pre requisitos são necessários'];
+  } else if (!values.descricao) {
+    errors.descricao = ['Uma descrição é necessária'];
+  } else if (values.descricao.length > 200) {
+    errors.descricao = ['Max de 200 caracteres'];
+  } else if (
+    values.dataInicio &&
+    values.dataInicio.valueOf() < dataAtual.valueOf()
+  ) {
+    errors.dataInicio = ['A data não pode ser anterior ao dia atual!'];
+  }
+  return errors;
+};
 class PostQuickCreateButton extends Component {
   state = {
     error: false,
@@ -75,9 +91,10 @@ class PostQuickCreateButton extends Component {
               onSubmit={this.handleSubmit}
               // We want no toolbar at all as we have our modal actions
               toolbar={null}
+              validate={validarDados}
             >
-              <LongTextInput validate={required()} source="prerequisitos" />
-              <LongTextInput validate={required()} source="descricao" />
+              <LongTextInput source="prerequisitos" />
+              <LongTextInput source="descricao" />
               <DateTimeInput
                 label="Início do processo seletivo"
                 source="dataInicio"
