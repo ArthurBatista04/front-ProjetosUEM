@@ -18,6 +18,8 @@ const validateUserCreation = values => {
   }
   if (!values.descricao) {
     errors.descricao = ['Uma descrição é necessária'];
+  } else if (values.descricao.length > 200) {
+    errors.descricao = ['Max de 200 caracteres'];
   }
   const dataAtual = new Date().setHours(0, 0, 0, 0).valueOf();
   if (values.dataInicio.valueOf() < dataAtual.valueOf()) {
