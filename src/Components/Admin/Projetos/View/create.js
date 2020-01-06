@@ -3,6 +3,9 @@ import {
   number,
   required,
   minLength,
+  maxLength,
+  minValue,
+  maxValue,
   Create,
   SimpleForm,
   TextInput,
@@ -16,23 +19,30 @@ import {
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 
-{
-  /* <Tooltip
-  title={
-    <span style={{ fontSize: "12px" }}>
-      Insira o número de sua matrícula de professor
-    </span>
-  }
-  TransitionComponent={Zoom}
-  enterDelay={500}
->
-  <TextInput source="titulo" validate={validateTitulo} />
-</Tooltip>; */
-}
+const messageMinTitulo = "Título deve conter pelo menos 10 caracteres.";
+const messageMaxTitulo = "Título não pode exceder 100 caracteres.";
+const messageMinResumo = "Resumo deve conter pelo menos 20 caracteres.";
+const messageMaxResumo = "Resumo não pode exceder 400 caracteres.";
+const numeros = "O valor deve estar entre 0 e 6.";
 
-const validateTitulo = [required(), minLength(3)];
-const validateLimites = [required(), number()];
+const validateTitulo = [
+  required("Campo obrigatório."),
+  minLength(10, messageMinTitulo),
+  maxLength(100, messageMaxTitulo)
+];
+const validateResumo = [
+  required("Campo obrigatório."),
+  minLength(20, messageMinResumo),
+  maxLength(400, messageMaxResumo)
+];
+const validateNumeros = [
+  required("Campo obrigatório."),
+  minValue(0, numeros),
+  maxValue(6, numeros),
+  number()
+];
 const postDefaultValue = { docenteId: localStorage.getItem("docenteId") };
+
 export default props => (
   <Create {...props}>
     <SimpleForm redirect={false} defaultValue={postDefaultValue}>
@@ -48,13 +58,17 @@ export default props => (
       <ReferenceInput source="coorientadorId" reference="Docentes">
         <SelectInput label="Coorientador" optionText="cargo" />
       </ReferenceInput>
-      <ReferenceInput source="areaId" reference="Areas" validate={required()}>
+      <ReferenceInput
+        source="areaId"
+        reference="Areas"
+        validate={required("Campo obrigatório.")}
+      >
         <SelectInput label="Área" optionText="nome" />
       </ReferenceInput>
       <ReferenceInput
         source="subareaId"
         reference="Subareas"
-        validate={required()}
+        validate={required("Campo obrigatório.")}
       >
         <SelectInput label="Subárea" optionText="nome" />
       </ReferenceInput>
@@ -67,7 +81,7 @@ export default props => (
         TransitionComponent={Zoom}
         enterDelay={500}
       >
-        <TextInput source="tipo" validate={required()} />
+        <TextInput source="tipo" validate={required("Campo obrigatório.")} />
       </Tooltip>
       <Tooltip
         title={
@@ -78,7 +92,10 @@ export default props => (
         TransitionComponent={Zoom}
         enterDelay={500}
       >
-        <DateInput source="dataInicio" validate={required()} />
+        <DateInput
+          source="dataInicio"
+          validate={required("Campo obrigatório.")}
+        />
       </Tooltip>
       <Tooltip
         title={
@@ -89,7 +106,10 @@ export default props => (
         TransitionComponent={Zoom}
         enterDelay={500}
       >
-        <DateInput source="dataTermino" validate={required()} />
+        <DateInput
+          source="dataTermino"
+          validate={required("Campo obrigatório.")}
+        />
       </Tooltip>
       <Tooltip
         title={
@@ -104,7 +124,7 @@ export default props => (
           defaultValue={false}
           label="Projeto em andamento?"
           source="ativo"
-          validate={required()}
+          validate={required("Campo obrigatório.")}
         />
       </Tooltip>
       <Tooltip
@@ -119,7 +139,7 @@ export default props => (
         <NumberInput
           label="Número de participantes"
           source="atualParticipantes"
-          validate={validateLimites}
+          validate={validateNumeros}
         />
       </Tooltip>
       <Tooltip
@@ -134,7 +154,7 @@ export default props => (
         <NumberInput
           label="Limite de participantes"
           source="limiteParticipantes"
-          validate={number()}
+          validate={validateNumeros}
         />
       </Tooltip>
       <Tooltip
@@ -157,7 +177,7 @@ export default props => (
         TransitionComponent={Zoom}
         enterDelay={500}
       >
-        <LongTextInput source="resumo" validate={required()} />
+        <LongTextInput source="resumo" validate={validateResumo} />
       </Tooltip>
     </SimpleForm>
   </Create>
