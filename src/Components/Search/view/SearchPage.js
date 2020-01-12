@@ -1,9 +1,10 @@
-import React, {Component, Fragment} from 'react';
-import {TextInput, DatePicker} from 'react-materialize';
-import ShowBuscaProjeto from './showBuscaProjetos';
-import M from 'materialize-css';
-import Header from '../../Header/Header';
-import '../controller/ctrSearch';
+import React, {Component, Fragment} from "react";
+import {DatePicker} from "react-materialize";
+import ShowBuscaProjeto from "./showBuscaProjetos";
+import M from "materialize-css";
+import Header from "../../Header/Header";
+import "../controller/ctrSearch";
+
 import {
 	handleChange,
 	handleDatePickerChange,
@@ -11,20 +12,20 @@ import {
 	handleClick,
 	getAreas,
 	getSubareas
-} from '../controller/ctrSearch';
+} from "../controller/ctrSearch";
 
 class SearchPage extends Component {
 	state = {
-		nomeProjeto: '',
-		nomeOrientador: '',
+		nomeProjeto: "",
+		nomeOrientador: "",
 		areas: [],
 		subareas: [],
-		tipos: ['teste4', 'teste5'],
-		optionArea: '',
-		optionSubarea: '',
-		optionTipo: '',
-		dataInicio: '',
-		dataTermino: '',
+		tipos: ["teste4", "teste5"],
+		optionArea: "",
+		optionSubarea: "",
+		optionTipo: "",
+		dataInicio: "",
+		dataTermino: "",
 		showCards: false,
 		resultadoBusca: []
 	};
@@ -41,12 +42,17 @@ class SearchPage extends Component {
 	};
 
 	componentDidMount() {
-		document.addEventListener('DOMContentLoaded', function() {
-			var elems = document.querySelectorAll('select');
+		document.addEventListener("DOMContentLoaded", function() {
+			const elems = document.querySelectorAll("select");
 			M.FormSelect.init(elems);
 		});
-		document.addEventListener('DOMContentLoaded', function() {
-			let elems = document.querySelectorAll('.datepicker');
+		document.addEventListener("DOMContentLoaded", function() {
+			const elems = document.querySelectorAll(".modal");
+			M.Modal.init(elems);
+		});
+
+		document.addEventListener("DOMContentLoaded", function() {
+			let elems = document.querySelectorAll(".datepicker");
 			const options = {
 				autoClose: true,
 				showClearBtn: true
@@ -61,11 +67,40 @@ class SearchPage extends Component {
 			<Fragment>
 				<Header />
 				<div className='container'>
+					<div id='modal1' class='modal'>
+						<div class='modal-content'>
+							<h4>Ajuda online de contexto</h4>
+							<p>
+								Nessa tela, é possível buscar todos os projetos cadastrados na
+								plataforma
+							</p>
+							<p>Você consegue filtrar os projetos pelos seguintes campos:</p>
+							<p> * Nome do projeto</p>
+							<p> * Nome do orientador</p>
+							<p> * Nome do coorientador</p>
+							<p> * Área do projeto</p>
+							<p> * Subárea do projeto</p>
+							<p> * Início do projeto</p>
+							<p> * Término do projeto</p>
+							<p>
+								Se não preenchar nenhum campo, a busca irá retornar todos os
+								projetos.
+							</p>
+						</div>
+						<div class='modal-footer'>
+							<a
+								href='#!'
+								class='modal-close waves-effect waves-green btn-flat'
+							>
+								Ok
+							</a>
+						</div>
+					</div>
 					<div className='card-panel'>
 						<div className='row'>
 							<div className='col s12'>
 								<div className='row'>
-									<div className='input-field col s12'>
+									<div className='input-field col s10'>
 										<input
 											type='text'
 											className='validate'
@@ -76,6 +111,15 @@ class SearchPage extends Component {
 											}}
 										/>
 										<label htmlFor='last_name'>Nome do projeto</label>
+									</div>
+									<div className='input-field col s2'>
+										{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+										<a
+											className='btn-floating btn-large black pulse right modal-trigger'
+											href='#modal1'
+										>
+											<i className='material-icons'>error_outline</i>
+										</a>
 									</div>
 									<div className='input-field col s6'>
 										<input
