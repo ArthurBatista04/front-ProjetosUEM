@@ -92,10 +92,6 @@ export class ItemProcessoSeletivo extends Component {
                         <hr className="style-six" />
                         {this.buildRow('Ra', discente.ra)}
                       </Fragment>
-                      <Fragment>
-                        <hr className="style-six" />
-                        {this.buildRow('Curso', discente.curso)}
-                      </Fragment>
 
                       {aprovado ? (
                         <Fragment>
