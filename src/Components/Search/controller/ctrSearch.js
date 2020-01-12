@@ -36,19 +36,9 @@ export const handleDatePickerChangeTermino = (self, e) => {
 
 export const handleClick = (self, e) => {
 	e.preventDefault();
-	const newSearch = {
-		nomeProjeto: self.state.nomeProjeto,
-		nomeOrientador: self.state.nomeOrientador,
-		optionArea: self.state.optionArea,
-		optionSubarea: self.state.optionSubarea,
-		optionTipo: self.state.tipos,
-		dataInicio: self.state.dataInicio,
-		dataTermino: self.state.dataTermino
-	};
 
 	const filterSearch = {
-		where: {},
-		include: []
+		where: {}
 	};
 	if (self.state.nomeProjeto && self.state.nomeProjeto !== '') {
 		if (self.state.nomeProjeto.length > 100) {
@@ -68,20 +58,18 @@ export const handleClick = (self, e) => {
 				text: 'O nome do orientador deve conter no máximo 100 caracteres'
 			});
 		}
-		const include = {
-			relation: 'docente',
-			scope: {
-				include: {
-					relation: 'usuario',
-					scope: {
-						where: {
-							nome: self.state.nomeOrientador
-						}
-					}
-				}
-			}
+		const filterUsuario = {
+			where: {
+				nome: self.state.nomeOrientador
+			},
+			include: 'docente'
 		};
-		filterSearch.include.push(include);
+		Axios.get(
+			`${PathName}/api/Usuarios/?filter=${JSON.stringify(filterUsuario)}`
+		).then(res => {
+			console.log(res.data[0].docente.id);
+			filterSearch['where']['docenteId'] = res.data[0].docente.id;
+		});
 	}
 	if (self.state.optionArea && self.state.optionArea !== '') {
 		filterSearch['where']['areaId'] = self.state.optionArea;
