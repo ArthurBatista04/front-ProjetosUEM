@@ -41,31 +41,31 @@ const validarDados = values => {
   return errors;
 };
 class PostQuickCreateButton extends Component {
-	state = {
-		error: false,
-		showDialog: false
-	};
+  state = {
+    error: false,
+    showDialog: false
+  };
 
-	handleClick = () => {
-		this.setState({showDialog: true});
-	};
+  handleClick = () => {
+    this.setState({ showDialog: true });
+  };
 
-	handleCloseClick = () => {
-		this.setState({showDialog: false});
-	};
+  handleCloseClick = () => {
+    this.setState({ showDialog: false });
+  };
 
-	handleSaveClick = () => {
-		const {submit} = this.props;
+  handleSaveClick = () => {
+    const { submit } = this.props;
 
     // Trigger a submit of our custom quick create form
     // This is needed because our modal action buttons are oustide the form
     submit("post-quick-create");
   };
 
-	handleSubmit = values => {
-		HandleProcesso(this, values);
-		this.setState({showDialog: false});
-	};
+  handleSubmit = values => {
+    HandleProcesso(this, values);
+    this.setState({ showDialog: false });
+  };
 
   render() {
     const { showDialog } = this.state;
@@ -143,20 +143,20 @@ class PostQuickCreateButton extends Component {
 }
 
 PostQuickCreateButton.propTypes = {
-	dataProvider: PropTypes.func.isRequired,
-	dispatch: PropTypes.func.isRequired,
-	record: PropTypes.object
+  dataProvider: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  record: PropTypes.object
 };
 const mapStateToProps = state => ({
   isSubmitting: isSubmitting("post-quick-create")(state)
 });
 
 const mapDispatchToProps = {
-	change,
+  change,
 
-	submit
+  submit
 };
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(withDataProvider(PostQuickCreateButton));
