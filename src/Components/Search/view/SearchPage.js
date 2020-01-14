@@ -18,6 +18,7 @@ class SearchPage extends Component {
 	state = {
 		nomeProjeto: "",
 		nomeOrientador: "",
+		nomeCoorientador: "",
 		areas: [],
 		subareas: [],
 		tipos: ["teste4", "teste5"],
