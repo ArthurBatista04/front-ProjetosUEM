@@ -41,7 +41,9 @@ const validateNumeros = [
   maxValue(6, numeros),
   number()
 ];
+
 const postDefaultValue = { docenteId: localStorage.getItem("docenteId") };
+console.log(postDefaultValue);
 
 export default props => (
   <Create {...props}>
