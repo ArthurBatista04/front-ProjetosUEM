@@ -29,6 +29,38 @@ export const handleDatePickerChange = (self, e) => {
 export const handleSignUp = async (self, e) => {
   e.preventDefault();
 
+  const {
+    nome,
+    email,
+    matricula,
+    cargo,
+    lotacao,
+    situacao,
+    vencimentoContrato,
+    username,
+    password
+  } = self.state;
+
+  if (
+    !(
+      nome &&
+      email &&
+      matricula &&
+      cargo &&
+      lotacao &&
+      situacao &&
+      vencimentoContrato &&
+      username &&
+      password
+    )
+  ) {
+    return sweetAlert(
+      "error",
+      "Todos os campos são requeridos! Há campos não preenchidos",
+      "Tente novamente"
+    );
+  }
+
   if (self.state.password !== self.state.confirmPassword) {
     self.setState({ confirmPassword: "" });
     return Swal.fire({
@@ -43,19 +75,14 @@ export const handleSignUp = async (self, e) => {
       title: "Senha deve ter pelo menos 4 caracteres",
       text: "Tente novamente"
     });
+  } else if (self.state.nome.length < 2) {
+    self.setState({ nome: "" });
+    return sweetAlert(
+      "error",
+      "Seu nome deve ter mais que 1 caractere",
+      "Tente novamente"
+    );
   }
-
-  const {
-    nome,
-    email,
-    matricula,
-    cargo,
-    lotacao,
-    situacao,
-    vencimentoContrato,
-    username,
-    password
-  } = self.state;
 
   const director = new Director();
   const docenteBuilder = new DocenteBuilder();

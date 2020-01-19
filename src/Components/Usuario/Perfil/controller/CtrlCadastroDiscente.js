@@ -25,6 +25,39 @@ export const handleChange = (self, e, mask) => {
 export const handleSignUp = async (self, e) => {
   e.preventDefault();
 
+  const {
+    nome,
+    email,
+    ra,
+    curso,
+    turno,
+    campus,
+    serie,
+    situacaoAcademica,
+    username,
+    password
+  } = self.state;
+
+  if (
+    !(
+      nome &&
+      email &&
+      ra &&
+      curso &&
+      turno &&
+      campus &&
+      serie &&
+      situacaoAcademica &&
+      username &&
+      password
+    )
+  ) {
+    return sweetAlert(
+      "error",
+      "Todos os campos são requeridos! Há campos não preenchidos",
+      "Tente novamente"
+    );
+  }
   if (self.state.password !== self.state.confirmPassword) {
     self.setState({ confirmPassword: "" });
     return sweetAlert(
@@ -39,20 +72,17 @@ export const handleSignUp = async (self, e) => {
       "Senha deve ter pelo menos 4 caracteres",
       "Tente novamente"
     );
+  } else if (self.state.nome.length < 2) {
+    self.setState({ nome: "" });
+    return sweetAlert(
+      "error",
+      "Seu nome deve ter mais que 1 caractere",
+      "Tente novamente"
+    );
+  } else if (isNaN(self.state.serie)) {
+    self.setState({ serie: "" });
+    return sweetAlert("error", "Série deve ser um número", "Tente novamente");
   }
-
-  const {
-    nome,
-    email,
-    ra,
-    curso,
-    turno,
-    campus,
-    serie,
-    situacaoAcademica,
-    username,
-    password
-  } = self.state;
 
   const director = new Director();
   const discenteBuilder = new DiscenteBuilder();
